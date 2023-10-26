@@ -1,0 +1,6 @@
+{
+  "short_name": "Movies Explorer App",
+  "name": "Movies Explorer App",
+  "start_url": ".",
+  "display": "standalone"
+}
