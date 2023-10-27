@@ -1,8 +1,9 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../images/logo.svg';
 
-function Main() {
+function Header() {
   return (
       <div className="header">
         <img className="header__image" src={logo} alt={'logo'} />
@@ -14,4 +15,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Header;

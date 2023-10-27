@@ -7,6 +7,8 @@ import { React } from 'react';
 import { Link } from 'react-router-dom';
 // import { Paths } from '../../utils/constants';
 import Header from '../Header/Header.jsx';
+import Footer from '../Footer/Footer.jsx';
+import img from '../../images/cv_img.png';
 
 function App() {
   // const navigate = useNavigate();
@@ -15,24 +17,76 @@ function App() {
     <div className="App">
       <Header />
       <div className="main__landing">
-        <p className="landing__text">Учебный проект студента факультета Веб-разработки.</p>
+        <h2 className="landing__title">Учебный проект студента факультета Веб-разработки.</h2>
       </div>
-      <div className="main__footer">
-        <Link className='footer__button' type="button">О проекте</Link>
-        <Link className='footer__button' type="button">Технологии</Link>
-        <Link className='footer__button' type="button">Студент</Link>
+      <div className="main__links">
+        <Link className='links__button' type="button">О проекте</Link>
+        <Link className='links__button' type="button">Технологии</Link>
+        <Link className='links__button' type="button">Студент</Link>
       </div>
       <div className="main__promo">
-        <p className="promo__about">О проекте</p>
+        <p className="main__about">О проекте</p>
         <div className="promo__stages">
-          <p className="stages__item_title">Дипломный проект включал 5 этапов</p>
-          <p className="stages__item_title">На выполнение диплома ушло 5 недель</p>
+          <p className="stages__item-title">Дипломный проект включал 5 этапов</p>
+          <p className="stages__item-title">На выполнение диплома ушло 5 недель</p>
           <p className="stages__item">Составление плана, работу над бэкендом, вёрстку,
            добавление функциональности и финальные доработки.</p>
           <p className="stages__item">У каждого этапа был мягкий и жёсткий дедлайн,
            которые нужно было соблюдать, чтобы успешно защититься.</p>
         </div>
+        <div className="promo__bar">
+          <div className="bar__backend">1 неделя</div>
+          <div className="bar__frontend">4 недели</div>
+          <div className="bar__title">Back-end</div>
+          <div className="bar__title">Front-end</div>
+        </div>
       </div>
+      <div className="main__stack">
+        <p className="main__about">Технологии</p>
+        <h3 className="stack__title">7 технологий</h3>
+        <p className="stack_desc">На курсе веб-разработки мы освоили технологии,
+           которые применили в дипломном проекте.</p>
+        <div className="stack__container">
+          <div className="stack__item">HTML</div>
+          <div className="stack__item">CSS</div>
+          <div className="stack__item">JS</div>
+          <div className="stack__item">React</div>
+          <div className="stack__item">Git</div>
+          <div className="stack__item">Express.js</div>
+          <div className="stack__item">mongoDB</div>
+        </div>
+      </div>
+      <div className="main__cv">
+        <p className="main__about">Студент</p>
+        <div className="cv__container">
+          <div className="cv__text-block">
+            <h3 className="cv__title">Виталий</h3>
+            <p className="cv__desc">Фронтенд-разработчик, 30 лет</p>
+            <p className="cv__text">Я родился и живу в Саратове, закончил факультет экономики СГУ.
+            У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал
+            кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по
+            веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
+            <Link className='cv__button' type="button">Github</Link>
+          </div>
+          <img className="cv__image" src={img} alt="photo" />
+        </div>
+        <div className="cv__link">
+          <h3 className="link__title">Портфолио</h3>
+          <div className="link__item">
+            <p className='link__decs'>Статичный сайт</p>
+            <Link className='link__button' type="button"></Link>
+          </div>
+          <div className="link__item">
+            <p className='link__decs'>Адаптивный сайт</p>
+            <Link className='link__button' type="button"></Link>
+          </div>
+          <div className="link__item">
+            <p className='link__decs'>Одностраничное приложение</p>
+            <Link className='link__button' type="button"></Link>
+          </div>
+        </div>
+      </div>
+      <Footer />
       {/* <AppContext.Provider value={{ }}>
         <LoginUserContext.Provider value={{ }}>
           <Routes>
