@@ -1,68 +1,21 @@
 import { React } from 'react';
-import { Header, Footer } from 'react-dom';
-// import { useContext } from 'react';
-// import CurrentUserContext from '../contexts/CurrentUserContext.js';
-// import LoginUserContext from '../contexts/LoginUserContext';
-// import Card from './Card.jsx';
-// import Header from './Header';
-// import Footer from './Footer.jsx';
+import Promo from '../Promo/Promo.jsx';
+import NavTab from '../NavTab/NavTab.jsx';
+import AboutProject from '../AboutProject/AboutProject.jsx';
+import Techs from '../Techs/Techs.jsx';
+import AboutMe from '../AboutMe/AboutMe.jsx';
+import Portfolio from '../Portfolio/Portfolio.jsx';
 
 function Main() {
-  // const currentUser = useContext(CurrentUserContext);
-  // const { userLogin } = useContext(LoginUserContext);
-
   return (
-    <>
-      <Header name={''} handleExit={''} />
-
-      <main className="content App__content">
-        <section className="profile">
-          <div className="profile__item">
-            <button
-              className="profile__avatar-edit"
-              type="button"
-              aria-label="редактировать аватар"
-              onClick={'onEditAvatar'}
-            >
-              <img
-                className="profile__avatar"
-                src={''}
-                alt="Аватар профиля"
-              />
-            </button>
-
-            <div className="profile__info">
-              <div className="profile__name-item">
-                <h1 className="profile__name">{''}</h1>
-
-                <button
-                  className="profile__edit"
-                  type="button"
-                  aria-label="редактировать профиль"
-                  onClick={'onEditProfile'}
-                />
-              </div>
-
-              <p className="profile__caption">{''}</p>
-            </div>
-          </div>
-
-          <button
-            className="profile__add-element"
-            type="button"
-            aria-label="добавить фотографию"
-            onClick={'onAddPlace'}
-          ></button>
-        </section>
-
-        <section className="elements">
-          <ul className="elements__list">
-          </ul>
-        </section>
-      </main>
-
-      <Footer />
-    </>
+    <main>
+      <Promo />
+      <NavTab />
+      <AboutProject />
+      <Techs />
+      <AboutMe />
+      <Portfolio />
+    </main>
   );
 }
 

@@ -1,0 +1,66 @@
+.main__aboutme {
+  background-color: #202020;
+  padding: 110px 70px 125px;
+  color: #fff;
+}
+
+.aboutme__about {
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: solid 1px #DADADA;
+  color: #fff;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: -1px;
+}
+
+.aboutme__container {
+  margin: 66px 0 100px;
+  display: flex;
+  gap: 270px;
+}
+
+.aboutme__text-block {
+  flex-grow: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.aboutme__image {
+  flex-grow: 1;
+  border-radius: 10px;
+}
+
+.aboutme__title {
+  margin: 0;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -2px;
+  font-weight: 400;
+}
+
+.aboutme__desc {
+  margin: 0;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.aboutme__text {
+  margin: 7px 0 82px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.aboutme__button {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+}
+
+.cv__button:hover {
+  opacity: .6;
+}
