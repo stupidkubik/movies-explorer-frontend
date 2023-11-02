@@ -53,14 +53,10 @@ function Register() {
           />
           <button className="register__button" type="submit">Зарегистрироваться</button>
         </form>
-        <div className="register___signin">
-          <p className="register___subtitle">
-            Уже зарегистрированы?{' '}
-            <Link className="register___link" to={Paths.Login}>
-              Войти
-            </Link>
-          </p>
-        </div>
+        <p className="register___subtitle">
+          Уже зарегистрированы?
+          <Link className="register___link" to={Paths.Login}>Войти</Link>
+        </p>
       </div>
     </div>
   );
