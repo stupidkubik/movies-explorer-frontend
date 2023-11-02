@@ -8,7 +8,9 @@ function Login() {
   return (
     <div className="register">
       <div className="register__container">
-        <img className="register__image" src={logo} alt={'logo'} />
+        <Link className="register__image" to={Paths.Home}>
+          <img src={logo} alt={'logo'} />
+        </Link>
         <h2 className="register__title">Рады видеть!</h2>
         <form
           className={'register__form'}

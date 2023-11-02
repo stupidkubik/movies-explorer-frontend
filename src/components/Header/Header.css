@@ -1,6 +1,5 @@
 .header {
   height: 74px;
-  background-color: #073042;
   color: #fff;
   margin: 0;
   padding: 0 70px;
@@ -8,6 +7,10 @@
   align-content: center;
   justify-content: space-between;
   align-items: center;
+}
+
+.header__main {
+  background-color: #073042;
 }
 
 .header__image {
