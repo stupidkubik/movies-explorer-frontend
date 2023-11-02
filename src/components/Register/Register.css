@@ -1,0 +1,79 @@
+.register {
+  width: 100%;
+  margin: 70px 0;
+  background-color: #202020;
+}
+
+.register__container {
+  width: 396px;
+  margin: 0 auto;
+}
+
+.register__title {
+  margin: 37px 0 40px;
+  color: #fff;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+}
+
+.register__label {
+  display: block;
+  margin: 0;
+  color: #8B8B8B;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.register__input {
+  width: 366px;
+  margin: 10px 0;
+  display: block;
+  border: none;
+  background-color: #2F2F2F;
+  padding: 15px;
+  color: #fff;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.register__button {
+  width: 100%;
+  margin: 70px 0 0;
+  text-decoration: none;
+  background-color: #4285F4;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  padding: 13px 15px 15px;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: .1px;
+}
+
+.register__button:hover {
+  opacity: .8;
+}
+
+.register___signin {
+  margin: 16px 89px 0;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.register___subtitle {
+  margin: 0;
+  color: #8B8B8B;
+}
+
+.register___link {
+  display: inline-block;
+  margin: 0 0 0 3px;
+  text-decoration: none;
+  color: #4285F4;
+}
+
+.register___link:hover {
+  opacity: .7;
+}
