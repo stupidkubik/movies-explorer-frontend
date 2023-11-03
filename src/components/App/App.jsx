@@ -2,7 +2,7 @@ import { React } from 'react';
 import {
   Routes,
   Route,
-  // Navigate,
+  Navigate,
   // useNavigate,
 } from 'react-router';
 // import AppContext from '../contexts/AppContext.js';
@@ -14,6 +14,7 @@ import Main from '../Main/Main.jsx';
 import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
 import Profile from '../Profile/Profile.jsx';
+import NotFound from '../NotFound/NotFound.jsx';
 
 function App() {
   // const navigate = useNavigate();
@@ -25,9 +26,10 @@ function App() {
         <Route path={Paths.SignUp} element={<Register />} />
         <Route path={Paths.Login} element={<Login />} />
         <Route path={Paths.Profile} element={<Profile name={'Виталий'} email={'pochta@yandex.ru'} />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to={<NotFound />} replace />} />
         {/* <Route path={Paths.Movies} element={<Movies />} />
         <Route path={Paths.SavedMovies} element={<SavedMovies />} />
-        <Route path="*" element={<Navigate to={<NotFound />} replace />} />
         <Route path="*" element={<Navigate to={Paths.NotFound} replace />} /> */}
       </Routes>
     </div>
