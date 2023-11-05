@@ -1,4 +1,17 @@
-const Paths = {
+import Image1 from '../images/1.jpeg';
+import Image2 from '../images/2.jpeg';
+import Image3 from '../images/3.jpeg';
+import Image4 from '../images/4.jpeg';
+import Image5 from '../images/5.jpeg';
+import Image6 from '../images/6.jpeg';
+import Image7 from '../images/7.jpeg';
+import Image8 from '../images/8.jpeg';
+import Image9 from '../images/9.jpeg';
+import Image10 from '../images/10.png';
+import Image11 from '../images/11.jpeg';
+import Image12 from '../images/12.jpeg';
+
+export const Paths = {
   Home: '/',
   Login: '/signin',
   SignUp: '/signup',
@@ -8,9 +21,79 @@ const Paths = {
   NotFound: '/404',
 };
 
-const Staff = 'https://practicum.yandex.ru/learn/web/courses/c4f5c70d-2a5b-43e4-86f0-3b05bdf08616/sprints/86386/topics/67420e48-6101-4392-9910-c734cbc93f09/lessons/06cb3e4a-9423-4477-9dba-c23ba6d13bbd/';
-
-export {
-  Paths,
-  Staff,
-};
+export const MoviesList = [
+  {
+    isSaved: false,
+    _id: '1',
+    duration: '1ч 47м',
+    image: Image1,
+    nameRU: '33 слова о дизайне',
+  },
+  {
+    isSaved: true,
+    _id: '2',
+    duration: '1ч 3м',
+    image: Image2,
+    nameRU: 'Киноальманах «100 лет дизайна»',
+  },
+  {
+    _id: '3',
+    duration: '1ч 42м',
+    image: Image3,
+    nameRU: 'В погоне за Бенкси',
+  },
+  {
+    _id: '4',
+    duration: '1ч 21м',
+    image: Image4,
+    nameRU: 'Баския: Взрыв реальности',
+  },
+  {
+    _id: '5',
+    duration: '1ч 44м',
+    image: Image5,
+    nameRU: 'Бег это свобода',
+  },
+  {
+    _id: '6',
+    duration: '1ч 37м',
+    image: Image6,
+    nameRU: 'Книготорговцы',
+  },
+  {
+    _id: '7',
+    duration: '1ч 56м',
+    image: Image7,
+    nameRU: 'Когда я думаю о Германии ночью',
+  },
+  {
+    _id: '8',
+    duration: '1ч 59м',
+    image: Image8,
+    nameRU: 'Gimme Danger: История Игги и The Stooge...',
+  },
+  {
+    _id: '9',
+    duration: '1ч 42м',
+    image: Image9,
+    nameRU: 'Дженис: Маленькая девочка грустит',
+  },
+  {
+    _id: '10',
+    duration: '1ч 10м',
+    image: Image10,
+    nameRU: 'Соберись перед прыжком',
+  },
+  {
+    _id: '11',
+    duration: '1ч 4м',
+    image: Image11,
+    nameRU: 'Пи Джей Харви: A dog called money',
+  },
+  {
+    _id: '12',
+    duration: '1ч 7м',
+    image: Image12,
+    nameRU: 'По волнам: Искусство звука в кино',
+  },
+];

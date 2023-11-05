@@ -15,16 +15,19 @@
   border: none;
   border-radius: 40px 0 0 40px;
   background-color: #2F2F2F;
-  padding: 14px 22px;
+  padding: 12px 22px;
+  font-size: 13px;
+  line-height: 17px;
 }
 
 .movies__button {
-  height: 48px;
+  height: 46px;
   border: none;
   border-radius: 0 40px 40px 0;
   background-color: #2F2F2F;
-  padding: 12px 22px;
+  padding: 11px 22px;
   background-image: url(../../images/search-find.svg);
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
