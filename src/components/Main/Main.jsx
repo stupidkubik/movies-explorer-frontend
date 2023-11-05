@@ -11,7 +11,7 @@ import Portfolio from '../Portfolio/Portfolio.jsx';
 function Main() {
   return (
     <main>
-      <Header type={'main'} />
+      <Header loggedIn={false} />
       <Promo />
       <NavTab />
       <AboutProject />
