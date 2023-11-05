@@ -1,0 +1,10 @@
+.movies {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+}
+
+.movies__border {
+  margin: 0 70px;
+  border-bottom: solid #424242 1px;
+}

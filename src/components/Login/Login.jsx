@@ -24,6 +24,7 @@ function Login() {
             className={'register__input register__input_email'}
             type={'email'}
             name={'email'}
+            placeholder={'pochta@yandex.ru'}
             span={'error-signin-email'}
             // value={values.email}
             // onChange={'handleChange'}

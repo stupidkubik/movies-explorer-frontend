@@ -1,0 +1,10 @@
+.movies__container {
+  display: flex;
+}
+
+.movies__short {
+  margin: 0 0 0 12px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+}

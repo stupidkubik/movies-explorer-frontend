@@ -23,6 +23,7 @@ function Register() {
             className={'register__input register__input_name'}
             type={'name'}
             name={'name'}
+            placeholder={'Виталий'}
             minLength={'2'}
             maxLength={'20'}
             span={'error-signup-name'}
@@ -36,6 +37,7 @@ function Register() {
             className={'register__input register__input_email'}
             type={'email'}
             name={'email'}
+            placeholder={'pochta@yandex.ru'}
             span={'error-signup-email'}
             // value={values.email}
             // onChange={'handleChange'}

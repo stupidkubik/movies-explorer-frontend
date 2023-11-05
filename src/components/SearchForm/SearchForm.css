@@ -1,0 +1,30 @@
+.movies__form {
+  margin: 60px 0 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 42px 0;
+}
+
+.movies__container {
+  display: flex;
+}
+
+.movies__input {
+  width: 1096px;
+  border: none;
+  border-radius: 40px 0 0 40px;
+  background-color: #2F2F2F;
+  padding: 14px 22px;
+}
+
+.movies__button {
+  height: 48px;
+  border: none;
+  border-radius: 0 40px 40px 0;
+  background-color: #2F2F2F;
+  padding: 12px 22px;
+  background-image: url(../../images/search-find.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
