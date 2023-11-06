@@ -13,6 +13,6 @@ function Input({ onChange, spanId, ...rest }) {
 export default Input;
 
 Input.propTypes = {
-  onChange: PropTypes.function,
-  spanId: PropTypes.function,
+  onChange: PropTypes.func,
+  spanId: PropTypes.func,
 };

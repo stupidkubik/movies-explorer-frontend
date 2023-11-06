@@ -23,8 +23,13 @@ function App() {
 
   // const navigate = useNavigate();
 
-  function handleLogin() {
+  function handleLogin(evt) {
+    evt.preventDefault();
     setIsLoggedIn(true);
+  }
+
+  function handleLogout() {
+    setIsLoggedIn(false);
   }
 
   function handleMovieSave(evt) {
@@ -37,9 +42,13 @@ function App() {
       <LoginUserContext.Provider value={{ isLoggedIn }}>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path={Paths.SignUp} element={<Register handleLogin={handleLogin} />} />
-          <Route path={Paths.Login} element={<Login />} />
-          <Route path={Paths.Profile} element={<Profile name={'Виталий'} email={'pochta@yandex.ru'} />} />
+          <Route path={Paths.SignUp} element={<Register />} />
+          <Route path={Paths.Login} element={<Login handleLogin={handleLogin} />} />
+          <Route path={Paths.Profile} element={<Profile
+            name={'Виталий'}
+            email={'pochta@yandex.ru'}
+            handleLogout={handleLogout}
+            />} />
           <Route path={Paths.NotFound} element={<NotFound />} />
           <Route path={Paths.Movies} element={<Movies handleMovieSave={handleMovieSave} />} />
           <Route path={Paths.SavedMovies} element={<SavedMovies />} />

@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
 import logo from '../../images/logo.svg';
 
-function Login() {
+function Login({ handleLogin }) {
   return (
     <div className="register">
       <div className="register__container">
@@ -15,7 +17,7 @@ function Login() {
         <form
           className={'register__form'}
           name={'signin'}
-          onSubmit={''}
+          onSubmit={(evt) => handleLogin(evt)}
         >
 
           <label htmlFor="signin-email" className="register__label">E-mail</label>
@@ -54,3 +56,7 @@ function Login() {
 }
 
 export default Login;
+
+Login.propTypes = {
+  handleLogin: PropTypes.func,
+};

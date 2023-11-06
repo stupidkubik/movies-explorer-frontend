@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header.jsx';
 import { Paths } from '../../utils/constants';
 
-function Profile({ name, email }) {
+function Profile({ name, email, handleLogout }) {
   return (
     <div className="profile">
       <Header type={'profile'} />
@@ -18,7 +18,10 @@ function Profile({ name, email }) {
         <div className="profile__data">{email}</div>
       </div>
       <Link className='profile__editButton' to={''}>Редактировать</Link>
-      <Link className='profile__logoutButton' to={Paths.Login}>Выйти из аккаунта</Link>
+      <Link className='profile__logoutButton'
+        to={Paths.Login}
+        onClick={() => handleLogout()}
+      >Выйти из аккаунта</Link>
     </div>
   );
 }
@@ -28,4 +31,5 @@ export default Profile;
 Profile.propTypes = {
   name: PropTypes.string,
   email: PropTypes.string,
+  handleLogout: PropTypes.func,
 };

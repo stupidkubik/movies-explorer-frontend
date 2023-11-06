@@ -8,15 +8,15 @@ function Portfolio() {
         <h3 className="link__title">Портфолио</h3>
         <div className="link__item">
           <p className='link__decs'>Статичный сайт</p>
-          <Link className='link__button' type="button"></Link>
+          <Link className='link__button' type="button" to={''} />
         </div>
         <div className="link__item">
           <p className='link__decs'>Адаптивный сайт</p>
-          <Link className='link__button' type="button"></Link>
+          <Link className='link__button' type="button" to={''} />
         </div>
         <div className="link__item">
           <p className='link__decs'>Одностраничное приложение</p>
-          <Link className='link__button' type="button"></Link>
+          <Link className='link__button' type="button" to={''} />
         </div>
       </div>
     </section>

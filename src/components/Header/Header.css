@@ -1,6 +1,7 @@
 .header {
   height: 74px;
   color: #fff;
+  background-color: #073042;
   margin: 0;
   padding: 0 70px;
   display: flex;
@@ -9,10 +10,28 @@
   align-items: center;
 }
 
-.header__main {
+.header__loggedIn {
+  height: 74px;
+  color: #fff;
+  margin: 0;
+  padding: 0 70px;
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header__mainRoute {
   background-color: #073042;
 }
 
+.header__profileRoute {
+  background-color: #202020;
+}
+
+.header__main {
+  background-color: #073042;
+}
 
 .header__image {
   width: 38px;
@@ -25,6 +44,21 @@
   justify-content: space-between;
   align-items: center;
   gap: 30px;
+}
+
+.header__container_loggedIn {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.header_contentBox {
+  display: flex;
+  margin-left: 45px;
+  gap: 17px;
 }
 
 .header__register {
@@ -52,4 +86,72 @@
 
 .header__login:hover {
   opacity: .8;
+}
+
+.header__movies {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.header__movies:hover {
+  opacity: .8;
+}
+
+.header__movies_active {
+  font-weight: 500;
+}
+
+.header__savedMovies {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.header__savedMovies:hover {
+  opacity: .8;
+}
+
+.header__savedMovies_active {
+  font-weight: 500;
+}
+
+.header__profile {
+  width: 100px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.header__profile:hover {
+  opacity: .8;
+}
+
+.profile__text {
+  margin: 0 0 0 11px;
+  color: #fff;
+  font-size: 13px;
+  line-height: 12px;
+  font-weight: 500;
+}
+
+.profile__icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+  background-image: url(../../images/profile-icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile__mainRoute {
+  background-color: #0F4157;
+}
+
+.profile__profileRoute {
+  background-color: #313131;
 }

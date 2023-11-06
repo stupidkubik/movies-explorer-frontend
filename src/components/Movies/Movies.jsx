@@ -10,7 +10,7 @@ import LoadMore from '../LoadMore/LoadMore.jsx';
 function Movies(handleCardSave) {
   return (
     <div className="movies">
-      <Header type={'profile'} />
+      <Header type={'movies'} />
       <SearchForm />
       <div className="movies__border" />
       <MoviesCardList isSavedMovies={false} handleCardSave={handleCardSave} />

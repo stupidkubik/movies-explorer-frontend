@@ -9,7 +9,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 function SavedMovies(handleMovieSave) {
   return (
     <div className="savedMovies">
-      <Header loggedIn={true} />
+      <Header type={'savedMovies'} />
       <SearchForm />
       <div className="movies__border" />
       <MoviesCardList isSavedMovies={true} handleMovieSave={handleMovieSave} />
