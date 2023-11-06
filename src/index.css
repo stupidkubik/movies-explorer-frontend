@@ -23,4 +23,5 @@
 @import url(./components/MoviesCard/MoviesCard.css);
 @import url(./components/Preloader/Preloader.css);
 @import url(./components/LoadMore/LoadMore.css);
+@import url(./components/SavedMovies/SavedMovies.css);
 @import url(./components/NotFound/NotFound.css);

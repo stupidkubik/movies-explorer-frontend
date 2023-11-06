@@ -1,8 +1,7 @@
 import { React } from 'react';
+import PropTypes from 'prop-types';
 
-function Input(params) {
-  const { onChange, spanId, ...rest } = params;
-
+function Input({ onChange, spanId, ...rest }) {
   return (
     <>
       <input {...rest} onChange={onChange} required />
@@ -12,3 +11,8 @@ function Input(params) {
 }
 
 export default Input;
+
+Input.propTypes = {
+  onChange: PropTypes.function,
+  spanId: PropTypes.function,
+};

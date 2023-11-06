@@ -1,4 +1,5 @@
 import { React } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 import SearchForm from '../SearchForm/SearchForm.jsx';
@@ -12,7 +13,7 @@ function Movies(handleCardSave) {
       <Header type={'profile'} />
       <SearchForm />
       <div className="movies__border" />
-      <MoviesCardList handleCardSave={handleCardSave} />
+      <MoviesCardList isSavedMovies={false} handleCardSave={handleCardSave} />
       <LoadMore />
       <Footer />
       {/* <Preloader /> */}
@@ -21,3 +22,7 @@ function Movies(handleCardSave) {
 }
 
 export default Movies;
+
+Movies.propTypes = {
+  handleCardSave: PropTypes.func,
+};

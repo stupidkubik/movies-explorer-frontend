@@ -1,23 +1,29 @@
 import { React } from 'react';
+import PropTypes from 'prop-types';
 
-function MoviesCard(
+function MoviesCard({
   MovieData,
-  // handleCardSave,
-) {
+  isSavedMovies,
+  handleMovieSave,
+}) {
   // const currentUser = useContext(CurrentUserContext);
   const {
     image,
     nameRU,
     duration,
     isSaved,
-  } = MovieData.MovieData;
+  } = MovieData;
 
-  const moveSaveButtonClassName = `movie__save ${isSaved
+  const movieSaveButtonClassName = `movie__save ${isSaved
     ? 'movie__save_active'
     : ''}`;
 
+  const movieSaveClassName = `movie ${isSavedMovies
+    ? 'movie_hover'
+    : ''}`;
+
   return (
-    <li className="movie">
+    <li className={movieSaveClassName}>
       <img
         className="movie__image"
         src={image}
@@ -28,15 +34,20 @@ function MoviesCard(
         <div className="movie__container">
           <h2 className="movie__title">{nameRU}</h2>
           <div className="movie__like-box">
-            <button
-              className={moveSaveButtonClassName}
+            {isSavedMovies
+              ? <button
+              className="movieDeleteButton"
               type="button"
               aria-label="сохранить"
-              onClick={() => {
-                console.log(MovieData.MovieData);
-                // handleCardSave(MovieData.MovieData);
-              }}
+              onClick={(evt) => handleMovieSave(evt)}
             />
+              : <button
+              className={movieSaveButtonClassName}
+              type="button"
+              aria-label="удалить"
+              onClick={(evt) => handleMovieSave(evt)}
+            />
+            }
           </div>
         </div>
         <p className="movie__duration">{duration}</p>
@@ -46,3 +57,9 @@ function MoviesCard(
 }
 
 export default MoviesCard;
+
+MoviesCard.propTypes = {
+  isSavedMovies: PropTypes.bool,
+  MovieData: PropTypes.object,
+  handleMovieSave: PropTypes.object,
+};
