@@ -7,16 +7,31 @@ function Portfolio() {
       <div className="portfolio__link">
         <h3 className="link__title">Портфолио</h3>
         <div className="link__item">
-          <p className='link__decs'>Статичный сайт</p>
-          <Link className='link__button' type="button" to={''} />
+          <p className="link__decs">Статичный сайт</p>
+          <Link
+          className="link__button"
+          type="button"
+          target="_blank"
+          to="https://stupidkubik.github.io/how-to-learn/"
+          />
         </div>
         <div className="link__item">
-          <p className='link__decs'>Адаптивный сайт</p>
-          <Link className='link__button' type="button" to={''} />
+          <p className="link__decs">Адаптивный сайт</p>
+          <Link
+          className="link__button"
+          type="button"
+          target="_blank"
+          to="https://stupidkubik.github.io/russian-travel/"
+          />
         </div>
         <div className="link__item">
-          <p className='link__decs'>Одностраничное приложение</p>
-          <Link className='link__button' type="button" to={''} />
+          <p className="link__decs">Одностраничное приложение</p>
+          <Link
+          className="link__button"
+          type="button"
+          target="_blank"
+          to="https://stupid.kubik.nomoredomainsrocks.ru/"
+          />
         </div>
       </div>
     </section>

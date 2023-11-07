@@ -1,6 +1,6 @@
 .main__aboutme {
   background-color: #202020;
-  padding: 110px 70px 125px;
+  padding: 110px 70px 0;
   color: #fff;
 }
 
@@ -61,6 +61,6 @@
   font-weight: 500;
 }
 
-.cv__button:hover {
-  opacity: .6;
+.aboutme__button:hover {
+  opacity: .7;
 }

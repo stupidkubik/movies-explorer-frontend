@@ -36,3 +36,7 @@
   font-size: 13px;
   line-height: 16px;
 }
+
+.footer__link:hover {
+  opacity: .7;
+}

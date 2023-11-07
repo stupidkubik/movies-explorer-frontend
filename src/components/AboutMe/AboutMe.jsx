@@ -1,11 +1,12 @@
 import { React } from 'react';
 import { Link } from 'react-router-dom';
+import MainTitle from '../MainTitle/MainTitle.jsx';
 import img from '../../images/cv_img.png';
 
 function AboutMe() {
   return (
-    <section className="main__aboutme">
-      <p className="aboutme__about">Студент</p>
+    <section id="student" className="main__aboutme">
+      <MainTitle text={'Студент'} />
       <div className="aboutme__container">
         <div className="aboutme__text-block">
           <h3 className="aboutme__title">Виталий</h3>
@@ -14,9 +15,14 @@ function AboutMe() {
           У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал
           кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по
           веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-          <Link className='aboutme__button' type="button">Github</Link>
+          <Link
+          className="aboutme__button"
+          type="button"
+          target="_blank"
+          to="https://github.com/stupidkubik/"
+          >Github</Link>
         </div>
-        <img className="aboutme__image" src={img} alt="photo" />
+        <img className="aboutme__image" src={img} alt="self portrait photo" />
       </div>
     </section>
   );

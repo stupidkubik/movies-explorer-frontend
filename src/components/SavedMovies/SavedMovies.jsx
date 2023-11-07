@@ -6,7 +6,7 @@ import SearchForm from '../SearchForm/SearchForm.jsx';
 // import Preloader from '../Preloader/Preloader.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 
-function SavedMovies(handleMovieSave) {
+function SavedMovies({ handleMovieSave }) {
   return (
     <div className="savedMovies">
       <Header type={'savedMovies'} />

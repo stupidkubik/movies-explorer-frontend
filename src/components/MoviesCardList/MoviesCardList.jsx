@@ -35,6 +35,6 @@ function MoviesCardList({ isSavedMovies, handleMovieSave }) {
 export default MoviesCardList;
 
 MoviesCardList.propTypes = {
-  isSavedMovies: PropTypes.boolean,
+  isSavedMovies: PropTypes.bool,
   handleMovieSave: PropTypes.func,
 };

@@ -8,8 +8,17 @@ function Footer() {
         <div className="footer__container">
           <div className="footer__copyright">© 2020</div>
           <div className="footer__links">
-            <Link Link className="footer__link">Яндекс.Практикум</Link>
-            <Link className="footer__link">Github</Link>
+            <Link
+            className="footer__link"
+            target="_blank"
+            to="https://practicum.yandex.ru/"
+            >Яндекс.Практикум</Link>
+
+            <Link
+            className="footer__link"
+            target="_blank"
+            to="https://github.com/stupidkubik"
+            >Github</Link>
           </div>
         </div>
       </div>

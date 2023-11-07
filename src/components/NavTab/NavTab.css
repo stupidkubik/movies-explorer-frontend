@@ -4,11 +4,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 41px;
 }
 
 .navtab__button {
   color: #fff;
   font-size: 13px;
   line-height: 16px;
+}
+
+.navtab__button:hover {
+  opacity: .7;
 }
