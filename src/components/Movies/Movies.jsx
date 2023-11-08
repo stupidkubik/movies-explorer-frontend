@@ -7,11 +7,11 @@ import SearchForm from '../SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import LoadMore from '../LoadMore/LoadMore.jsx';
 
-function Movies(handleCardSave) {
+function Movies(handleCardSave, onSubmitSearch) {
   return (
     <div className="movies">
       <Header type={'movies'} />
-      <SearchForm />
+      <SearchForm onSubmitSearch={onSubmitSearch} />
       <div className="movies__border" />
       <MoviesCardList isSavedMovies={false} handleCardSave={handleCardSave} />
       <LoadMore />
@@ -25,4 +25,5 @@ export default Movies;
 
 Movies.propTypes = {
   handleCardSave: PropTypes.func,
+  onSubmitSearch: PropTypes.func,
 };

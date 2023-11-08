@@ -1,7 +1,9 @@
 import { React } from 'react';
+import PropTypes from 'prop-types';
+
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
 
-function SearchForm() {
+function SearchForm({ onSubmitSearch }) {
   return (
     <form
       className={'movies__form'}
@@ -23,6 +25,7 @@ function SearchForm() {
           type="submit"
           name="search-btn"
           className="movies__button"
+          onSubmit={(evt) => onSubmitSearch(evt)}
         />
       </div>
       <FilterCheckbox />
@@ -31,3 +34,7 @@ function SearchForm() {
 }
 
 export default SearchForm;
+
+SearchForm.propTypes = {
+  onSubmitSearch: PropTypes.func,
+};

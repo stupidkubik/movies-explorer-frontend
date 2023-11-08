@@ -11,7 +11,7 @@
   font-weight: 500;
 }
 
-.profile__container {
+.profile__form {
   width: 410px;
   margin: 0 auto;
   display: flex;
@@ -22,12 +22,18 @@
 }
 
 .profile__type {
+  display: block;
   width: 50%;
   text-align: left;
 }
 
 .profile__data {
+  display: block;
   width: 50%;
+  border: none;
+  padding: 0;
+  background-color: #202020;
+  color: #fff;
   text-align: right;
 }
 
@@ -62,4 +68,31 @@
 
 .profile__logoutButton:hover {
   opacity: .7;
+}
+
+.profile__saveButton {
+  width: 410px;
+  margin: 0;
+  padding: 13px 0 15px;
+  text-decoration: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #3456F3;
+  font-size: 14px;
+  line-height: 16.7px;
+}
+
+.profile__saveButton_disabled {
+  color: #C2C2C2;
+  background-color: #F8F8F8;
+  cursor: default;
+}
+
+.profile__saveError {
+  display: block;
+  margin: 189px auto 20px;
+  color: #FF004C;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
 }

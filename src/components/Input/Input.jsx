@@ -14,5 +14,5 @@ export default Input;
 
 Input.propTypes = {
   onChange: PropTypes.func,
-  spanId: PropTypes.func,
+  spanId: PropTypes.string,
 };

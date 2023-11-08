@@ -37,6 +37,10 @@ function App() {
     findMovie.isSaved = !evt.target.isSasved;
   }
 
+  function onSubmitSearch(evt) {
+    evt.preventDefault();
+  }
+
   return (
     <div className="App">
       <LoginUserContext.Provider value={{ isLoggedIn }}>
@@ -50,8 +54,19 @@ function App() {
             handleLogout={handleLogout}
             />} />
           <Route path={Paths.NotFound} element={<NotFound />} />
-          <Route path={Paths.Movies} element={<Movies handleMovieSave={handleMovieSave} />} />
-          <Route path={Paths.SavedMovies} element={<SavedMovies />} />
+          <Route
+            path={Paths.Movies}
+            element={<Movies
+              handleMovieSave={handleMovieSave}
+              onSubmitSearch={onSubmitSearch}
+              />}
+            />
+          <Route
+            path={Paths.SavedMovies}
+            element={<SavedMovies
+              onSubmitSearch={onSubmitSearch}
+              />}
+            />
           <Route path="*" element={<Navigate to={Paths.NotFound} />} />
         </Routes>
       </LoginUserContext.Provider>

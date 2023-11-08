@@ -1,14 +1,16 @@
 .main__about {
   height: 388px;
+  margin: 0 auto;
   background-color: #202020;
   padding: 110px 70px;
 }
 
 .about__stages {
-  margin: 70px 0 110px;
+  margin: 70px auto 110px;
   display: grid;
   grid-template-columns: 550px 550px;
   grid-template-rows: auto auto;
+  justify-content: center;
   gap: 26px 40px;
   color: #fff;
 }
@@ -31,6 +33,7 @@
   display: grid;
   grid-template-columns: 228px 912px;
   grid-template-rows: 36px 36px;
+  justify-content: center;
   text-align: center;
   font-size: 14px;
   line-height: 17px;

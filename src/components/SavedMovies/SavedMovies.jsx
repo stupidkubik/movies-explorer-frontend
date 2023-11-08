@@ -6,11 +6,11 @@ import SearchForm from '../SearchForm/SearchForm.jsx';
 // import Preloader from '../Preloader/Preloader.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 
-function SavedMovies({ handleMovieSave }) {
+function SavedMovies({ handleMovieSave, onSubmitSearch }) {
   return (
     <div className="savedMovies">
       <Header type={'savedMovies'} />
-      <SearchForm />
+      <SearchForm onSubmitSearch={onSubmitSearch} />
       <div className="movies__border" />
       <MoviesCardList isSavedMovies={true} handleMovieSave={handleMovieSave} />
       <Footer />
@@ -23,4 +23,5 @@ export default SavedMovies;
 
 SavedMovies.propTypes = {
   handleMovieSave: PropTypes.func,
+  onSubmitSearch: PropTypes.func,
 };

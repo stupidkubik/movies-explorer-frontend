@@ -4,11 +4,15 @@ import { Link, useNavigate } from 'react-router-dom';
 function NotFound() {
   const navigate = useNavigate();
 
+  function goToBack() {
+    navigate(-1);
+  }
+
   return (
     <div className="notFound">
       <h2 className="notFound__title">404</h2>
       <p className="notFound__subtitle">Страница не найдена</p>
-      <Link className="notFound__link" to={navigate(-1)}>Назад</Link>
+      <Link className="notFound__link" to={goToBack}>Назад</Link>
     </div>
   );
 }

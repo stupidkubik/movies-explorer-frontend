@@ -1,5 +1,5 @@
 .loadMore {
-  width: 1140px;
+  width: calc(100% - 70px * 2);
   margin: 50px 70px 100px;
   padding: 11px 0 10px;
   color: #fff;
