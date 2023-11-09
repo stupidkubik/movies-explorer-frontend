@@ -54,3 +54,30 @@
   padding: 14px 0;
   color: #8B8B8B;
 }
+
+@media screen and (max-width: 768px) {
+  .main__about {
+    padding: 90px 50px 107px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about__stages {
+    margin: 70px auto 93px;
+    grid-template-columns: 319px 319px;
+    gap: 22px 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .stages__item {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about__bar {
+    grid-template-columns: 140px 528px;
+  }
+}

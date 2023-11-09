@@ -42,3 +42,16 @@
 .link__button:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 768px) {
+  .main__portfolio {
+    padding: 0 50px 90px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .link__decs {
+    font-size: 28px;
+    letter-spacing: -1.1px;
+  }
+}

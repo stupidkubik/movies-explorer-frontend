@@ -32,3 +32,9 @@
 .header__profileRoute {
   background-color: #202020;
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 30px;
+  }
+}
