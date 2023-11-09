@@ -25,9 +25,7 @@
   .promo__title {
     padding: 326px 0 344px;
   }
-}
 
-@media screen and (max-width: 768px) {
   .main__promo {
     background-position-y: 226px;
   }
@@ -39,11 +37,11 @@
     font-size: 31px;
     line-height: 39px;
     font-weight: 400;
+    letter-spacing: -1.2px;
   }
-}
 
-@media screen and (max-width: 425px) {
   .main__promo {
-    background-position-y: 106px;
+    background-position-y: 142px;
+    background-size: 248px;
   }
 }

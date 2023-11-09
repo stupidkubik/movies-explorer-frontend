@@ -107,3 +107,14 @@
 .profile__profileRoute {
   background-color: #313131;
 }
+
+@media screen and (max-width: 425px) {
+  .header__login {
+    padding: 5px 12px 5px 13px;
+    font-size: 10px;
+  }
+
+  .header__register {
+    font-size: 10px;
+  }
+}

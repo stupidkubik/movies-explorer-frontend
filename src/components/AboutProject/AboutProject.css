@@ -1,5 +1,4 @@
 .main__about {
-  /* height: 388px; */
   margin: 0 auto;
   background-color: #202020;
   padding: 110px 70px;
@@ -34,18 +33,19 @@
   grid-template-columns: 228px 912px;
   grid-template-rows: 36px 36px;
   justify-content: center;
+  align-items: center;
   text-align: center;
   font-size: 14px;
   line-height: 17px;
 }
 
 .bar__backend {
-  padding: 9px 0;
+  padding: 10px 0;
   background-color: #3DDC84;
 }
 
 .bar__frontend {
-  padding: 9px 0;
+  padding: 10px 0;
   background-color: #303030;
   color: #fff;
 }
@@ -96,26 +96,19 @@
   .stages__item-title {
     font-size: 18px;
     line-height: 21.7px;
+    letter-spacing: -0.75px;
   }
 
-  .stages__item-title:nth-of-type(1) {
+  .stages__item-title:nth-of-type(2) {
     margin-top: 40px;
     order: 2;
   }
 
   .about__bar {
-    padding: 11px 0;
+    padding: 0;
     grid-template-columns: 100px 184px;
+    grid-template-rows: 35px 36px;
     font-size: 11px;
-    line-height: 13.3px;
-  }
-
-  .bar__title {
-    padding: 11px 0;
-  }
-
-  .bar__backend,
-  .bar__frontend {
-    padding: 10px 0;
+    line-height: 14px;
   }
 }

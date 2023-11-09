@@ -43,9 +43,7 @@
   .header {
     padding: 0 14px;
   }
-}
 
-@media screen and (max-width: 425px) {
   .header__notLoggedIn {
     gap: 14px;
   }

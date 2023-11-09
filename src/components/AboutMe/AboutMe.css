@@ -103,13 +103,14 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 425px) {
   .main__aboutme {
-    padding: 60px 14px 0;
+    padding: 80px 14px 0;
   }
 
   .aboutme__container {
     flex-direction: column;
+    margin: 61px 0 70px;
   }
 
   .aboutme__image {
@@ -121,15 +122,17 @@
   .aboutme__title {
     font-size: 30px;
     line-height: 36.3px;
+    letter-spacing: -1.5px;
   }
 
   .aboutme__desc {
-    margin-top: 20px;
+    margin-top: 19px;
     font-size: 11px;
     line-height: 16px;
   }
 
   .aboutme__text {
+    max-width: 100%;
     margin: 20px 0 40px;
     font-size: 11px;
     line-height: 16px;

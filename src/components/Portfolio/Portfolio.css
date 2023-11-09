@@ -56,17 +56,25 @@
 
 @media screen and (max-width: 425px) {
   .main__portfolio {
-    padding: 0 14px 70px;
+    padding: 0 14px 50px;
+  }
+
+  .link__title {
+    margin: 0 0 40px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .link__decs {
     margin-bottom: 19px;
     font-size: 18px;
     line-height: 28px;
-    letter-spacing: -1.1px;
+    letter-spacing: -0.7px;
   }
 
   .link__button {
-    margin: 0;
+    width: 18px;
+    margin: 0 0 22px;
+    background-size: 10px;
   }
 }

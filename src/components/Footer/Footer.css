@@ -53,11 +53,13 @@
   }
 
   .footer__text {
+    padding: 0 0 22px;
     font-size: 12px;
-    line-height: 14.5px;
+    line-height: 14px;
   }
 
   .footer__container {
+    margin-top: 30px;
     flex-direction: column-reverse;
     align-items: center;
   }
@@ -67,5 +69,14 @@
     align-items: center;
     gap: 12px;
     padding-bottom: 30px;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.5px;
+  }
+
+  .footer__copyright {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.9px;
   }
 }
