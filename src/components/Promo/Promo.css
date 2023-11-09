@@ -32,3 +32,18 @@
     background-position-y: 226px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .promo__title {
+    padding: 207px 0 246px;
+    font-size: 31px;
+    line-height: 39px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main__promo {
+    background-position-y: 106px;
+  }
+}

@@ -1,5 +1,4 @@
 .main__techs {
-  /* height: 425px; */
   padding: 100px 70px 101px;
   background-color: #272727;
   color: #fff;
@@ -38,7 +37,6 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  height: 60px;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -60,27 +58,48 @@
   .main__techs {
     padding: 90px 50px 89px;
   }
-}
 
-@media screen and (max-width: 768px) {
   .techs__title {
     margin: 80px auto 22px;
   }
-}
 
-@media screen and (max-width: 768px) {
   .techs_desc {
+    width: 100%;
     margin: 0 auto 83px;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.48px;
   }
-}
 
-@media screen and (max-width: 768px) {
   .techs__item {
     width: 84px;
     font-size: 12px;
     line-height: 14.5px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main__techs {
+    min-height: 100%;
+    padding: 70px 14px;
+  }
+
+  .techs__title {
+    margin: 60px auto 24px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs_desc {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__list {
+    max-width: 180px;
+    min-height: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 }

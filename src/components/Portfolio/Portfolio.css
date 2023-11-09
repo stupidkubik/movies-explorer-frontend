@@ -13,7 +13,7 @@
 }
 
 .link__item {
-  height: 69px;
+  max-height: 69px;
   margin: 20px 0 0;
   border-bottom: solid #424242 1px;
   display: flex;
@@ -47,11 +47,26 @@
   .main__portfolio {
     padding: 0 50px 90px;
   }
-}
 
-@media screen and (max-width: 768px) {
   .link__decs {
     font-size: 28px;
     letter-spacing: -1.1px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main__portfolio {
+    padding: 0 14px 70px;
+  }
+
+  .link__decs {
+    margin-bottom: 19px;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -1.1px;
+  }
+
+  .link__button {
+    margin: 0;
   }
 }

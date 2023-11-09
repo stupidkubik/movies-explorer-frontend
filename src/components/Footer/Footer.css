@@ -46,3 +46,26 @@
     padding: 20px 30px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .footer {
+    padding: 79px 10px 20px;
+  }
+
+  .footer__text {
+    font-size: 12px;
+    line-height: 14.5px;
+  }
+
+  .footer__container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 30px;
+  }
+}
