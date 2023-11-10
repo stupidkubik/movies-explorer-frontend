@@ -55,7 +55,17 @@
   color: #8B8B8B;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1179px) {
+  .about__stages {
+    grid-template-columns: 419px 419px;
+  }
+
+  .about__bar {
+    grid-template-columns: 190px 650px;
+  }
+}
+
+@media screen and (max-width: 979px) {
   .main__about {
     padding: 70px 18px 69px;
   }
@@ -73,6 +83,18 @@
 
   .about__bar {
     grid-template-columns: 140px 528px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .about__stages {
+    margin: 70px auto 93px;
+    grid-template-columns: 190px 190px;
+    gap: 22px 30px;
+  }
+
+  .about__bar {
+    grid-template-columns: 105px 320px;
   }
 }
 

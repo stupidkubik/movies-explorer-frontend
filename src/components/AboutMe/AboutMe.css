@@ -66,6 +66,24 @@
   opacity: .7;
 }
 
+@media screen and (max-width: 979px) {
+  .aboutme__image {
+    max-width: 260px;
+  }
+
+  .aboutme__desc {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .aboutme__text {
+    max-width: 80%;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .main__aboutme {
     padding: 90px 50px 0;
@@ -81,17 +99,9 @@
     line-height: 40px;
   }
 
-  .aboutme__desc {
-    margin-top: 16px;
-    font-size: 12px;
-    line-height: 18px;
-  }
-
   .aboutme__text {
     margin: 20px 0 87px;
     max-width: 88%;
-    font-size: 12px;
-    line-height: 18px;
   }
 
   .aboutme__image {
@@ -103,7 +113,27 @@
   }
 }
 
-@media screen and (max-width: 425px) {
+
+
+@media screen and (max-width: 660px) {
+  .aboutme__image {
+    max-width: 220px;
+  }
+
+  .aboutme__desc {
+    margin-top: 19px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .aboutme__text {
+    margin: 20px 0 40px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 550px) {
   .main__aboutme {
     padding: 80px 14px 0;
   }
@@ -117,12 +147,6 @@
     order: -1;
     max-width: 100%;
     margin-bottom: 40px;
-  }
-
-  .aboutme__title {
-    font-size: 30px;
-    line-height: 36.3px;
-    letter-spacing: -1.5px;
   }
 
   .aboutme__desc {
