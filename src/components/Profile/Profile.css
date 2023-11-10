@@ -96,3 +96,7 @@
   line-height: 13px;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__title {}
+}

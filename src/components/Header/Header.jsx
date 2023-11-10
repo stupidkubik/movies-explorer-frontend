@@ -9,6 +9,7 @@ import logo from '../../images/logo.svg';
 
 function Header({ type }) {
   const { isLoggedIn } = useContext(LoginUserContext);
+
   const headerClassName = `header ${isLoggedIn
     ? 'header__loggedIn'
     : 'header__notLoggedIn'}`;

@@ -11,7 +11,7 @@
 }
 
 .movies__input {
-  width: 1096px;
+  width: 86vw;
   border: none;
   border-radius: 40px 0 0 40px;
   background-color: #2F2F2F;
@@ -30,4 +30,10 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .movies__form {
+    margin: 80px 0 49px;
+  }
 }

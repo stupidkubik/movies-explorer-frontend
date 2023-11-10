@@ -9,3 +9,9 @@
   margin: 0 70px;
   border-bottom: solid #424242 1px;
 }
+
+@media screen and (max-width: 768px) {
+  .movies__border {
+    margin: 0 30px;
+  }
+}

@@ -16,3 +16,10 @@
 .loadMore:hover {
   opacity: .8;
 }
+
+@media screen and (max-width: 768px) {
+  .loadMore {
+    width: calc(100% - 30px * 2);
+    margin: 70px 30px 100px;
+  }
+}
