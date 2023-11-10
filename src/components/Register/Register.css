@@ -9,6 +9,11 @@
   margin: 0 auto;
 }
 
+.register__form {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .register__title {
   margin: 37px 0 40px;
   color: #fff;
@@ -79,5 +84,40 @@
 @media screen and (max-width: 768px) {
   .register {
     margin: 232px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .register {
+    margin: 56px 0;
+  }
+
+  .register__input {
+    width: 230px;
+  }
+
+  .register__container {
+    max-width: 260px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .register__title {
+    margin: 47px 0 80px;
+  }
+
+  .register__button {
+    margin: 160px 0 0;
+    font-size: 12px;
+    line-height: 14.5px;
+    padding: 15px;
+  }
+
+  .register___subtitle {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 14.5px;
   }
 }

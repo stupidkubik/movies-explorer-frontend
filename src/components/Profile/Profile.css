@@ -106,3 +106,25 @@
     margin: 210px auto 0;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .profile__title {
+    margin: 70px 0 80px;
+  }
+
+  .profile__form {
+    width: 260px;
+
+  }
+
+  .profile__editButton {
+    margin: 379px auto 0;
+    font-size: 12px;
+    line-height: 14.5px;
+  }
+
+  .profile__logoutButton {
+    font-size: 12px;
+    line-height: 14.5px;
+  }
+}
