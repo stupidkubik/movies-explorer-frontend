@@ -24,3 +24,9 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+@media screen and (max-width: 768px) {
+  .notFound__title {
+    margin: 408px auto 0;
+  }
+}

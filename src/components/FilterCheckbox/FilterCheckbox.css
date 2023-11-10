@@ -67,3 +67,9 @@
   line-height: 18px;
   font-weight: 400;
 }
+
+@media screen and (max-width: 425px) {
+  .checkbox__text {
+    font-size: 11px;
+  }
+}

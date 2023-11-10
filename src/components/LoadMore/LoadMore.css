@@ -23,3 +23,10 @@
     margin: 70px 30px 100px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .loadMore {
+    width: calc(100% - 10px * 2);
+    margin: 75px 10px 80px;
+  }
+}

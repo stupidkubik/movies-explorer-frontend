@@ -37,3 +37,16 @@
     margin: 80px 0 49px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .movies__input {
+    width: 76vw;
+    margin-left: 14px;
+    padding: 14px 19px;
+    font-size: 11px;
+  }
+
+  .movies__button {
+    margin-right: 14px;
+  }
+}

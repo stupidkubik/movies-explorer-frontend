@@ -30,6 +30,7 @@
   margin: 10px 0;
   display: block;
   border: none;
+  border-radius: 8px;
   background-color: #2F2F2F;
   padding: 15px;
   color: #fff;
@@ -73,4 +74,10 @@
 
 .register___link:hover {
   opacity: .7;
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    margin: 232px 0;
+  }
 }

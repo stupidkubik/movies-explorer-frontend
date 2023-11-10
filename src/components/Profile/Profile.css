@@ -98,5 +98,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .profile__title {}
+  .profile__title {
+    margin: 236px 0 96px;
+  }
+
+  .profile__editButton {
+    margin: 210px auto 0;
+  }
 }

@@ -44,7 +44,7 @@ function Login({ handleLogin }) {
             // value={values.password}
             // onChange={'handleChange'}
           />
-          <button className="register__button" type="submit">Войти</button>
+          <button className="register__button register__button_login" type="submit">Войти</button>
         </form>
         <p className="register___subtitle">
         Ещё не зарегистрированы?
