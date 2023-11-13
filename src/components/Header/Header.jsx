@@ -48,9 +48,11 @@ function Header({ type }) {
     ? 'header__mainRoute'
     : 'header__profileRoute'}`;
 
-  // const headerOpenBurgerMenuClassName = `header__container ${isMenuOpen ? 'header_opened' : ''}`;
   const headerShowBurgerMenuClassName = `${isMobileView ? 'header__burger-menu_active' : ''}`;
-  const burgerMenuClassName = `${isMenuOpen ? 'header__burger-menu_opened' : 'header__burger-menu'}`;
+
+  const burgerMenuClassName = `${isMobileView && isMenuOpen
+    ? 'header__burger-menu_opened'
+    : 'header__burger-menu'}`;
 
   return (
     <header className={`${headerClassName} ${headerBackgroundClassName}`}>
@@ -67,6 +69,7 @@ function Header({ type }) {
           <button
             className={`${burgerMenuClassName} ${headerShowBurgerMenuClassName}`}
             type="button"
+            aria-label="Меню"
             onClick={toggleMenu}
           />
         </nav>

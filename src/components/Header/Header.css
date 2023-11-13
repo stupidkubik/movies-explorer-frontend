@@ -41,6 +41,8 @@
 
 .header__burger-menu {
   display: none;
+  visibility: hidden;
+  opacity: 0;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -58,6 +60,9 @@
 .header__burger-menu_active {
   display: block;
   margin-left: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility .5s linear 0.5s, opacity 500ms;
 }
 
 .header__burger-menu_opened {
@@ -69,6 +74,7 @@
   background-image: url(../../images/menu-close.svg);
   background-position: center;
   background-repeat: no-repeat;
+  z-index: 3;
 }
 
 .header__burger-menu_opened:hover {
