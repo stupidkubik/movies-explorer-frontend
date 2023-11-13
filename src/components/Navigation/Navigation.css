@@ -155,6 +155,14 @@
   text-decoration: none;
 }
 
+.burger__movies_active {
+  border-bottom: 2px solid #fff;
+}
+
+.burger__savedMovies_active {
+  border-bottom: 2px solid #fff;
+}
+
 @media screen and (max-width: 550px) {
   .burger__contentBox {
     width: 100%;
