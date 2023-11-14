@@ -99,4 +99,10 @@
   .header__notLoggedIn {
     gap: 14px;
   }
+
+  .header__burger-menu_opened {
+    width: 30px;
+    height: 25px;
+    margin-bottom: 15px;
+  }
 }

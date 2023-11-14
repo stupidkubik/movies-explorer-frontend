@@ -1,6 +1,6 @@
 .main__portfolio {
   background-color: #202020;
-  padding: 0 70px 127px;
+  padding: 0 70px 126px;
   color: #fff;
 }
 
@@ -15,6 +15,7 @@
 .link__item {
   max-height: 69px;
   margin: 20px 0 0;
+  padding-bottom: 20px;
   border-bottom: solid #424242 1px;
   display: flex;
   justify-content: space-between;
@@ -33,7 +34,7 @@
 
 .link__button {
   width: 30px;
-  margin: 0 0 15px;
+  margin: 4px 0 0;
   background-image: url(../../images/link_img.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -45,12 +46,21 @@
 
 @media screen and (max-width: 768px) {
   .main__portfolio {
-    padding: 0 50px 90px;
+    padding: 0 50px 94px;
+  }
+
+  .link__title {
+    margin-bottom: 49px;
   }
 
   .link__decs {
     font-size: 28px;
     letter-spacing: -1.1px;
+  }
+
+  .link__item {
+    padding-bottom: 18px;
+    border-bottom: solid #E6E6E6 1px;
   }
 }
 
@@ -65,7 +75,11 @@
 
 @media screen and (max-width: 425px) {
   .main__portfolio {
-    padding: 0 14px 50px;
+    padding: 0 14px 52px;
+  }
+
+  .link__item {
+    padding-bottom: 0;
   }
 
   .link__title {

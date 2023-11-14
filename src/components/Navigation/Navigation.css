@@ -156,10 +156,14 @@
 }
 
 .burger__movies_active {
+  margin-top: 8px;
+  padding-bottom: 8px;
   border-bottom: 2px solid #fff;
 }
 
 .burger__savedMovies_active {
+  margin-top: 8px;
+  padding-bottom: 8px;
   border-bottom: 2px solid #fff;
 }
 
@@ -177,5 +181,10 @@
 
   .header__register {
     font-size: 10px;
+  }
+
+  .burger__navigation {
+    padding-top: 144px;
+    gap: 16px;
   }
 }

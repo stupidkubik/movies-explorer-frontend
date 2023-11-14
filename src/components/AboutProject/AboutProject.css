@@ -1,11 +1,11 @@
 .main__about {
   margin: 0 auto;
   background-color: #202020;
-  padding: 110px 70px;
+  padding: 110px 70px 101px;
 }
 
 .about__stages {
-  margin: 70px auto 110px;
+  margin: 70px auto 111px;
   display: grid;
   grid-template-columns: 550px 550px;
   grid-template-rows: auto auto;
@@ -37,21 +37,22 @@
   text-align: center;
   font-size: 14px;
   line-height: 17px;
+  gap: 4px 0;
 }
 
 .bar__backend {
-  padding: 10px 0;
+  padding: 10px 0 9px;
   background-color: #3DDC84;
 }
 
 .bar__frontend {
-  padding: 10px 0;
+  padding: 10px 0 9px;
   background-color: #303030;
   color: #fff;
 }
 
 .bar__title {
-  padding: 14px 0;
+  padding: 9px 0;
   color: #8B8B8B;
 }
 
@@ -67,7 +68,7 @@
 
 @media screen and (max-width: 979px) {
   .main__about {
-    padding: 70px 18px 69px;
+    padding: 90px 50px 69px;
   }
 
   .about__stages {
@@ -99,8 +100,12 @@
 }
 
 @media screen and (max-width: 425px) {
+  .main__about {
+    padding: 70px 18px 69px;
+  }
+
   .about__stages {
-    margin: 60px auto;
+    margin: 61px auto 60px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -129,8 +134,14 @@
   .about__bar {
     padding: 0;
     grid-template-columns: 100px 184px;
-    grid-template-rows: 35px 36px;
+    grid-template-rows: 35px 35px;
     font-size: 11px;
     line-height: 14px;
+    gap: 0;
+  }
+
+  .bar__backend,
+  .bar__frontend {
+    padding: 11px 0 10px;
   }
 }

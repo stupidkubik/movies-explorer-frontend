@@ -1,5 +1,6 @@
 import {
   React,
+  useEffect,
 } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -34,6 +35,15 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
   const putOverlayClassName = `${isMenuOpen
     ? 'burger__overlay'
     : ''}`;
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+    }
+    return () => {
+      document.body.style.overflowY = 'auto';
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
