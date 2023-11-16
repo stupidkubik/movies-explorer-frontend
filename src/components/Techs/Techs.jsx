@@ -3,10 +3,10 @@ import MainTitle from '../MainTitle/MainTitle.jsx';
 
 function Techs() {
   return (
-    <section id="techs" className="main__techs">
+    <section id="techs" className="techs main__techs">
       <MainTitle text={'Технологии'} />
       <h3 className="techs__title">7 технологий</h3>
-      <p className="techs_desc">На курсе веб-разработки мы освоили технологии,
+      <p className="techs__desc">На курсе веб-разработки мы освоили технологии,
         которые применили в дипломном проекте.</p>
       <ul className="techs__list">
         <li className="techs__item">HTML</li>

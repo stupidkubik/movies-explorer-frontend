@@ -15,7 +15,7 @@ function Login({ handleLogin }) {
         </Link>
         <h2 className="register__title">Рады видеть!</h2>
         <form
-          className={'register__form'}
+          className={'form register__form'}
           name={'signin'}
           onSubmit={(evt) => handleLogin(evt)}
         >
@@ -23,7 +23,7 @@ function Login({ handleLogin }) {
           <label htmlFor="signin-email" className="register__label">E-mail</label>
           <Input
             id={'signin-email'}
-            className={'register__input register__input_email'}
+            className={'input register__input'}
             type={'email'}
             name={'email'}
             placeholder={'pochta@yandex.ru'}
@@ -35,20 +35,21 @@ function Login({ handleLogin }) {
           <label htmlFor="signin-password" className="register__label">Пароль</label>
           <Input
             id={'signin-password'}
-            className={'register__input register__input_password'}
+            className={'input register__input'}
             type={'password'}
             name={'password'}
             minLength={'2'}
             maxLength={'20'}
+            placeholder={'********'}
             span={'error-signin-password'}
             // value={values.password}
             // onChange={'handleChange'}
           />
           <button className="register__button register__button_login" type="submit">Войти</button>
         </form>
-        <p className="register___subtitle">
+        <p className="register__subtitle">
         Ещё не зарегистрированы?
-        <Link className="register___link" to={Paths.SignUp}>Регистрация</Link>
+        <Link className="register__link" to={Paths.SignUp}>Регистрация</Link>
         </p>
       </div>
     </div>

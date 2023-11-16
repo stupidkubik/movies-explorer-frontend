@@ -13,7 +13,7 @@ function Profile({ name, email, handleLogout }) {
     <div className="profile">
       <Header type={'profile'} />
       <h2 className="profile__title">Привет, {name}!</h2>
-      <form className="profile__form">
+      <form className="form profile__form">
         <label
           className="profile__type"
           htmlFor="profile-name"
@@ -26,6 +26,7 @@ function Profile({ name, email, handleLogout }) {
           value={name}
           minLength={'2'}
           maxLength={'20'}
+          placeholder={name || 'Имя'}
           spanId={'error-profile-name'}
           // onChange={'handleChange'}
           disabled
@@ -41,6 +42,7 @@ function Profile({ name, email, handleLogout }) {
           id="profile-email"
           type={'email'}
           value={email}
+          placeholder={email || 'Почта'}
           spanId={'error-profile-email'}
           // onChange={'handleChange'}
           disabled

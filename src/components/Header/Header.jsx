@@ -40,9 +40,9 @@ function Header({ type }) {
     };
   }, []);
 
-  const headerClassName = `header ${isLoggedIn
-    ? 'header__loggedIn'
-    : 'header__notLoggedIn'}`;
+  const headerClassName = `header__content ${isLoggedIn
+    ? 'header__content_loggedIn'
+    : 'header__content_notLoggedIn'}`;
 
   const headerBackgroundClassName = `${type === 'main'
     ? 'header__mainRoute'
@@ -55,29 +55,31 @@ function Header({ type }) {
     : 'header__burger-menu'}`;
 
   return (
-    <header className={`${headerClassName} ${headerBackgroundClassName}`}>
-      <Link className="header__image" to={Paths.Home}>
-        <img src={logo} alt={'logo'} />
-      </Link>
-      {isLoggedIn
-        ? <nav className="header__container">
-          <Navigation
-            type={type}
-            isMenuOpen={isMenuOpen}
-            isMobileView={isMobileView}
-          />
-          <button
-            className={`${burgerMenuClassName} ${headerShowBurgerMenuClassName}`}
-            type="button"
-            aria-label="Меню"
-            onClick={toggleMenu}
-          />
-        </nav>
-        : <nav className="header__notLoggedIn">
-          <Link className="header__register" type="button" to={Paths.SignUp}>Регистрация</Link>
-          <Link className="header__login" type="button" to={Paths.Login}>Войти</Link>
-        </nav>
-      }
+    <header className="header">
+      <div className={`${headerClassName} ${headerBackgroundClassName}`}>
+        <Link className="header__image" to={Paths.Home}>
+          <img src={logo} alt="логотип страницы в виде квадрата" />
+        </Link>
+        {isLoggedIn
+          ? <nav className="header__container">
+            <Navigation
+              type={type}
+              isMenuOpen={isMenuOpen}
+              isMobileView={isMobileView}
+            />
+            <button
+              className={`${burgerMenuClassName} ${headerShowBurgerMenuClassName}`}
+              type="button"
+              aria-label="Меню"
+              onClick={toggleMenu}
+            />
+          </nav>
+          : <nav className="header__notLoggedIn">
+            <Link className="header__register" type="button" to={Paths.SignUp}>Регистрация</Link>
+            <Link className="header__login" type="button" to={Paths.Login}>Войти</Link>
+          </nav>
+        }
+      </div>
     </header>
   );
 }

@@ -10,7 +10,7 @@ import Portfolio from '../Portfolio/Portfolio.jsx';
 
 function Main() {
   return (
-    <main>
+    <main className="main">
       <Header type={'main'} />
       <Promo />
       <NavTab />

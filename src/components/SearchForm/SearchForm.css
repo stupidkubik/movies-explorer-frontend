@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+.movies__button:hover {
+  opacity: .8;
+}
+
 @media screen and (max-width: 768px) {
   .movies__form {
     margin: 80px 0 49px;

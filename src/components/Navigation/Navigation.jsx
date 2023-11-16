@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 import { Paths } from '../../utils/constants';
 
 function Navigation({ type, isMenuOpen, isMobileView }) {
-  const logoBackgroundClassName = `profile__icon ${type === 'main'
-    ? 'profile__mainRoute'
-    : 'profile__profileRoute'}`;
+  const logoBackgroundClassName = `header__profileIcon ${type === 'main'
+    ? 'header__profile-mainRoute'
+    : 'header__profile-profileRoute'}`;
 
   const activeMoviesRouteClassName = `header__movies ${type === 'movies'
     ? 'header__movies_active'
@@ -59,7 +59,7 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
               </Link>
             </ul>
               <Link className="burger__profile" type="button" to={Paths.Profile}>
-                <p className="profile__text">Аккаунт</p>
+                <p className="header__profileText">Аккаунт</p>
                 <div className={logoBackgroundClassName} />
               </Link>
             </div>
@@ -72,7 +72,7 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
             </Link>
           </div>
           <Link className="header__profile" type="button" to={Paths.Profile}>
-            <p className="profile__text">Аккаунт</p>
+            <p className="header__profileText">Аккаунт</p>
             <div className={logoBackgroundClassName} />
           </Link>
         </>

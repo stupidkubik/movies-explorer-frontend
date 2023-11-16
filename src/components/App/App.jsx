@@ -2,8 +2,8 @@ import { React, useState } from 'react';
 import {
   Routes,
   Route,
-  Navigate,
-  // useNavigate,
+  // Navigate,
+  useNavigate,
 } from 'react-router';
 // import AppContext from '../contexts/AppContext.js';
 // import CurrentUserContext from '../contexts/CurrentUserContext.js';
@@ -21,7 +21,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleLogin(evt) {
     evt.preventDefault();
@@ -30,6 +30,7 @@ function App() {
 
   function handleLogout() {
     setIsLoggedIn(false);
+    navigate(Paths.Home);
   }
 
   function handleMovieSave(evt) {
@@ -53,7 +54,6 @@ function App() {
             email={'pochta@yandex.ru'}
             handleLogout={handleLogout}
             />} />
-          <Route path={Paths.NotFound} element={<NotFound />} />
           <Route
             path={Paths.Movies}
             element={<Movies
@@ -67,7 +67,7 @@ function App() {
               onSubmitSearch={onSubmitSearch}
               />}
             />
-          <Route path="*" element={<Navigate to={Paths.NotFound} />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </LoginUserContext.Provider>
     </div>

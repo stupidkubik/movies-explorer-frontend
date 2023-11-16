@@ -4,9 +4,9 @@ import { React } from 'react';
 
 function FilterCheckbox() {
   return (
-    <div className="search__checkbox">
+    <div className="checkbox movies__checkbox">
       <label htmlFor="checkbox" className="checkbox__container">
-        <input id="checkbox" type="checkbox" className="checkbox" />
+        <input id="checkbox" type="checkbox" className="checkbox__input" />
         <span className="checkbox__custom" />
       </label>
       <h2 className="checkbox__text">Короткометражки</h2>

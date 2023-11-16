@@ -19,6 +19,7 @@ function SearchForm({ onSubmitSearch }) {
           placeholder='Фильм'
           // value={values.search}
           // onChange={'handleChange'}
+          required
         />
         <button
           id="search-submit"

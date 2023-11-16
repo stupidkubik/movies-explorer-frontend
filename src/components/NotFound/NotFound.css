@@ -25,6 +25,10 @@
   line-height: 17px;
 }
 
+.notFound__link:hover {
+  opacity: .7;
+}
+
 @media screen and (max-width: 768px) {
   .notFound__title {
     margin: 408px auto 0;

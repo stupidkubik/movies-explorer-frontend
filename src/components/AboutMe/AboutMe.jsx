@@ -5,7 +5,7 @@ import img from '../../images/cv_img.png';
 
 function AboutMe() {
   return (
-    <section id="student" className="main__aboutme">
+    <section id="student" className="aboutme main__aboutme">
       <MainTitle text={'Студент'} />
       <div className="aboutme__container">
         <div className="aboutme__text-block">
@@ -22,7 +22,7 @@ function AboutMe() {
           to="https://github.com/stupidkubik/"
           >Github</Link>
         </div>
-        <img className="aboutme__image" src={img} alt="self portrait photo" />
+        <img className="aboutme__image" src={img} alt="Фото Виталия в профиль без фона" />
       </div>
     </section>
   );

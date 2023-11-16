@@ -1,6 +1,8 @@
 .footer {
   padding: 20px 70px;
   background-color: #202020;
+  /* position: sticky;
+  bottom: 15px; */
 }
 
 .footer__text {

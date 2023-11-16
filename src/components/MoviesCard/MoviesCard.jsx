@@ -27,7 +27,7 @@ function MoviesCard({
       <img
         className="movie__image"
         src={image}
-        alt={nameRU}
+        alt={`кадр из фильма “${nameRU}“`}
       />
 
       <div className="movie__data">

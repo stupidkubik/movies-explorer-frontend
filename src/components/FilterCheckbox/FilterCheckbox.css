@@ -1,8 +1,7 @@
-.search__checkbox {
+.movies__checkbox {
   width: 100%;
   display: flex;
   justify-content: center;
-  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -15,9 +14,14 @@
   display: inline-block;
   width: 36px;
   height: 20px;
+  cursor: pointer;
 }
 
-.checkbox {
+.checkbox__container:hover {
+  opacity: .8;
+}
+
+.checkbox__input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -49,11 +53,11 @@
   border-radius: 50%;
 }
 
-.checkbox:checked+.checkbox__custom {
+.checkbox__input:checked+.checkbox__custom {
   background-color: #3DDC84;
 }
 
-.checkbox:checked+.checkbox__custom:before {
+.checkbox__input:checked+.checkbox__custom:before {
   -webkit-transform: translateX(16px);
   -ms-transform: translateX(16px);
   transform: translateX(16px);

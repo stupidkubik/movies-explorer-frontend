@@ -2,7 +2,7 @@ import { React } from 'react';
 
 function NavTab() {
   return (
-    <section className="main__navtab">
+    <section className="navtab main__navtab">
       <a
       className="navtab__button"
       type="button"

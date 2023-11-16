@@ -5,7 +5,7 @@ function Input({ onChange, spanId, ...rest }) {
   return (
     <>
       <input {...rest} onChange={onChange} required />
-      <span id={spanId} className="popup__error"></span>
+      <span id={spanId} className="form__error"></span>
     </>
   );
 }

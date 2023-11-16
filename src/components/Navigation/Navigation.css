@@ -74,7 +74,7 @@
   opacity: .8;
 }
 
-.profile__text {
+.header__profileText {
   margin: 0 0 0 11px;
   color: #fff;
   font-size: 13px;
@@ -82,7 +82,7 @@
   font-weight: 500;
 }
 
-.profile__icon {
+.header__profileIcon {
   width: 26px;
   height: 26px;
   border-radius: 50px;
@@ -91,11 +91,11 @@
   background-repeat: no-repeat;
 }
 
-.profile__mainRoute {
+.header__profile-mainRoute {
   background-color: #0F4157;
 }
 
-.profile__profileRoute {
+.header__profile-profileRoute {
   background-color: #313131;
 }
 
@@ -147,12 +147,21 @@
   cursor: pointer;
 }
 
+.burger__profile:hover {
+  opacity: .7;
+}
+
 .burger__link {
   color: #fff;
   font-size: 18px;
   line-height: 21.7px;
   font-weight: 500;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.burger__link:hover {
+  opacity: .7;
 }
 
 .burger__movies_active {
