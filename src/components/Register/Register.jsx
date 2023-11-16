@@ -6,12 +6,12 @@ import logo from '../../images/logo.svg';
 
 function Register() {
   return (
-    <div className="register">
+    <main className="register">
       <div className="register__container">
         <Link className="register__image" to={Paths.Home}>
           <img src={logo} alt={'logo'} />
         </Link>
-        <h2 className="register__title">Добро пожаловать!</h2>
+        <h1 className="register__title">Добро пожаловать!</h1>
         <form
           className={'form register__form'}
           name={'signup'}
@@ -21,7 +21,7 @@ function Register() {
           <Input
             id={'signup-name'}
             className={'input register__input'}
-            type={'name'}
+            type={'text'}
             name={'name'}
             minLength={'2'}
             maxLength={'20'}
@@ -63,7 +63,7 @@ function Register() {
           <Link className="register__link" to={Paths.Login}>Войти</Link>
         </p>
       </div>
-    </div>
+    </main>
   );
 }
 

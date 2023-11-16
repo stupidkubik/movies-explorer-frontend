@@ -8,7 +8,7 @@ import logo from '../../images/logo.svg';
 
 function Login({ handleLogin }) {
   return (
-    <div className="register">
+    <main className="register">
       <div className="register__container">
         <Link className="register__image" to={Paths.Home}>
           <img src={logo} alt={'logo'} />
@@ -52,7 +52,7 @@ function Login({ handleLogin }) {
         <Link className="register__link" to={Paths.SignUp}>Регистрация</Link>
         </p>
       </div>
-    </div>
+    </main>
   );
 }
 

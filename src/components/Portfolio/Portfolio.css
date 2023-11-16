@@ -76,9 +76,7 @@
     line-height: 28px;
     letter-spacing: -0.7px;
   }
-}
 
-@media screen and (max-width: 425px) {
   .main__portfolio {
     padding: 0 14px 52px;
   }

@@ -8,14 +8,16 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 
 function SavedMovies({ handleMovieSave, onSubmitSearch }) {
   return (
-    <div className="movies savedMovies">
+    <>
       <Header type={'savedMovies'} />
-      <SearchForm onSubmitSearch={onSubmitSearch} />
-      <div className="movies__border" />
-      <MoviesCardList isSavedMovies={true} handleMovieSave={handleMovieSave} />
+      <main className="movies savedMovies">
+        <SearchForm onSubmitSearch={onSubmitSearch} />
+        <div className="movies__border" />
+        <MoviesCardList isSavedMovies={true} handleMovieSave={handleMovieSave} />
+        {/* <Preloader /> */}
+      </main>
       <Footer />
-      {/* <Preloader /> */}
-    </div>
+    </>
   );
 }
 

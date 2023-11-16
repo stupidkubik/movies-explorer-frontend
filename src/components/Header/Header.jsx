@@ -75,8 +75,8 @@ function Header({ type }) {
             />
           </nav>
           : <nav className="header__notLoggedIn">
-            <Link className="header__register" type="button" to={Paths.SignUp}>Регистрация</Link>
-            <Link className="header__login" type="button" to={Paths.Login}>Войти</Link>
+            <Link className="header__register" to={Paths.SignUp}>Регистрация</Link>
+            <Link className="header__login" to={Paths.Login}>Войти</Link>
           </nav>
         }
       </div>

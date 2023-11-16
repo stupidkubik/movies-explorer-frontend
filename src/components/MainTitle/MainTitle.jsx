@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function MainTitle({ text }) {
   return (
-    <p className="main__title">{text}</p>
+    <h2 className="main__title">{text}</h2>
   );
 }
 

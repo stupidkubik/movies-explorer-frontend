@@ -2,7 +2,7 @@ import { React } from 'react';
 
 function LoadMore() {
   return (
-    <button className="loadMore">Ещё</button>
+    <button className="loadMore" type="button">Ещё</button>
   );
 }
 

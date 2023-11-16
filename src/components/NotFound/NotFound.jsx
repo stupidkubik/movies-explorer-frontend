@@ -13,11 +13,11 @@ function NotFound() {
   }
 
   return (
-    <div className="notFound">
-      <h2 className="notFound__title">404</h2>
+    <main className="notFound">
+      <h1 className="notFound__title">404</h1>
       <p className="notFound__subtitle">Страница не найдена</p>
-      <Link className="notFound__link" type="button" onClick={() => goToBack()}>Назад</Link>
-    </div>
+      <Link className="notFound__link" onClick={() => goToBack()}>Назад</Link>
+    </main>
   );
 }
 

@@ -9,7 +9,6 @@ function Portfolio() {
         <div className="link__item">
           <Link
           className="link__button"
-          type="button"
           target="_blank"
           to="https://stupidkubik.github.io/how-to-learn/"
           >
@@ -19,7 +18,6 @@ function Portfolio() {
         <div className="link__item">
           <Link
           className="link__button"
-          type="button"
           target="_blank"
           to="https://stupidkubik.github.io/russian-travel/"
           >
@@ -29,7 +27,6 @@ function Portfolio() {
         <div className="link__item">
           <Link
           className="link__button"
-          type="button"
           target="_blank"
           to="https://stupid.kubik.nomoredomainsrocks.ru/"
           >

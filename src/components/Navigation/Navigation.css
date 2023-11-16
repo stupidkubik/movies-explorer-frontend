@@ -137,6 +137,11 @@
   gap: 28px;
 }
 
+.burger__navigation-item {
+  display: block;
+  list-style: none;
+}
+
 .burger__profile {
   padding-bottom: 90px;
   width: 100px;

@@ -5,30 +5,32 @@ import { MoviesList } from '../../utils/constants';
 
 function MoviesCardList({ isSavedMovies, handleMovieSave }) {
   return (
-    <ul className="movies__list">
-      {isSavedMovies
-        ? MoviesList.filter((movie) => {
-          const { isSaved } = movie;
-          return isSaved === true;
-        })
-          .map((MovieData) => (
-          <MoviesCard
-            key={MovieData._id}
-            MovieData={MovieData}
-            isSavedMovies={isSavedMovies}
-            handleMovieSave={handleMovieSave}
-          />
+    <section className="movies__wrapper">
+      <ul className="movies__list">
+        {isSavedMovies
+          ? MoviesList.filter((movie) => {
+            const { isSaved } = movie;
+            return isSaved === true;
+          })
+            .map((MovieData) => (
+            <MoviesCard
+              key={MovieData._id}
+              MovieData={MovieData}
+              isSavedMovies={isSavedMovies}
+              handleMovieSave={handleMovieSave}
+            />
+            ))
+          : MoviesList.map((MovieData) => (
+            <MoviesCard
+              key={MovieData._id}
+              MovieData={MovieData}
+              isSavedMovies={isSavedMovies}
+              handleMovieSave={handleMovieSave}
+            />
           ))
-        : MoviesList.map((MovieData) => (
-          <MoviesCard
-            key={MovieData._id}
-            MovieData={MovieData}
-            isSavedMovies={isSavedMovies}
-            handleMovieSave={handleMovieSave}
-          />
-        ))
-      }
-    </ul>
+        }
+      </ul>
+    </section>
   );
 }
 

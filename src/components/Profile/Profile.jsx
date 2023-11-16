@@ -10,69 +10,72 @@ function Profile({ name, email, handleLogout }) {
   const [isEdited, setIsEdited] = useState(false);
 
   return (
-    <div className="profile">
+    <>
       <Header type={'profile'} />
-      <h2 className="profile__title">Привет, {name}!</h2>
-      <form className="form profile__form">
-        <label
-          className="profile__type"
-          htmlFor="profile-name"
-          >Имя
-        </label>
-        <Input
-          className="profile__data"
-          id="profile-name"
-          type={'name'}
-          value={name}
-          minLength={'2'}
-          maxLength={'20'}
-          placeholder={name || 'Имя'}
-          spanId={'error-profile-name'}
-          // onChange={'handleChange'}
-          disabled
-        />
-        <div className='profile__divine'></div>
-        <label
-          className="profile__type"
-          htmlFor="profile-email"
-          >E-mail
-        </label>
-        <Input
-          className="profile__data"
-          id="profile-email"
-          type={'email'}
-          value={email}
-          placeholder={email || 'Почта'}
-          spanId={'error-profile-email'}
-          // onChange={'handleChange'}
-          disabled
-        />
-      </form>
+      <main className="profile">
+        <section className="profile__wrapper">
+          <h1 className="profile__title">Привет, {name}!</h1>
+          <form className="form profile__form">
+            <label
+              className="profile__type"
+              htmlFor="profile-name"
+              >Имя
+            </label>
+            <Input
+              className="profile__data"
+              id="profile-name"
+              type={'text'}
+              value={name}
+              minLength={'2'}
+              maxLength={'20'}
+              placeholder={name || 'Имя'}
+              spanId={'error-profile-name'}
+              // onChange={'handleChange'}
+              disabled
+            />
+            {/* <div className='profile__divine'></div> */}
+            <label
+              className="profile__type"
+              htmlFor="profile-email"
+              >E-mail
+            </label>
+            <Input
+              className="profile__data"
+              id="profile-email"
+              type={'email'}
+              value={email}
+              placeholder={email || 'Почта'}
+              spanId={'error-profile-email'}
+              // onChange={'handleChange'}
+              disabled
+              />
+          </form>
 
-      {isEdited
-        ? <>
-          <span className="profile__saveError">{'При обновлении профиля произошла ошибка.'}</span>
-          <Link
-            className="profile__saveButton"
-            type="button"
-            onClick={() => setIsEdited(false)}
-            >Сохранить
-          </Link>
-        </>
-        : <>
-          <Link
-            className="profile__editButton"
-            onClick={() => setIsEdited(true)}
-            >Редактировать
-          </Link>
-          <Link
-            className="profile__logoutButton"
-            to={Paths.Login}
-            onClick={() => handleLogout()}
-            >Выйти из аккаунта
-          </Link>
-        </>}
-    </div>
+          {isEdited
+            ? <>
+              <span className="profile__saveError">{'При обновлении профиля произошла ошибка.'}</span>
+              <Link
+                className="profile__saveButton"
+                onClick={() => setIsEdited(false)}
+                >Сохранить
+              </Link>
+            </>
+            : <>
+              <Link
+                className="profile__editButton"
+                onClick={() => setIsEdited(true)}
+                >Редактировать
+              </Link>
+              <Link
+                className="profile__logoutButton"
+                to={Paths.Login}
+                onClick={() => handleLogout()}
+                >Выйти из аккаунта
+              </Link>
+            </>}
+          </section>
+      </main>
+    </>
   );
 }
 

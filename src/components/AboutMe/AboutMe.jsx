@@ -17,7 +17,6 @@ function AboutMe() {
           веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
           <Link
           className="aboutme__button"
-          type="button"
           target="_blank"
           to="https://github.com/stupidkubik/"
           >Github</Link>

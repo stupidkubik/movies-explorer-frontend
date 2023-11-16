@@ -10,16 +10,18 @@ import Portfolio from '../Portfolio/Portfolio.jsx';
 
 function Main() {
   return (
-    <main className="main">
+    <>
       <Header type={'main'} />
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <main className="main">
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
 

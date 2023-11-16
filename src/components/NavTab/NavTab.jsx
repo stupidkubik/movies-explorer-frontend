@@ -2,25 +2,30 @@ import { React } from 'react';
 
 function NavTab() {
   return (
-    <section className="navtab main__navtab">
-      <a
-      className="navtab__button"
-      type="button"
-      href="#about"
-      >О проекте</a>
+    <nav>
+      <ul className="navtab main__navtab">
+        <li className="navtab__item">
+          <a
+          className="navtab__button"
+          href="#about"
+          >О проекте</a>
+        </li>
 
-      <a
-      className="navtab__button"
-      type="button"
-      href="#techs"
-      >Технологии</a>
+        <li className="navtab__item">
+          <a
+          className="navtab__button"
+          href="#techs"
+          >Технологии</a>
+        </li>
 
-      <a
-      className="navtab__button"
-      type="button"
-      href="#student"
-      >Студент</a>
-    </section>
+        <li className="navtab__item">
+          <a
+          className="navtab__button"
+          href="#student"
+          >Студент</a>
+        </li>
+      </ul>
+    </nav>
   );
 }
 

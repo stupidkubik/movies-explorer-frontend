@@ -9,6 +9,10 @@
   margin: 0 auto;
 }
 
+.register__image:hover {
+  opacity: .8;
+}
+
 .register__form {
   width: 100%;
   margin: 0 auto;

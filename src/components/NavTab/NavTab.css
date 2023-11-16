@@ -1,10 +1,17 @@
 .main__navtab {
   height: 66px;
+  margin: 0;
+  padding: 0;
   background-color: #272727;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 41px;
+}
+
+.navtab__item {
+  display: block;
+  list-style: none;
 }
 
 .navtab__button {

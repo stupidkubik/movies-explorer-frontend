@@ -66,7 +66,7 @@
   opacity: .7;
 }
 
-@media screen and (max-width: 979px) {
+@media screen and (max-width: 1024px) {
   .aboutme__image {
     max-width: 260px;
   }
@@ -78,7 +78,7 @@
   }
 
   .aboutme__text {
-    max-width: 80%;
+    max-width: 88%;
     font-size: 12px;
     line-height: 18px;
   }
@@ -102,7 +102,6 @@
 
   .aboutme__text {
     margin: 20px 0 87px;
-    max-width: 88%;
   }
 
   .aboutme__image {

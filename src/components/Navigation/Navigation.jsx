@@ -52,13 +52,19 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
           <div className={putOverlayClassName}></div>
           <div className={openBurgerMenuClassName}>
             <ul className="burger__navigation">
-              <Link className="burger__link" type="button" to={Paths.Home}>Главная</Link>
-              <Link className={activeMoviesRouteBurgerClassName} type="button" to={Paths.Movies}>Фильмы</Link>
-              <Link className={activeSavedMoviesRouteBurgerClassName} type="button" to={Paths.SavedMovies}>
-                Сохранённые фильмы
-              </Link>
+              <li className="burger__navigation-item">
+                <Link className="burger__link" to={Paths.Home}>Главная</Link>
+              </li>
+              <li className="burger__navigation-item">
+                <Link className={activeMoviesRouteBurgerClassName} to={Paths.Movies}>Фильмы</Link>
+              </li>
+              <li className="burger__navigation-item">
+                <Link className={activeSavedMoviesRouteBurgerClassName} to={Paths.SavedMovies}>
+                  Сохранённые фильмы
+                </Link>
+              </li>
             </ul>
-              <Link className="burger__profile" type="button" to={Paths.Profile}>
+              <Link className="burger__profile" to={Paths.Profile}>
                 <p className="header__profileText">Аккаунт</p>
                 <div className={logoBackgroundClassName} />
               </Link>
@@ -66,12 +72,12 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
           </>
         : <>
           <div className="header__contentBox">
-            <Link className={activeMoviesRouteClassName} type="button" to={Paths.Movies}>Фильмы</Link>
-            <Link className={activeSavedMoviesRouteClassName} type="button" to={Paths.SavedMovies}>
+            <Link className={activeMoviesRouteClassName} to={Paths.Movies}>Фильмы</Link>
+            <Link className={activeSavedMoviesRouteClassName} to={Paths.SavedMovies}>
               Сохранённые фильмы
             </Link>
           </div>
-          <Link className="header__profile" type="button" to={Paths.Profile}>
+          <Link className="header__profile" to={Paths.Profile}>
             <p className="header__profileText">Аккаунт</p>
             <div className={logoBackgroundClassName} />
           </Link>

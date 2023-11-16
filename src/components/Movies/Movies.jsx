@@ -9,15 +9,17 @@ import LoadMore from '../LoadMore/LoadMore.jsx';
 
 function Movies(handleCardSave, onSubmitSearch) {
   return (
-    <div className="movies">
+    <>
       <Header type={'movies'} />
-      <SearchForm onSubmitSearch={onSubmitSearch} />
-      <div className="movies__border" />
-      <MoviesCardList isSavedMovies={false} handleCardSave={handleCardSave} />
-      <LoadMore />
+      <main className="movies">
+        <SearchForm onSubmitSearch={onSubmitSearch} />
+        <div className="movies__border" />
+        <MoviesCardList isSavedMovies={false} handleCardSave={handleCardSave} />
+        <LoadMore />
+        {/* <Preloader /> */}
+      </main>
       <Footer />
-      {/* <Preloader /> */}
-    </div>
+    </>
   );
 }
 
