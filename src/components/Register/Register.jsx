@@ -9,7 +9,7 @@ function Register() {
     <main className="register">
       <div className="register__container">
         <Link className="register__image" to={Paths.Home}>
-          <img src={logo} alt={'logo'} />
+          <img src={logo} alt="логотип страницы в виде квадрата" />
         </Link>
         <h1 className="register__title">Добро пожаловать!</h1>
         <form
