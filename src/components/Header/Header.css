@@ -9,6 +9,7 @@
   align-items: center;
 }
 
+/* Тот самый стиль, который убирает кнопки регистрации в правый угол */
 .header__content_notLoggedIn {
   justify-content: space-between;
 }
