@@ -48,11 +48,11 @@ function Header({ type }) {
     ? 'header__mainRoute'
     : 'header__profileRoute'}`;
 
-  const headerShowBurgerMenuClassName = `${isMobileView ? 'header__burger-menu_active' : ''}`;
+  const headerShowBurgerMenuClassName = `${isMobileView ? 'burger__menu_active' : ''}`;
 
-  const burgerMenuClassName = `${isMobileView && isMenuOpen
-    ? 'header__burger-menu_opened'
-    : 'header__burger-menu'}`;
+  const burgerMenuClassName = `burger__menu ${isMobileView && isMenuOpen
+    ? 'burger__menu_opened'
+    : 'burger__menu_hidden'}`;
 
   return (
     <header className="header">
@@ -61,7 +61,7 @@ function Header({ type }) {
           <img src={logo} alt="логотип страницы в виде квадрата" />
         </Link>
         {isLoggedIn
-          ? <nav className="header__container">
+          ? <nav className="burger header__container">
             <Navigation
               type={type}
               isMenuOpen={isMenuOpen}

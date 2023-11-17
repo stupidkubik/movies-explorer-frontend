@@ -22,7 +22,7 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
 
   const openBurgerMenuClassName = `${isMenuOpen
     ? 'burger__contentBox'
-    : 'burger__contentBox_hidden'}`;
+    : 'burger__hiddenContentBox'}`;
 
   const activeMoviesRouteBurgerClassName = `burger__link ${type === 'movies'
     ? 'burger__movies_active'

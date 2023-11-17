@@ -13,7 +13,7 @@ function Login({ handleLogin }) {
         <Link className="register__image" to={Paths.Home}>
           <img src={logo} alt="логотип страницы в виде квадрата" />
         </Link>
-        <h2 className="register__title">Рады видеть!</h2>
+        <h1 className="register__title">Рады видеть!</h1>
         <form
           className={'form register__form'}
           name={'signin'}

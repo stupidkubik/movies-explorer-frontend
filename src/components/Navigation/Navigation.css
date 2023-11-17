@@ -123,7 +123,7 @@
   z-index: 3;
 }
 
-.burger__contentBox_hidden {
+.burger__hiddenContentBox {
   display: none;
 }
 
