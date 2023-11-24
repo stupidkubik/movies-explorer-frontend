@@ -13,11 +13,11 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
     : 'header__profile-profileRoute'}`;
 
   const activeMoviesRouteClassName = `header__movies ${type === 'movies'
-    ? 'header__movies_active'
+    ? 'header__movies-active'
     : ''}`;
 
   const activeSavedMoviesRouteClassName = `header__savedMovies ${type === 'savedMovies'
-    ? 'header__savedMovies_active'
+    ? 'header__savedMovies-active'
     : ''}`;
 
   const openBurgerMenuClassName = `${isMenuOpen
@@ -25,11 +25,11 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
     : 'burger__hiddenContentBox'}`;
 
   const activeMoviesRouteBurgerClassName = `burger__link ${type === 'movies'
-    ? 'burger__movies_active'
+    ? 'burger__movies-active'
     : ''}`;
 
   const activeSavedMoviesRouteBurgerClassName = `burger__link ${type === 'savedMovies'
-    ? 'burger__savedMovies_active'
+    ? 'burger__savedMovies-active'
     : ''}`;
 
   const putOverlayClassName = `${isMenuOpen

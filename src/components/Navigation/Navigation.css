@@ -42,7 +42,7 @@
   opacity: .8;
 }
 
-.header__movies_active {
+.header__movies-active {
   font-weight: 500;
 }
 
@@ -57,7 +57,7 @@
   opacity: .8;
 }
 
-.header__savedMovies_active {
+.header__savedMovies-active {
   font-weight: 500;
 }
 
@@ -169,13 +169,13 @@
   opacity: .7;
 }
 
-.burger__movies_active {
+.burger__movies-active {
   margin-top: 8px;
   padding-bottom: 8px;
   border-bottom: 2px solid #fff;
 }
 
-.burger__savedMovies_active {
+.burger__savedMovies-active {
   margin-top: 8px;
   padding-bottom: 8px;
   border-bottom: 2px solid #fff;
