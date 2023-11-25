@@ -19,7 +19,7 @@ import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
