@@ -1,0 +1,123 @@
+.movie_hover {
+  cursor: pointer;
+}
+
+.movie__image {
+  width: 364px;
+  height: 203px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.movie__data {
+  padding: 16px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  background-color: #272727;
+  border-radius: 0 0 6px 6px;
+}
+
+.movie__container {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie__title {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  line-height: 15.7px;
+  font-weight: 500;
+}
+
+.movie__duration {
+  margin: 16px 0 0;
+  color: #8B8B8B;
+  font-size: 11px;
+  line-height: 13.3px;
+}
+
+.movie__save {
+  margin-right: 8px;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  background: #272727;
+  background-image: url(../../images/save-disabled.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.movie__save:hover {
+  opacity: .7;
+}
+
+.movie__save_active {
+  background-image: url(../../images/save.svg);
+}
+
+.movieDeleteButton {
+  visibility: hidden;
+  margin-right: 8px;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  background: #272727;
+  background-image: url(../../images/delete-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.movie:hover .movieDeleteButton {
+  visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+  .movie__image {
+    width: 339px;
+    height: 190px;
+  }
+
+  .movie__data {
+    padding: 14px;
+  }
+
+  .movie__duration {
+    margin-top: 13px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .movie__image {
+    width: 300px;
+    height: 168px;
+  }
+
+  .movie__data {
+    padding-top: 13.5px;
+  }
+
+  .movie__title {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 500;
+  }
+
+  .movie__duration {
+    font-size: 10px;
+    line-height: 12px;
+    margin-top: 11px;
+  }
+}

@@ -1,0 +1,125 @@
+.header__content {
+  width: calc(100% - 140px);
+  max-width: 100%;
+  height: 74px;
+  color: #fff;
+  margin: 0;
+  padding: 0 70px;
+  display: flex;
+  align-items: center;
+}
+
+/* Тот самый стиль, который убирает кнопки регистрации в правый угол */
+.header__content_notLoggedIn {
+  justify-content: space-between;
+}
+
+.header__notLoggedIn {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__image {
+  width: 38px;
+  height: 38px;
+}
+
+.header__image:hover {
+  opacity: .8;
+}
+
+.header__container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.header__mainRoute {
+  background-color: #073042;
+}
+
+.header__profileRoute {
+  background-color: #202020;
+}
+
+.burger__menu_hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  background-image: url(../../images/menu.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.burger__menu_hidden:hover {
+  opacity: .8;
+}
+
+.burger__menu_active {
+  display: block;
+  margin-left: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility .5s linear 0.5s, opacity 500ms;
+}
+
+.burger__menu_opened {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  background-image: url(../../images/menu-close.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.burger__menu_opened:hover {
+  opacity: .8;
+}
+
+.header__navigation_hidden {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header__content {
+    width: calc(100% - 60px);
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__container {
+    padding: 0 14px;
+  }
+
+  .header__content {
+    width: calc(100% - 28px);
+    padding: 0 14px;
+  }
+
+  .header__notLoggedIn {
+    gap: 14px;
+  }
+
+  .burger__menu_opened {
+    width: 30px;
+    height: 25px;
+    margin-bottom: 15px;
+  }
+}

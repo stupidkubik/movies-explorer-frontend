@@ -1,0 +1,9 @@
+.register__button_login {
+  margin-top: 159px;
+}
+
+@media screen and (max-width: 768px) {
+  .register__button_login {
+    margin-top: 247px;
+  }
+}

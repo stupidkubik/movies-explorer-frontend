@@ -1,0 +1,204 @@
+.header__register {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header__register:hover {
+  opacity: .7;
+}
+
+.header__login {
+  text-decoration: none;
+  background-color: #3DDC84;
+  color: #000;
+  border-radius: 3px;
+  text-align: center;
+  padding: 8px 21px 8px 20px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header__login:hover {
+  opacity: .8;
+}
+
+.header__contentBox {
+  display: flex;
+  margin-left: 45px;
+  gap: 17px;
+}
+
+.header__movies {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.header__movies:hover {
+  opacity: .8;
+}
+
+.header__movies-active {
+  font-weight: 500;
+}
+
+.header__savedMovies {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.header__savedMovies:hover {
+  opacity: .8;
+}
+
+.header__savedMovies-active {
+  font-weight: 500;
+}
+
+.header__profile {
+  width: 100px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.header__profile:hover {
+  opacity: .8;
+}
+
+.header__profileText {
+  margin: 0 0 0 11px;
+  color: #fff;
+  font-size: 13px;
+  line-height: 12px;
+  font-weight: 500;
+}
+
+.header__profileIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+  background-image: url(../../images/profile-icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header__profile-mainRoute {
+  background-color: #0F4157;
+}
+
+.header__profile-profileRoute {
+  background-color: #313131;
+}
+
+.burger__overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.burger__contentBox {
+  width: calc(100vw - 248px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #202020;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.burger__hiddenContentBox {
+  display: none;
+}
+
+.burger__navigation {
+  padding: 159px 0px 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+}
+
+.burger__navigation-item {
+  display: block;
+  list-style: none;
+}
+
+.burger__profile {
+  padding-bottom: 90px;
+  width: 100px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.burger__profile:hover {
+  opacity: .7;
+}
+
+.burger__link {
+  color: #fff;
+  font-size: 18px;
+  line-height: 21.7px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.burger__link:hover {
+  opacity: .7;
+}
+
+.burger__movies-active {
+  margin-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #fff;
+}
+
+.burger__savedMovies-active {
+  margin-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #fff;
+}
+
+@media screen and (max-width: 550px) {
+  .burger__contentBox {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__login {
+    padding: 5px 12px 5px 13px;
+    font-size: 10px;
+  }
+
+  .header__register {
+    font-size: 10px;
+  }
+
+  .burger__navigation {
+    padding-top: 144px;
+    gap: 16px;
+  }
+}

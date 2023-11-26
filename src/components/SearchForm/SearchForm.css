@@ -1,0 +1,56 @@
+.movies__form {
+  margin: 60px 0 68px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 42px 0;
+}
+
+.movies__container {
+  display: flex;
+}
+
+.movies__input {
+  width: 86vw;
+  border: none;
+  border-radius: 40px 0 0 40px;
+  background-color: #2F2F2F;
+  padding: 12px 22px;
+  font-size: 13px;
+  line-height: 17px;
+}
+
+.movies__button {
+  height: 46px;
+  border: none;
+  border-radius: 0 40px 40px 0;
+  background-color: #2F2F2F;
+  padding: 11px 22px;
+  background-image: url(../../images/search-find.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.movies__button:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 768px) {
+  .movies__form {
+    margin: 80px 0 49px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .movies__input {
+    width: 76vw;
+    margin-left: 14px;
+    padding: 14px 19px;
+    font-size: 11px;
+  }
+
+  .movies__button {
+    margin-right: 14px;
+  }
+}

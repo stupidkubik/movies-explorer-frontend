@@ -1,0 +1,28 @@
+.main__title {
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: solid 1px #DADADA;
+  color: #fff;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: -1px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .main__title {
+    font-size: 22px;
+    line-height: 26.6px;
+    padding-bottom: 23px;
+    letter-spacing: -0.9px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+    letter-spacing: -0.8px;
+  }
+}
