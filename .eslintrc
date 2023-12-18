@@ -9,7 +9,10 @@
       "error",
       {
         "allow": [
-          "_id"
+          "_id",
+          "_request",
+          "_baseUrl",
+          "_checkResponse"
         ]
       }
     ]

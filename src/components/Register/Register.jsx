@@ -1,10 +1,43 @@
-import { React } from 'react';
+import { React, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import AppContext from '../../contexts/AppContext';
+import Preloader from '../Preloader/Preloader.jsx';
+import useFormValidation from '../../hooks/useFormValidation';
 import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
 import logo from '../../images/logo.svg';
 
-function Register() {
+function Register({ handleRegistration, setIsError }) {
+  const { isError, isLoading } = useContext(AppContext);
+
+  const {
+    values,
+    errors,
+    handleChange,
+    setValues,
+    isValid,
+    resetForm
+  } = useFormValidation({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    setValues({ email: '', password: '' });
+  }, [setValues]);
+
+  useEffect(() => {
+    setIsError(false);
+  }, [setIsError]);
+
+  function onSubmit(evt) {
+    evt.preventDefault();
+    handleRegistration(values.username, values.email, values.password);
+  }
+
   return (
     <main className="register">
       <div className="register__container">
@@ -12,10 +45,12 @@ function Register() {
           <img src={logo} alt="логотип страницы в виде квадрата" />
         </Link>
         <h1 className="register__title">Добро пожаловать!</h1>
+
         <form
           className={'form register__form'}
           name={'signup'}
-          onSubmit={''}
+          onSubmit={onSubmit}
+          noValidate
         >
           <label htmlFor="signup-name" className="register__label">Имя</label>
           <Input
@@ -27,8 +62,12 @@ function Register() {
             maxLength={'20'}
             placeholder={'Виталий'}
             span={'error-signup-name'}
-            // value={values.name}
-            // onChange={'handleChange'}
+            value={values.username || ''}
+            error={errors.username || ''}
+            onChange={(evt) => {
+              handleChange(evt);
+              setIsError(false);
+            }}
           />
 
           <label htmlFor="signup-email" className="register__label">E-mail</label>
@@ -39,8 +78,12 @@ function Register() {
             name={'email'}
             placeholder={'pochta@yandex.ru'}
             span={'error-signup-email'}
-            // value={values.email}
-            // onChange={'handleChange'}
+            value={values.email || ''}
+            error={errors.email || ''}
+            onChange={(evt) => {
+              handleChange(evt);
+              setIsError(false);
+            }}
           />
 
           <label htmlFor="signup-password" className="register__label">Пароль</label>
@@ -53,11 +96,23 @@ function Register() {
             maxLength={'20'}
             placeholder={'********'}
             span={'error-signup-password'}
-            // value={values.password}
-            // onChange={'handleChange'}
+            value={values.password || ''}
+            error={errors.password || ''}
+            onChange={(evt) => {
+              handleChange(evt);
+              setIsError(false);
+            }}
           />
-          <button className="register__button" type="submit">Зарегистрироваться</button>
+
+          <button
+          className={`register__button ${isError ? 'register__button_disabled' : ''}`}
+          type="submit"
+          disabled={isLoading || isError}>
+            {isLoading
+              ? <Preloader />
+              : 'Зарегистрироваться'}</button>
         </form>
+
         <p className="register__subtitle">
           Уже зарегистрированы?
           <Link className="register__link" to={Paths.Login}>Войти</Link>
@@ -68,3 +123,8 @@ function Register() {
 }
 
 export default Register;
+
+Register.propTypes = {
+  handleRegistration: PropTypes.func,
+  setIsError: PropTypes.func,
+};

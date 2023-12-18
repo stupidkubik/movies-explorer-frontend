@@ -2,10 +2,10 @@ import { React, useState, useEffect } from 'react';
 import {
   Routes,
   Route,
-  // Navigate,
   useNavigate,
+  Navigate,
 } from 'react-router';
-// import AppContext from '../contexts/AppContext.js';
+import AppContext from '../../contexts/AppContext';
 import LoginUserContext from '../../contexts/LoginUserContext';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
@@ -17,9 +17,16 @@ import Profile from '../Profile/Profile.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
+import mainApi from '../../utils/MainApi';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({});
+  const [savedMovies, setSavedMovies] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isProfileUpdated, setIsProfileUpdated] = useState(false);
+  const [isProfileEdited, setIsProfileEdited] = useState(false);
 
   const navigate = useNavigate();
 
@@ -31,18 +38,33 @@ function App() {
     } else navigate(Paths.SignUp);
   }, []);
 
-  // Общая функция запроса к серверу
-  function handleSubmit(request) {
-    setIsLoading(true);
-    request()
-      .then(closeAllPopups)
-      .catch(console.error)
+  function handleLogin(email, password) {
+    mainApi.signIn(email, password)
+      .then((res) => {
+        localStorage.setItem('token', res.token);
+        setIsLoggedIn(true);
+        navigate('/movies');
+      })
+      .catch((err) => {
+        setIsError(true);
+        console.error(err);
+      })
       .finally(() => setIsLoading(false));
   }
 
-  function handleLogin(evt) {
-    evt.preventDefault();
-    setIsLoggedIn(true);
+  function handleRegistration(username, email, password) {
+    setIsLoading(true);
+    mainApi.signUp(username, email, password)
+      .then((res) => {
+        if (res) {
+          handleLogin(email, password);
+        }
+      })
+      .catch((err) => {
+        setIsError(true);
+        console.error(err);
+      })
+      .finally(() => setIsLoading(false));
   }
 
   function handleLogout() {
@@ -62,31 +84,51 @@ function App() {
   return (
     <div className="App">
       <LoginUserContext.Provider value={{ isLoggedIn }}>
-        <CurrentUserContext.Provider value={{ isLoggedIn }}>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path={Paths.SignUp} element={<Register />} />
-            <Route path={Paths.Login} element={<Login handleLogin={handleLogin} />} />
-            <Route path={Paths.Profile} element={<Profile
-              name={'Виталий'}
-              email={'pochta@yandex.ru'}
-              handleLogout={handleLogout}
-              />} />
-            <Route
-              path={Paths.Movies}
-              element={<Movies
-                handleMovieSave={handleMovieSave}
-                onSubmitSearch={onSubmitSearch}
-                />}
+        <CurrentUserContext.Provider value={{ currentUser }}>
+          <AppContext.Provider value={{
+            isProfileEdited,
+            isProfileUpdated,
+            isError,
+            isLoading,
+            savedMovies,
+          }}>
+            <Routes>
+              <Route path="/" element={<Main />} />
+
+              <Route path={Paths.SignUp} element={isLoggedIn
+                ? <Navigate to={Paths.Movies} replace />
+                : <Register handleRegistration={handleRegistration} setIsError={setIsError} />}
               />
-            <Route
-              path={Paths.SavedMovies}
-              element={<SavedMovies
-                onSubmitSearch={onSubmitSearch}
-                />}
+
+              <Route path={Paths.Login} element={isLoggedIn
+                ? <Navigate to={Paths.Movies} replace />
+                : <Login handleLogin={handleLogin} />}
               />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+
+              <Route path={Paths.Profile} element={<ProtectedRoute
+                element={<Profile
+                  name={'Виталий'}
+                  email={'pochta@yandex.ru'}
+                  handleLogout={handleLogout}
+                  />}
+                />} />
+
+              <Route path={Paths.Movies} element={<ProtectedRoute
+                element={<Movies
+                  handleMovieSave={handleMovieSave}
+                  onSubmitSearch={onSubmitSearch}
+                  />}
+                />} />
+
+              <Route path={Paths.SavedMovies} element={<ProtectedRoute
+                element={<SavedMovies
+                  onSubmitSearch={onSubmitSearch}
+                  />}
+                />} />
+
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AppContext.Provider>
         </CurrentUserContext.Provider>
       </LoginUserContext.Provider>
     </div>

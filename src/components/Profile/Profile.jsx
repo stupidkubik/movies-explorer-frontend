@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
@@ -7,8 +7,6 @@ import Input from '../Input/Input.jsx';
 import { Paths } from '../../utils/constants';
 
 function Profile({ name, email, handleLogout }) {
-  const [isEdited, setIsEdited] = useState(false);
-
   return (
     <>
       <Header type={'profile'} />
@@ -33,7 +31,6 @@ function Profile({ name, email, handleLogout }) {
               // onChange={'handleChange'}
               disabled
             />
-            {/* <div className='profile__divine'></div> */}
             <label
               className="profile__type"
               htmlFor="profile-email"
@@ -51,7 +48,7 @@ function Profile({ name, email, handleLogout }) {
               />
           </form>
 
-          {isEdited
+          {isProfileEdited
             ? <>
               <span className="profile__saveError">{'При обновлении профиля произошла ошибка.'}</span>
               <Link
