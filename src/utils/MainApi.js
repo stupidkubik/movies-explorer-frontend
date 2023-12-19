@@ -6,7 +6,7 @@ class MainApi {
   _checkResponse(res) {
     return res.ok
       ? res.json()
-      : Promise.reject(`Ошибка ${res.status}`)
+      : Promise.reject(new Error(`Ошибка ${res.status}`));
   }
 
   _request(url, options) {
@@ -132,7 +132,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'http://localhost:3003',
   // baseUrl: 'api.mydomain.nomoredomainsrocks.ru',
 });
 

@@ -18,7 +18,7 @@ function Register({ handleRegistration, setIsError }) {
     handleChange,
     setValues,
     isValid,
-    resetForm
+    resetForm,
   } = useFormValidation({
     username: '',
     email: '',
@@ -35,7 +35,12 @@ function Register({ handleRegistration, setIsError }) {
 
   function onSubmit(evt) {
     evt.preventDefault();
-    handleRegistration(values.username, values.email, values.password);
+    handleRegistration(values.username, values.email, values.password)
+      .then(() => resetForm())
+      .catch((err) => {
+        setIsError(true);
+        console.error(err);
+      });
   }
 
   return (
@@ -105,9 +110,9 @@ function Register({ handleRegistration, setIsError }) {
           />
 
           <button
-          className={`register__button ${isError ? 'register__button_disabled' : ''}`}
+          className={`register__button ${isError && !isValid ? 'register__button_disabled' : ''}`}
           type="submit"
-          disabled={isLoading || isError}>
+          disabled={!isValid || isLoading || isError}>
             {isLoading
               ? <Preloader />
               : 'Зарегистрироваться'}</button>

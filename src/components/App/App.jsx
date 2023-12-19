@@ -68,13 +68,28 @@ function App() {
   }
 
   function handleLogout() {
+    localStorage.clear();
     setIsLoggedIn(false);
     navigate(Paths.Home);
+  }
+
+  function handleProfile() {
+    setIsLoading(true);
+    mainApi.getUserInfo()
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        setIsError(true);
+        console.error(err);
+      })
+      .finally(() => setIsLoading(false));
   }
 
   function handleMovieSave(evt) {
     const findMovie = MoviesList.find(evt.target._id);
     findMovie.isSaved = !evt.target.isSasved;
+    setSavedMovies([]);
   }
 
   function onSubmitSearch(evt) {
@@ -109,7 +124,10 @@ function App() {
                 element={<Profile
                   name={'Виталий'}
                   email={'pochta@yandex.ru'}
+                  handleProfile={handleProfile}
                   handleLogout={handleLogout}
+                  setIsProfileUpdated={setIsProfileUpdated}
+                  setIsProfileEdited={setIsProfileEdited}
                   />}
                 />} />
 

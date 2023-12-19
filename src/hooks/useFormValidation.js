@@ -42,9 +42,9 @@ const useFormValidation = (initialValues) => {
   );
 
   const handleChange = useCallback((evt) => {
+    let validationError = '';
     const { name, value } = evt.target;
 
-    let validationError = '';
     if (!value) {
       validationError = 'Это обязательное поле';
     } else if (name === 'name') {
@@ -62,10 +62,10 @@ const useFormValidation = (initialValues) => {
   }, [validateUsername, validateEmail, validatePassword, values, errors]);
 
   const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => {
-      setValues(newValues);
-      setErrors(newErrors);
-      setIsValid(newIsValid);
+    () => {
+      setValues({});
+      setErrors({});
+      setIsValid(false);
     },
     [],
   );
