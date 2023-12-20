@@ -1,24 +1,17 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 
 const useFormValidation = (initialValues) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
 
-  useEffect(() => {
-    const noErrors = Object.values(errors).every((error) => error === '');
-    const allValuesPresent = Object.values(values).every((value) => value.trim() !== '');
-
-    setIsValid(noErrors && allValuesPresent);
-  }, [errors, values]);
-
   const validateUsername = useCallback(
     (value) => {
-      const usernameRegex = /^[A-Za-z\s-]*$/;
+      const usernameRegex = /^[A-Za-zА-Яа-яЁё\\-\\s]+$/;
       if (!usernameRegex.test(value)) {
         return 'Введите имя';
       } if (value.length < 3 || value.length > 30) {
-        return 'Имя не должно быть длиннее 30 знаков и короче трех знаков';
+        return 'Имя не должно быть короче 3 букв';
       } return '';
     },
     [],
@@ -35,15 +28,15 @@ const useFormValidation = (initialValues) => {
   const validatePassword = useCallback(
     (value) => {
       if (value.length < 2 || value.length > 20) {
-        return 'Пароль не должен быть короче двух символов и длиннее 20 символов';
+        return 'Пароль не должен быть короче двух символов';
       } return '';
     },
     [],
   );
 
   const handleChange = useCallback((evt) => {
-    let validationError = '';
     const { name, value } = evt.target;
+    let validationError = '';
 
     if (!value) {
       validationError = 'Это обязательное поле';
@@ -59,21 +52,22 @@ const useFormValidation = (initialValues) => {
 
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: validationError });
+    setIsValid(evt.target.closest('form').checkValidity());
   }, [validateUsername, validateEmail, validatePassword, values, errors]);
 
   const resetForm = useCallback(
-    () => {
-      setValues({});
-      setErrors({});
-      setIsValid(false);
+    (isValidForm = false, valuesForm = {}, errorsForm = {}) => {
+      setIsValid(isValidForm);
+      setValues(valuesForm);
+      setErrors(errorsForm);
     },
-    [],
+    [setIsValid, setValues, setErrors],
   );
 
   return {
     values,
-    handleChange,
     errors,
+    handleChange,
     isValid,
     resetForm,
   };

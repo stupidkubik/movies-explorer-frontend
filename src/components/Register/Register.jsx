@@ -9,25 +9,24 @@ import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
 import logo from '../../images/logo.svg';
 
-function Register({ handleRegistration, setIsError }) {
-  const { isError, isLoading } = useContext(AppContext);
+function Register({ handleRegistration }) {
+  const {
+    isError,
+    isLoading,
+    setIsError,
+  } = useContext(AppContext);
 
   const {
     values,
     errors,
     handleChange,
-    setValues,
     isValid,
     resetForm,
   } = useFormValidation({
-    username: '',
+    name: '',
     email: '',
     password: '',
   });
-
-  useEffect(() => {
-    setValues({ email: '', password: '' });
-  }, [setValues]);
 
   useEffect(() => {
     setIsError(false);
@@ -35,7 +34,7 @@ function Register({ handleRegistration, setIsError }) {
 
   function onSubmit(evt) {
     evt.preventDefault();
-    handleRegistration(values.username, values.email, values.password)
+    handleRegistration(values.name, values.email, values.password)
       .then(() => resetForm())
       .catch((err) => {
         setIsError(true);
@@ -67,8 +66,8 @@ function Register({ handleRegistration, setIsError }) {
             maxLength={'20'}
             placeholder={'Виталий'}
             span={'error-signup-name'}
-            value={values.username || ''}
-            error={errors.username || ''}
+            value={values.name || ''}
+            error={errors.name || ''}
             onChange={(evt) => {
               handleChange(evt);
               setIsError(false);
@@ -110,7 +109,7 @@ function Register({ handleRegistration, setIsError }) {
           />
 
           <button
-          className={`register__button ${isError && !isValid ? 'register__button_disabled' : ''}`}
+          className={'register__button'}
           type="submit"
           disabled={!isValid || isLoading || isError}>
             {isLoading
@@ -131,5 +130,4 @@ export default Register;
 
 Register.propTypes = {
   handleRegistration: PropTypes.func,
-  setIsError: PropTypes.func,
 };

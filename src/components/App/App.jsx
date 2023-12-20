@@ -41,9 +41,11 @@ function App() {
   function handleLogin(email, password) {
     mainApi.signIn(email, password)
       .then((res) => {
+        console.log(res.token);
         localStorage.setItem('token', res.token);
         setIsLoggedIn(true);
         navigate('/movies');
+        return res;
       })
       .catch((err) => {
         setIsError(true);
@@ -52,10 +54,11 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleRegistration(username, email, password) {
+  function handleRegistration(name, email, password) {
     setIsLoading(true);
-    mainApi.signUp(username, email, password)
+    mainApi.signUp(name, email, password)
       .then((res) => {
+        console.log(res);
         if (res) {
           handleLogin(email, password);
         }
@@ -94,6 +97,7 @@ function App() {
 
   function onSubmitSearch(evt) {
     evt.preventDefault();
+    console.log(evt.target);
   }
 
   return (
@@ -106,13 +110,14 @@ function App() {
             isError,
             isLoading,
             savedMovies,
+            setIsError,
           }}>
             <Routes>
               <Route path="/" element={<Main />} />
 
               <Route path={Paths.SignUp} element={isLoggedIn
                 ? <Navigate to={Paths.Movies} replace />
-                : <Register handleRegistration={handleRegistration} setIsError={setIsError} />}
+                : <Register handleRegistration={handleRegistration} />}
               />
 
               <Route path={Paths.Login} element={isLoggedIn
@@ -121,27 +126,24 @@ function App() {
               />
 
               <Route path={Paths.Profile} element={<ProtectedRoute
-                element={<Profile
-                  name={'Виталий'}
-                  email={'pochta@yandex.ru'}
-                  handleProfile={handleProfile}
-                  handleLogout={handleLogout}
-                  setIsProfileUpdated={setIsProfileUpdated}
-                  setIsProfileEdited={setIsProfileEdited}
-                  />}
+                element={Profile}
+                name={'Виталий'}
+                email={'pochta@yandex.ru'}
+                handleProfile={handleProfile}
+                handleLogout={handleLogout}
+                setIsProfileUpdated={setIsProfileUpdated}
+                setIsProfileEdited={setIsProfileEdited}
                 />} />
 
               <Route path={Paths.Movies} element={<ProtectedRoute
-                element={<Movies
-                  handleMovieSave={handleMovieSave}
-                  onSubmitSearch={onSubmitSearch}
-                  />}
+                element={Movies}
+                handleMovieSave={handleMovieSave}
+                onSubmitSearch={onSubmitSearch}
                 />} />
 
               <Route path={Paths.SavedMovies} element={<ProtectedRoute
-                element={<SavedMovies
-                  onSubmitSearch={onSubmitSearch}
-                  />}
+                element={SavedMovies}
+                onSubmitSearch={onSubmitSearch}
                 />} />
 
               <Route path="*" element={<NotFound />} />

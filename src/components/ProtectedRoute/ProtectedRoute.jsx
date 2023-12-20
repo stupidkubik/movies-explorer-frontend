@@ -1,21 +1,19 @@
 import { React, useContext } from 'react';
-import { Navigate } from 'react-router';
+import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LoginUserContext from '../../contexts/LoginUserContext';
 import { Paths } from '../../utils/constants';
 
-const ProtectedRoute = ({ component: Component, ...props }) => {
+const ProtectedRoute = ({ element: Component, ...props }) => {
   const { isLoggedIn } = useContext(LoginUserContext);
 
-  return isLoggedIn ? (
-    <Component {...props} />
-  ) : (
-    <Navigate to={Paths.Login} replace />
-  );
+  return isLoggedIn
+    ? <Component {...props} />
+    : <Navigate to={Paths.Login} replace />;
 };
 
 export default ProtectedRoute;
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.func,
+  element: PropTypes.func,
 };

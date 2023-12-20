@@ -3,50 +3,56 @@ class MainApi {
     this._baseUrl = options.baseUrl;
   }
 
-  _checkResponse(res) {
-    return res.ok
-      ? res.json()
-      : Promise.reject(new Error(`Ошибка ${res.status}`));
+  static _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(new Error(`Ошибка ${res.status}`));
   }
 
-  _request(url, options) {
+  async _request(url, options) {
     return fetch(`${this._baseUrl}${url}`, options)
       .then(this._checkResponse);
   }
 
-  async signUp(username, email, password) {
-    const regData = await this._request(
-      '/signup',
+  async signUp(name, email, password) {
+    const regData = await fetch(
+      `${this._baseUrl}/signup`,
       {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username,
+          name,
           email,
           password,
         }),
       },
     );
-    return regData;
+    return this._checkResponse(regData);
   }
 
-  async signIn(password, email) {
-    const token = await this._request(
-      '/signin',
+  async signIn(email, password) {
+    const res = await fetch(
+      `${this._baseUrl}/signin`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           email,
           password,
         }),
       },
     );
-    return token;
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(new Error(`Ошибка ${res.status}`));
   }
 
   async getUserInfo(token) {

@@ -4,12 +4,17 @@ import PropTypes from 'prop-types';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
 
 function SearchForm({ onSubmitSearch }) {
+  function onSubmit(evt) {
+    evt.preventDefault();
+    console.log(evt.target);
+  }
+
   return (
     <section className="movies__wrapper">
       <form
         className={'movies__form'}
         name={'search'}
-        onSubmit={''}
+        onSubmit={onSubmit}
       >
         <div className="movies__container">
           <input

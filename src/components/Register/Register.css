@@ -67,6 +67,16 @@
   opacity: .8;
 }
 
+.register__button:disabled {
+  color: #C2C2C2;
+  background-color: #F8F8F8;
+  cursor: default;
+}
+
+.register__button:disabled:hover {
+  opacity: 1;
+}
+
 .register__subtitle {
   margin: 16px auto 0;
   color: #8B8B8B;
@@ -119,12 +129,6 @@
     font-size: 12px;
     line-height: 14.5px;
     padding: 15px;
-  }
-
-  .register__button_disabled {
-    color: #C2C2C2;
-    background-color: #F8F8F8;
-    cursor: default;
   }
 
   .register__subtitle {

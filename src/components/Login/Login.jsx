@@ -1,12 +1,43 @@
-import React from 'react';
+import { React, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import AppContext from '../../contexts/AppContext';
+import Preloader from '../Preloader/Preloader.jsx';
+import useFormValidation from '../../hooks/useFormValidation';
 import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
 import logo from '../../images/logo.svg';
 
 function Login({ handleLogin }) {
+  const { isError, isLoading, setIsError } = useContext(AppContext);
+
+  const {
+    values,
+    errors,
+    handleChange,
+    isValid,
+    resetForm,
+  } = useFormValidation({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    setIsError(false);
+  }, [setIsError]);
+
+  function onSubmit(evt) {
+    evt.preventDefault();
+    handleLogin(values.email, values.password)
+      .then(() => resetForm())
+      .catch((err) => {
+        setIsError(true);
+        console.error(err);
+      });
+  }
+
   return (
     <main className="register">
       <div className="register__container">
@@ -17,7 +48,7 @@ function Login({ handleLogin }) {
         <form
           className={'form register__form'}
           name={'signin'}
-          onSubmit={(evt) => handleLogin(evt)}
+          onSubmit={onSubmit}
         >
 
           <label htmlFor="signin-email" className="register__label">E-mail</label>
@@ -28,8 +59,12 @@ function Login({ handleLogin }) {
             name={'email'}
             placeholder={'pochta@yandex.ru'}
             span={'error-signin-email'}
-            // value={values.email}
-            // onChange={'handleChange'}
+            value={values.email || ''}
+            error={errors.email || ''}
+            onChange={(evt) => {
+              handleChange(evt);
+              setIsError(false);
+            }}
           />
 
           <label htmlFor="signin-password" className="register__label">Пароль</label>
@@ -42,10 +77,20 @@ function Login({ handleLogin }) {
             maxLength={'20'}
             placeholder={'********'}
             span={'error-signin-password'}
-            // value={values.password}
-            // onChange={'handleChange'}
+            value={values.password || ''}
+            error={errors.password || ''}
+            onChange={(evt) => {
+              handleChange(evt);
+              setIsError(false);
+            }}
           />
-          <button className="register__button register__button_login" type="submit">Войти</button>
+          <button
+          className="register__button register__button_login"
+          type="submit"
+          disabled={!isValid || isLoading || isError}>
+          {isLoading
+            ? <Preloader />
+            : 'Войти'}</button>
         </form>
         <p className="register__subtitle">
         Ещё не зарегистрированы?
