@@ -9,11 +9,12 @@ import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
 import logo from '../../images/logo.svg';
 
-function Register({ handleRegistration }) {
+function Register() {
   const {
     isError,
     isLoading,
     setIsError,
+    handleRegistration,
   } = useContext(AppContext);
 
   const {
@@ -32,14 +33,13 @@ function Register({ handleRegistration }) {
     setIsError(false);
   }, [setIsError]);
 
+  useEffect(() => {
+    resetForm();
+  }, [handleRegistration]);
+
   function onSubmit(evt) {
     evt.preventDefault();
-    handleRegistration(values.name, values.email, values.password)
-      .then(() => resetForm())
-      .catch((err) => {
-        setIsError(true);
-        console.error(err);
-      });
+    handleRegistration(values.name, values.email, values.password);
   }
 
   return (

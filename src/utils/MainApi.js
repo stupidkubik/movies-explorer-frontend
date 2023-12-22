@@ -7,16 +7,16 @@ class MainApi {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(new Error(`Ошибка ${res.status}`));
+    return Promise.reject(res.status);
   }
 
-  async _request(url, options) {
+  _request(url, options) {
     return fetch(`${this._baseUrl}${url}`, options)
       .then(this._checkResponse);
   }
 
   async signUp(name, email, password) {
-    const regData = await fetch(
+    const res = await fetch(
       `${this._baseUrl}/signup`,
       {
         method: 'POST',
@@ -31,7 +31,10 @@ class MainApi {
         }),
       },
     );
-    return this._checkResponse(regData);
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(new Error(`Ошибка ${res.status}`));
   }
 
   async signIn(email, password) {

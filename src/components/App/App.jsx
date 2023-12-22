@@ -41,15 +41,14 @@ function App() {
   function handleLogin(email, password) {
     mainApi.signIn(email, password)
       .then((res) => {
-        console.log(res.token);
+        console.log('res:', res);
         localStorage.setItem('token', res.token);
         setIsLoggedIn(true);
-        navigate('/movies');
+        navigate(Paths.Movies);
         return res;
       })
-      .catch((err) => {
+      .catch(() => {
         setIsError(true);
-        console.error(err);
       })
       .finally(() => setIsLoading(false));
   }
@@ -57,15 +56,9 @@ function App() {
   function handleRegistration(name, email, password) {
     setIsLoading(true);
     mainApi.signUp(name, email, password)
-      .then((res) => {
-        console.log(res);
-        if (res) {
-          handleLogin(email, password);
-        }
-      })
-      .catch((err) => {
+      .then(() => handleLogin(email, password))
+      .catch(() => {
         setIsError(true);
-        console.error(err);
       })
       .finally(() => setIsLoading(false));
   }
@@ -111,13 +104,14 @@ function App() {
             isLoading,
             savedMovies,
             setIsError,
+            handleRegistration,
           }}>
             <Routes>
               <Route path="/" element={<Main />} />
 
               <Route path={Paths.SignUp} element={isLoggedIn
                 ? <Navigate to={Paths.Movies} replace />
-                : <Register handleRegistration={handleRegistration} />}
+                : <Register />}
               />
 
               <Route path={Paths.Login} element={isLoggedIn

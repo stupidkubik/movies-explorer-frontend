@@ -32,9 +32,8 @@ function Login({ handleLogin }) {
     evt.preventDefault();
     handleLogin(values.email, values.password)
       .then(() => resetForm())
-      .catch((err) => {
+      .catch(() => {
         setIsError(true);
-        console.error(err);
       });
   }
 
