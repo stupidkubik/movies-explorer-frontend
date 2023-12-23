@@ -1,4 +1,8 @@
-import { React, useState, useEffect } from 'react';
+import {
+  React,
+  useState,
+  useEffect,
+} from 'react';
 import {
   Routes,
   Route,
@@ -17,7 +21,9 @@ import Profile from '../Profile/Profile.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
-import mainApi from '../../utils/MainApi';
+
+import { signIn, signUp, getUserInfo } from '../../utils/MainApi';
+// import * as moviesApi from "../../utils/moviesApi";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -30,56 +36,63 @@ function App() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const jwt = localStorage.getItem('token');
+  async function handleProfile(token) {
+    setIsLoading(true);
+    try {
+      const userData = await getUserInfo(token);
+      console.log(userData);
+      setCurrentUser(userData);
+      sessionStorage.setItem('name', userData.name);
+      sessionStorage.setItem('email', userData.email);
+      sessionStorage.setItem('_id', userData._id);
+    } catch (err) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
-    if (jwt) {
-      // checkToken(jwt);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      handleProfile(token);
     } else navigate(Paths.SignUp);
   }, []);
 
-  function handleLogin(email, password) {
-    mainApi.signIn(email, password)
-      .then((res) => {
-        console.log('res:', res);
-        localStorage.setItem('token', res.token);
-        setIsLoggedIn(true);
-        navigate(Paths.Movies);
-        return res;
-      })
-      .catch(() => {
-        setIsError(true);
-      })
-      .finally(() => setIsLoading(false));
+  async function handleLogin(email, password) {
+    setIsLoading(true);
+    try {
+      const res = await signIn(email, password);
+      localStorage.setItem('token', res.token);
+      await handleProfile(res.token);
+      setIsLoggedIn(true);
+      navigate(Paths.Movies);
+    } catch (err) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
-  function handleRegistration(name, email, password) {
+  async function handleRegistration(name, email, password) {
     setIsLoading(true);
-    mainApi.signUp(name, email, password)
-      .then(() => handleLogin(email, password))
-      .catch(() => {
-        setIsError(true);
-      })
-      .finally(() => setIsLoading(false));
+    try {
+      const userData = await signUp(name, email, password);
+      if (userData) {
+        await handleLogin(email, password);
+      }
+    } catch (err) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   function handleLogout() {
     localStorage.clear();
+    sessionStorage.clear();
     setIsLoggedIn(false);
     navigate(Paths.Home);
-  }
-
-  function handleProfile() {
-    setIsLoading(true);
-    mainApi.getUserInfo()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch((err) => {
-        setIsError(true);
-        console.error(err);
-      })
-      .finally(() => setIsLoading(false));
   }
 
   function handleMovieSave(evt) {
@@ -105,6 +118,9 @@ function App() {
             savedMovies,
             setIsError,
             handleRegistration,
+            handleLogin,
+            onSubmitSearch,
+            handleLogout,
           }}>
             <Routes>
               <Route path="/" element={<Main />} />
@@ -116,15 +132,12 @@ function App() {
 
               <Route path={Paths.Login} element={isLoggedIn
                 ? <Navigate to={Paths.Movies} replace />
-                : <Login handleLogin={handleLogin} />}
+                : <Login />}
               />
 
               <Route path={Paths.Profile} element={<ProtectedRoute
                 element={Profile}
-                name={'Виталий'}
-                email={'pochta@yandex.ru'}
                 handleProfile={handleProfile}
-                handleLogout={handleLogout}
                 setIsProfileUpdated={setIsProfileUpdated}
                 setIsProfileEdited={setIsProfileEdited}
                 />} />
@@ -132,13 +145,10 @@ function App() {
               <Route path={Paths.Movies} element={<ProtectedRoute
                 element={Movies}
                 handleMovieSave={handleMovieSave}
-                onSubmitSearch={onSubmitSearch}
                 />} />
 
               <Route path={Paths.SavedMovies} element={<ProtectedRoute
-                element={SavedMovies}
-                onSubmitSearch={onSubmitSearch}
-                />} />
+                element={SavedMovies} />} />
 
               <Route path="*" element={<NotFound />} />
             </Routes>

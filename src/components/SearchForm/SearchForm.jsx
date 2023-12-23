@@ -1,9 +1,11 @@
-import { React } from 'react';
-import PropTypes from 'prop-types';
+import { React, useContext } from 'react';
 
+import AppContext from '../../contexts/AppContext';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
 
-function SearchForm({ onSubmitSearch }) {
+function SearchForm() {
+  const { onSubmitSearch } = useContext(AppContext);
+
   function onSubmit(evt) {
     evt.preventDefault();
     console.log(evt.target);
@@ -42,7 +44,3 @@ function SearchForm({ onSubmitSearch }) {
 }
 
 export default SearchForm;
-
-SearchForm.propTypes = {
-  onSubmitSearch: PropTypes.func,
-};

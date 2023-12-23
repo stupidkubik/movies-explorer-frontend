@@ -1,12 +1,23 @@
-import { React } from 'react';
-import PropTypes from 'prop-types';
-
+import { React, useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import AppContext from '../../contexts/AppContext';
+import currentUser from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header.jsx';
 import Input from '../Input/Input.jsx';
 import { Paths } from '../../utils/constants';
 
-function Profile({ name, email, handleLogout }) {
+function Profile() {
+  const { handleLogout, isProfileEdited, setIsProfileEdited } = useContext(AppContext);
+  const { name, email } = useContext(currentUser);
+
+  console.log(name, email);
+  console.log(currentUser);
+
+  function handleChange(e) {
+    console.log(e);
+  }
+
   return (
     <>
       <Header type={'profile'} />
@@ -28,7 +39,7 @@ function Profile({ name, email, handleLogout }) {
               maxLength={'20'}
               placeholder={name || 'Имя'}
               spanId={'error-profile-name'}
-              // onChange={'handleChange'}
+              onChange={handleChange}
               disabled
             />
             <label
@@ -43,7 +54,7 @@ function Profile({ name, email, handleLogout }) {
               value={email}
               placeholder={email || 'Почта'}
               spanId={'error-profile-email'}
-              // onChange={'handleChange'}
+              onChange={handleChange}
               disabled
               />
           </form>
@@ -53,14 +64,14 @@ function Profile({ name, email, handleLogout }) {
               <span className="profile__saveError">{'При обновлении профиля произошла ошибка.'}</span>
               <Link
                 className="profile__saveButton"
-                onClick={() => setIsEdited(false)}
+                onClick={() => setIsProfileEdited(false)}
                 >Сохранить
               </Link>
             </>
             : <>
               <Link
                 className="profile__editButton"
-                onClick={() => setIsEdited(true)}
+                onClick={() => setIsProfileEdited(true)}
                 >Редактировать
               </Link>
               <Link
@@ -77,9 +88,3 @@ function Profile({ name, email, handleLogout }) {
 }
 
 export default Profile;
-
-Profile.propTypes = {
-  name: PropTypes.string,
-  email: PropTypes.string,
-  handleLogout: PropTypes.func,
-};

@@ -3,10 +3,10 @@ class MoviesApi {
     this._baseUrl = options.baseUrl;
   }
 
-  _checkResponse(res) {
+  static _checkResponse(res) {
     return res.ok
       ? res.json()
-      : Promise.reject(`Ошибка ${res.status}`)
+      : Promise.reject(res.status);
   }
 
   _request(url, options) {
@@ -15,7 +15,7 @@ class MoviesApi {
   }
 
   async getMovies() {
-    const moviesData = await this._request('/', 'GET');
+    const moviesData = await this._request('/');
     return moviesData;
   }
 }

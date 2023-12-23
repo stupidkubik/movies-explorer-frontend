@@ -9,8 +9,13 @@ import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
 import logo from '../../images/logo.svg';
 
-function Login({ handleLogin }) {
-  const { isError, isLoading, setIsError } = useContext(AppContext);
+function Login() {
+  const {
+    isError,
+    isLoading,
+    setIsError,
+    handleLogin,
+  } = useContext(AppContext);
 
   const {
     values,
