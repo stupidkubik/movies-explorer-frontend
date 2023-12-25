@@ -33,6 +33,10 @@ function Login() {
     setIsError(false);
   }, [setIsError]);
 
+  useEffect(() => {
+    resetForm();
+  }, [handleLogin]);
+
   function onSubmit(evt) {
     evt.preventDefault();
     handleLogin(values.email, values.password)

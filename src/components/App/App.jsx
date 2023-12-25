@@ -3,12 +3,14 @@ import {
   useState,
   useEffect,
 } from 'react';
+
 import {
   Routes,
   Route,
   useNavigate,
   Navigate,
 } from 'react-router';
+
 import AppContext from '../../contexts/AppContext';
 import LoginUserContext from '../../contexts/LoginUserContext';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -22,7 +24,12 @@ import NotFound from '../NotFound/NotFound.jsx';
 import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 
-import { signIn, signUp, getUserInfo } from '../../utils/MainApi';
+import {
+  signIn,
+  signUp,
+  getUserInfo,
+  updateProfile,
+} from '../../utils/MainApi';
 // import * as moviesApi from "../../utils/moviesApi";
 
 function App() {
@@ -40,13 +47,13 @@ function App() {
     setIsLoading(true);
     try {
       const userData = await getUserInfo(token);
-      console.log(userData);
-      setCurrentUser(userData);
       sessionStorage.setItem('name', userData.name);
       sessionStorage.setItem('email', userData.email);
       sessionStorage.setItem('_id', userData._id);
+      return userData;
     } catch (err) {
       setIsError(true);
+      return err;
     } finally {
       setIsLoading(false);
     }
@@ -64,7 +71,8 @@ function App() {
     try {
       const res = await signIn(email, password);
       localStorage.setItem('token', res.token);
-      await handleProfile(res.token);
+      const userData = await handleProfile(res.token);
+      setCurrentUser({ name: userData.name, email: userData.email });
       setIsLoggedIn(true);
       navigate(Paths.Movies);
     } catch (err) {
@@ -101,6 +109,23 @@ function App() {
     setSavedMovies([]);
   }
 
+  async function handleUpdateProfile(name, email) {
+    setIsLoading(true);
+    const token = localStorage.getItem('token');
+    try {
+      const res = await updateProfile(name, email, token);
+      setCurrentUser({ name: res.name, email: res.email });
+      setIsProfileUpdated(true);
+      setIsProfileEdited(false);
+      return res;
+    } catch (err) {
+      setIsError(true);
+      return err;
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   function onSubmitSearch(evt) {
     evt.preventDefault();
     console.log(evt.target);
@@ -109,7 +134,7 @@ function App() {
   return (
     <div className="App">
       <LoginUserContext.Provider value={{ isLoggedIn }}>
-        <CurrentUserContext.Provider value={{ currentUser }}>
+        <CurrentUserContext.Provider value={currentUser}>
           <AppContext.Provider value={{
             isProfileEdited,
             isProfileUpdated,
@@ -120,6 +145,7 @@ function App() {
             handleRegistration,
             handleLogin,
             onSubmitSearch,
+            handleUpdateProfile,
             handleLogout,
           }}>
             <Routes>

@@ -49,91 +49,71 @@ export async function getUserInfo(token) {
   return Promise.reject(res.status);
 }
 
-//   async getUserInfo(token) {
-//     const tokenData = await this._request(
-//       '/users/me',
-//       {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       },
-//     );
-//     return tokenData;
-//   }
+export async function updateProfile(name, email, token) {
+  const res = await fetch(`${BASE_URL}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      email,
+    }),
+  });
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(res.status);
+}
 
-//   async updateProfile(username, email, token) {
-//     const newProfileData = await this._request(
-//       '/users/me',
-//       {
-//         method: 'PATCH',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           Authorization: `Bearer ${token}`,
-//         },
-//         body: JSON.stringify({
-//           username,
-//           email,
-//         }),
-//       },
-//     );
-//     return newProfileData;
-//   }
+export async function getMovies(token) {
+  const res = await fetch(`${BASE_URL}/movies`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(res.status);
+}
 
-//   async getMovies(token) {
-//     const moviesData = await this._request(
-//       '/movies',
-//       {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       },
-//     );
-//     return moviesData;
-//   }
+export async function addMovie(movieData, token) {
+  const res = await fetch(`${BASE_URL}/movies`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      country: movieData.country,
+      director: movieData.director,
+      duration: movieData.duration,
+      year: movieData.year,
+      description: movieData.description,
+      image: `https://api.nomoreparties.co${movieData.image.url}`,
+      trailerLink: movieData.trailerLink,
+      thumbnail: `https://api.nomoreparties.co${movieData.image.formats.thumbnail.url}`,
+      movieId: movieData.movieId,
+      nameRU: movieData.nameRU,
+      nameEN: movieData.nameEN,
+    }),
+  });
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(res.status);
+}
 
-//   async addMovie(movieData, token) {
-//     const movie = await this._request(
-//       '/movies',
-//       {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           Authorization: `Bearer ${token}`,
-//         },
-//         body: JSON.stringify({
-//           country: movieData.country,
-//           director: movieData.director,
-//           duration: movieData.duration,
-//           year: movieData.year,
-//           description: movieData.description,
-//           image: `https://api.nomoreparties.co${movieData.image.url}`,
-//           trailerLink: movieData.trailerLink,
-//           thumbnail: `https://api.nomoreparties.co${movieData.image.formats.thumbnail.url}`,
-//           movieId: movieData.movieId,
-//           nameRU: movieData.nameRU,
-//           nameEN: movieData.nameEN,
-//         }),
-//       },
-//     );
-//     return movie;
-//   }
-
-//   async deleteMovie(movieId, token) {
-//     const movieDelete = await this._request(
-//       `/movies${movieId}`,
-//       {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       },
-//     );
-//     return movieDelete;
-//   }
-// }
-
-// const mainApi = new MainApi({
-//   baseUrl: 'http://localhost:3003',
-//   // baseUrl: 'api.mydomain.nomoredomainsrocks.ru',
-// });
-
-// export default mainApi;
+export async function deleteMovie(movieId, token) {
+  const res = await fetch(`${BASE_URL}/movies${movieId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(res.status);
+}

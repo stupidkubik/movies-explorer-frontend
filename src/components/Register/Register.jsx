@@ -11,8 +11,8 @@ import logo from '../../images/logo.svg';
 
 function Register() {
   const {
-    isError,
     isLoading,
+    isError,
     setIsError,
     handleRegistration,
   } = useContext(AppContext);
