@@ -6,13 +6,17 @@ function MoviesCard({
   isSavedMovies,
   handleMovieSave,
 }) {
-  // const currentUser = useContext(CurrentUserContext);
   const {
     image,
     nameRU,
     duration,
     isSaved,
   } = MovieData;
+
+  function handleClick(evt) {
+    handleMovieSave(evt);
+    // handleMovieSave(MovieData.id);
+  }
 
   const movieSaveButtonClassName = `movie__save ${isSaved
     ? 'movie__save_active'
@@ -39,13 +43,13 @@ function MoviesCard({
               className="movieDeleteButton"
               type="button"
               aria-label="сохранить"
-              onClick={(evt) => handleMovieSave(evt)}
+              onClick={(evt) => handleClick(evt)}
             />
               : <button
               className={movieSaveButtonClassName}
               type="button"
               aria-label="удалить"
-              onClick={(evt) => handleMovieSave(evt)}
+              onClick={(evt) => handleClick(evt)}
             />
             }
           </div>
@@ -61,5 +65,5 @@ export default MoviesCard;
 MoviesCard.propTypes = {
   isSavedMovies: PropTypes.bool,
   MovieData: PropTypes.object,
-  handleMovieSave: PropTypes.object,
+  handleMovieSave: PropTypes.func,
 };

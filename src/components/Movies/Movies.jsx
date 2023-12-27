@@ -17,7 +17,7 @@ import LoadMore from '../LoadMore/LoadMore.jsx';
 import AppContext from '../../contexts/AppContext';
 import { getMoviesList } from '../../utils/MoviesApi';
 
-function Movies({ handleCardSave }) {
+function Movies({ handleMovieSave }) {
   const { setIsLoading, allMovies, setAllMovies } = useContext(AppContext);
 
   const [filterMovies, setFilterMovies] = useState([]);
@@ -63,6 +63,8 @@ function Movies({ handleCardSave }) {
       const movieSearch = JSON.parse(localStorage.getItem('movieSearch'));
       const shorts = JSON.parse(localStorage.getItem('shorts'));
       const moviesArray = JSON.parse(localStorage.getItem('allMovies'));
+      console.log('moviesArray', moviesArray);
+      console.log('allMovies', allMovies);
       setSearchMovies(movieSearch);
       setIsShort(shorts);
       setAllMovies(moviesArray);
@@ -92,7 +94,7 @@ function Movies({ handleCardSave }) {
         <div className="movies__border" />
         <MoviesCardList
           isSavedMovies={false}
-          handleCardSave={handleCardSave}
+          handleMovieSave={handleMovieSave}
           filterMovies={filterMovies}
         />
         <LoadMore />
@@ -106,5 +108,5 @@ function Movies({ handleCardSave }) {
 export default Movies;
 
 Movies.propTypes = {
-  handleCardSave: PropTypes.func,
+  handleMovieSave: PropTypes.func,
 };

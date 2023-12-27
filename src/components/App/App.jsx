@@ -117,9 +117,10 @@ function App() {
   }
 
   function handleMovieSave(evt) {
-    const findMovie = allMovies.find(evt.target._id);
+    console.log(evt.target);
+    const findMovie = allMovies.find(evt.target.id);
     findMovie.isSaved = !evt.target.isSasved;
-    setSavedMovies([]);
+    // setSavedMovies([]);
   }
 
   async function handleUpdateProfile(name, email) {
