@@ -82,7 +82,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
                 handleChange(evt);
                 setIsError(false);
               }}
-              disabled={!isProfileEdited}
+              disabled={!isProfileEdited || isLoading}
             />
             <label
               className="profile__type"
@@ -101,7 +101,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
                 handleChange(evt);
                 setIsError(false);
               }}
-              disabled={!isProfileEdited}
+              disabled={!isProfileEdited || isLoading}
               />
           </form>
 

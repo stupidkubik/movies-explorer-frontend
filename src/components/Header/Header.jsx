@@ -7,13 +7,13 @@ import {
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import LoginUserContext from '../../contexts/LoginUserContext';
+import AppContext from '../../contexts/AppContext';
 import Navigation from '../Navigation/Navigation.jsx';
 import { Paths } from '../../utils/constants';
 import logo from '../../images/logo.svg';
 
 function Header({ type }) {
-  const { isLoggedIn } = useContext(LoginUserContext);
+  const { isLoggedIn } = useContext(AppContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
 
