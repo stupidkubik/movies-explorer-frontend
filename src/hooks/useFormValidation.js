@@ -56,10 +56,10 @@ const useFormValidation = (initialValues) => {
   }, [validateUsername, validateEmail, validatePassword, values, errors]);
 
   const resetForm = useCallback(
-    (isValidForm = false, valuesForm = {}, errorsForm = {}) => {
-      setIsValid(isValidForm);
+    (valuesForm = {}, errorsForm = {}, isValidForm = false) => {
       setValues(valuesForm);
       setErrors(errorsForm);
+      setIsValid(isValidForm);
     },
     [setIsValid, setValues, setErrors],
   );

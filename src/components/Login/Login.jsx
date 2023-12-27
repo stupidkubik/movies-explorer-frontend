@@ -24,7 +24,6 @@ function Login() {
     isValid,
     resetForm,
   } = useFormValidation({
-    name: '',
     email: '',
     password: '',
   });
@@ -34,8 +33,8 @@ function Login() {
   }, [setIsError]);
 
   useEffect(() => {
-    resetForm();
-  }, [handleLogin]);
+    resetForm({ email: '', password: '' });
+  }, [resetForm, handleLogin]);
 
   function onSubmit(evt) {
     evt.preventDefault();

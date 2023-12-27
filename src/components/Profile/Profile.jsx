@@ -23,13 +23,12 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
   const { name, email } = useContext(currentUser);
   const {
     values,
-    // errors,
     handleChange,
     isValid,
     resetForm,
   } = useFormValidation({
-    profileName: '',
-    profileEmail: '',
+    profileName: name,
+    profileEmail: email,
   });
 
   const spanClassName = `profile__save ${isError ? 'profile__save_error' : ''}
@@ -77,7 +76,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
               maxLength={'20'}
               placeholder={name || 'Имя'}
               spanId={'error-profileName'}
-              value={values.profileName || ''}
+              value={values.profileName || name}
               onChange={(evt) => {
                 handleChange(evt);
                 setIsError(false);
@@ -96,7 +95,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
               name={'profileEmail'}
               placeholder={email || 'Почта'}
               spanId={'error-profileEmail'}
-              value={values.profileEmail || ''}
+              value={values.profileEmail || email}
               onChange={(evt) => {
                 handleChange(evt);
                 setIsError(false);

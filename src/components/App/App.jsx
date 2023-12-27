@@ -14,7 +14,7 @@ import {
 import AppContext from '../../contexts/AppContext';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
-import { Paths, MoviesList } from '../../utils/constants';
+import { Paths } from '../../utils/constants';
 import Main from '../Main/Main.jsx';
 import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
@@ -31,10 +31,10 @@ import {
   updateProfile,
   getMovies,
 } from '../../utils/MainApi';
-// import * as moviesApi from "../../utils/moviesApi";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+  const [allMovies, setAllMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isToken, setIsToken] = useState(true);
@@ -73,7 +73,6 @@ function App() {
         .then(() => setIsToken(false))
         .catch(() => setIsToken(false));
     } else {
-      setIsLoggedIn(false);
       setIsToken(false);
       sessionStorage.clear();
       navigate(Paths.SignUp);
@@ -118,7 +117,7 @@ function App() {
   }
 
   function handleMovieSave(evt) {
-    const findMovie = MoviesList.find(evt.target._id);
+    const findMovie = allMovies.find(evt.target._id);
     findMovie.isSaved = !evt.target.isSasved;
     setSavedMovies([]);
   }
@@ -155,6 +154,9 @@ function App() {
             isProfileUpdated,
             isError,
             isLoading,
+            setIsLoading,
+            allMovies,
+            setAllMovies,
             savedMovies,
             setIsError,
             handleRegistration,

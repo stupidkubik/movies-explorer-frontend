@@ -69,6 +69,7 @@ export async function updateProfile(name, email, token) {
 
 export async function getMovies(token) {
   const res = await fetch(`${BASE_URL}/movies`, {
+    method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -34,8 +34,8 @@ function Register() {
   }, [setIsError]);
 
   useEffect(() => {
-    resetForm();
-  }, [handleRegistration]);
+    resetForm({ name: '', email: '', password: '' });
+  }, [resetForm, handleRegistration]);
 
   function onSubmit(evt) {
     evt.preventDefault();

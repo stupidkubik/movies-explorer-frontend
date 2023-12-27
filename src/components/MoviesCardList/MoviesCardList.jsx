@@ -1,14 +1,14 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
-import { MoviesList } from '../../utils/constants';
+// import { MoviesList } from '../../utils/constants';
 
-function MoviesCardList({ isSavedMovies, handleMovieSave }) {
+function MoviesCardList({ isSavedMovies, handleMovieSave, filterMovies }) {
   return (
     <section className="movies__wrapper">
       <ul className="movies__list">
         {isSavedMovies
-          ? MoviesList.filter((movie) => {
+          ? filterMovies.filter((movie) => {
             const { isSaved } = movie;
             return isSaved === true;
           })
@@ -20,7 +20,7 @@ function MoviesCardList({ isSavedMovies, handleMovieSave }) {
               handleMovieSave={handleMovieSave}
             />
             ))
-          : MoviesList.map((MovieData) => (
+          : filterMovies.map((MovieData) => (
             <MoviesCard
               key={MovieData._id}
               MovieData={MovieData}
@@ -39,4 +39,5 @@ export default MoviesCardList;
 MoviesCardList.propTypes = {
   isSavedMovies: PropTypes.bool,
   handleMovieSave: PropTypes.func,
+  filterMovies: PropTypes.array,
 };
