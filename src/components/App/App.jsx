@@ -116,11 +116,15 @@ function App() {
     navigate(Paths.Home);
   }
 
-  function handleMovieSave(evt) {
-    console.log(evt.target);
-    const findMovie = allMovies.find(evt.target.id);
-    findMovie.isSaved = !evt.target.isSasved;
-    // setSavedMovies([]);
+  function handleMovieSave(id) {
+    if (savedMovies.find((item) => item.id === id)) {
+      const deleteMovie = savedMovies.filter((item) => item.id !== id);
+      console.log(deleteMovie);
+      setSavedMovies(deleteMovie);
+    } else {
+      const findMovie = allMovies.find((item) => item.id === id);
+      setSavedMovies([...savedMovies, findMovie]);
+    }
   }
 
   async function handleUpdateProfile(name, email) {
@@ -159,6 +163,7 @@ function App() {
             allMovies,
             setAllMovies,
             savedMovies,
+            setSavedMovies,
             setIsError,
             handleRegistration,
             handleLogin,
@@ -192,7 +197,9 @@ function App() {
                 />} />
 
               <Route path={Paths.SavedMovies} element={<ProtectedRoute
-                element={SavedMovies} />} />
+                element={SavedMovies}
+                handleMovieSave={handleMovieSave}
+                />} />
 
               <Route path="*" element={<NotFound />} />
             </Routes>

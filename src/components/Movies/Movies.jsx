@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 import SearchForm from '../SearchForm/SearchForm.jsx';
-import Preloader from '../Preloader/Preloader.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import LoadMore from '../LoadMore/LoadMore.jsx';
 
@@ -23,6 +22,9 @@ function Movies({ handleMovieSave }) {
   const [filterMovies, setFilterMovies] = useState([]);
   const [searchMovies, setSearchMovies] = useState('');
   const [isShort, setIsShort] = useState(false);
+
+  const [arrayLength, setArrayLength] = useState('');
+  const arrayForRender = filterMovies.slice(0, arrayLength);
 
   const handleFilter = useCallback((searchReq, checkShort, StoredMovies) => {
     setSearchMovies(searchReq);
@@ -63,8 +65,6 @@ function Movies({ handleMovieSave }) {
       const movieSearch = JSON.parse(localStorage.getItem('movieSearch'));
       const shorts = JSON.parse(localStorage.getItem('shorts'));
       const moviesArray = JSON.parse(localStorage.getItem('allMovies'));
-      console.log('moviesArray', moviesArray);
-      console.log('allMovies', allMovies);
       setSearchMovies(movieSearch);
       setIsShort(shorts);
       setAllMovies(moviesArray);
@@ -82,6 +82,37 @@ function Movies({ handleMovieSave }) {
     }
   }
 
+  function renderMovies() {
+    const count = { cards: 12, rows: 3 };
+    if (window.innerWidth < 1140) {
+      count.cards = 8;
+      count.rows = 2;
+    }
+    if (window.innerWidth < 710) {
+      count.cards = 5;
+      count.rows = 2;
+    }
+    return count;
+  }
+
+  useEffect(() => {
+    setArrayLength(renderMovies().cards);
+    function renderMoviesCards() {
+      if (window.innerWidth < 1140) {
+        setArrayLength(renderMovies().cards);
+      }
+      if (window.innerWidth < 710) {
+        setArrayLength(renderMovies().cards);
+      }
+    }
+    window.addEventListener('resize', renderMoviesCards);
+    return () => window.removeEventListener('resize', renderMoviesCards);
+  }, []);
+
+  function loadMore() {
+    setArrayLength(arrayLength + renderMovies().rows);
+  }
+
   return (
     <>
       <Header type={'movies'} />
@@ -95,10 +126,9 @@ function Movies({ handleMovieSave }) {
         <MoviesCardList
           isSavedMovies={false}
           handleMovieSave={handleMovieSave}
-          filterMovies={filterMovies}
+          arrayForRender={arrayForRender}
         />
-        <LoadMore />
-        <Preloader />
+        <LoadMore loadMore={loadMore} />
       </main>
       <Footer />
     </>

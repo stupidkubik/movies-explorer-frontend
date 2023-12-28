@@ -1,22 +1,40 @@
-import { React } from 'react';
+import {
+  React,
+  useEffect,
+  useState,
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
+import AppContext from '../../contexts/AppContext';
 
 function MoviesCard({
   MovieData,
   isSavedMovies,
   handleMovieSave,
 }) {
+  const { savedMovies, setSavedMovies } = useContext(AppContext);
+  const [isSaved, setIsSaved] = useState(false);
+
   const {
     image,
     nameRU,
     duration,
-    isSaved,
+    id,
   } = MovieData;
 
-  function handleClick(evt) {
-    handleMovieSave(evt);
-    // handleMovieSave(MovieData.id);
+  useEffect(() => {
+    setIsSaved(savedMovies.some((item) => item.id === id));
+  }, [savedMovies, setSavedMovies, id, setIsSaved]);
+
+  function handleClick() {
+    if (isSaved) {
+      setIsSaved(false);
+    } else {
+      handleMovieSave(id);
+      setIsSaved(true);
+    }
   }
+  console.log('savedMovies', savedMovies);
 
   const movieSaveButtonClassName = `movie__save ${isSaved
     ? 'movie__save_active'
@@ -30,7 +48,7 @@ function MoviesCard({
     <li className={movieSaveClassName}>
       <img
         className="movie__image"
-        src={image}
+        src={image.url}
         alt={`кадр из фильма “${nameRU}“`}
       />
 
@@ -43,13 +61,13 @@ function MoviesCard({
               className="movieDeleteButton"
               type="button"
               aria-label="сохранить"
-              onClick={(evt) => handleClick(evt)}
+              onClick={handleClick}
             />
               : <button
               className={movieSaveButtonClassName}
               type="button"
               aria-label="удалить"
-              onClick={(evt) => handleClick(evt)}
+              onClick={handleClick}
             />
             }
           </div>
