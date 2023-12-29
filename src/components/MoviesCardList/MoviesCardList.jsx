@@ -4,11 +4,8 @@ import Preloader from '../Preloader/Preloader.jsx';
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import AppContext from '../../contexts/AppContext';
 
-// import { MoviesList } from '../../utils/constants';
-
 function MoviesCardList({ isSavedMovies, handleMovieSave, arrayForRender }) {
   const { isLoading } = useContext(AppContext);
-  console.log('arrayForRender', arrayForRender);
 
   return (
     <section className="movies__wrapper">

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
 import useFormValidation from '../../hooks/useFormValidation';
 
-function SearchForm({ handleSearch, handleShort, searchMovies }) {
+function SearchForm({ handleSearch, handleShort, searchMovieString }) {
   // const {
   // savedMovies,
   // isLoading,
@@ -19,7 +19,7 @@ function SearchForm({ handleSearch, handleShort, searchMovies }) {
   });
 
   useEffect(() => {
-    resetForm({ search: searchMovies });
+    resetForm({ search: searchMovieString });
   }, [resetForm]);
 
   function onSubmit(evt) {
@@ -66,5 +66,5 @@ export default SearchForm;
 SearchForm.propTypes = {
   handleSearch: PropTypes.func,
   handleShort: PropTypes.func,
-  searchMovies: PropTypes.string,
+  searchMovieString: PropTypes.string,
 };

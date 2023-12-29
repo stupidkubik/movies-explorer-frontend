@@ -4,6 +4,7 @@ import {
   useState,
   useContext,
 } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppContext from '../../contexts/AppContext';
 
@@ -12,7 +13,7 @@ function MoviesCard({
   isSavedMovies,
   handleMovieSave,
 }) {
-  const { savedMovies, setSavedMovies } = useContext(AppContext);
+  const { savedMovies, setSavedMovies, handleMovieDelete } = useContext(AppContext);
   const [isSaved, setIsSaved] = useState(false);
 
   const {
@@ -20,7 +21,15 @@ function MoviesCard({
     nameRU,
     duration,
     id,
+    trailerLink,
   } = MovieData;
+
+  const movieSaveButtonClassName = `movie__save ${isSaved
+    ? 'movie__save_active'
+    : ''}`;
+  const movieSaveClassName = `movie ${isSavedMovies
+    ? 'movie_hover'
+    : ''}`;
 
   useEffect(() => {
     setIsSaved(savedMovies.some((item) => item.id === id));
@@ -34,23 +43,25 @@ function MoviesCard({
       setIsSaved(true);
     }
   }
-  console.log('savedMovies', savedMovies);
 
-  const movieSaveButtonClassName = `movie__save ${isSaved
-    ? 'movie__save_active'
-    : ''}`;
-
-  const movieSaveClassName = `movie ${isSavedMovies
-    ? 'movie_hover'
-    : ''}`;
+  function convertTime(time) {
+    const minutes = time % 60;
+    const hours = Math.floor(time / 60);
+    if (hours === 0) {
+      return `${minutes}м`;
+    }
+    return `${hours}ч ${minutes}м`;
+  }
 
   return (
     <li className={movieSaveClassName}>
-      <img
-        className="movie__image"
-        src={image.url}
-        alt={`кадр из фильма “${nameRU}“`}
-      />
+      <Link to={trailerLink} target='_blank'>
+        <img
+          className="movie__image"
+          src={`https://api.nomoreparties.co${image.url}`}
+          alt={`кадр из фильма “${nameRU}“`}
+        />
+      </Link>
 
       <div className="movie__data">
         <div className="movie__container">
@@ -67,12 +78,12 @@ function MoviesCard({
               className={movieSaveButtonClassName}
               type="button"
               aria-label="удалить"
-              onClick={handleClick}
+              onClick={handleMovieDelete(id)}
             />
             }
           </div>
         </div>
-        <p className="movie__duration">{duration}</p>
+        <p className="movie__duration">{convertTime(duration)}</p>
       </div>
     </li>
   );

@@ -30,6 +30,7 @@ import {
   getUserInfo,
   updateProfile,
   getMovies,
+  deleteMovie,
 } from '../../utils/MainApi';
 
 function App() {
@@ -117,13 +118,19 @@ function App() {
   }
 
   function handleMovieSave(id) {
-    if (savedMovies.find((item) => item.id === id)) {
-      const deleteMovie = savedMovies.filter((item) => item.id !== id);
-      console.log(deleteMovie);
-      setSavedMovies(deleteMovie);
-    } else {
-      const findMovie = allMovies.find((item) => item.id === id);
-      setSavedMovies([...savedMovies, findMovie]);
+    const findMovie = allMovies.find((item) => item.id === id);
+    setSavedMovies([...savedMovies, findMovie]);
+  }
+
+  async function handleMovieDelete(id) {
+    setIsLoading(true);
+    try {
+      await deleteMovie(id, localStorage.getItem('token'));
+      setSavedMovies(savedMovies.filter((movie) => movie.id !== id));
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -144,10 +151,7 @@ function App() {
     }
   }
 
-  function onSubmitSearch(evt) {
-    evt.preventDefault();
-    console.log(evt.target);
-  }
+
 
   return (
     <div className="App">
@@ -167,9 +171,9 @@ function App() {
             setIsError,
             handleRegistration,
             handleLogin,
-            onSubmitSearch,
             handleUpdateProfile,
             handleLogout,
+            handleMovieDelete,
           }}>
             <Routes>
               <Route path="/" element={<Main />} />

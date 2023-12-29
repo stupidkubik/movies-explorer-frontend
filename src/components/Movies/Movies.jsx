@@ -20,27 +20,21 @@ function Movies({ handleMovieSave }) {
   const { setIsLoading, allMovies, setAllMovies } = useContext(AppContext);
 
   const [filterMovies, setFilterMovies] = useState([]);
-  const [searchMovies, setSearchMovies] = useState('');
+  const [searchMovieString, setSearchMoviesString] = useState('');
   const [isShort, setIsShort] = useState(false);
 
   const [arrayLength, setArrayLength] = useState('');
   const arrayForRender = filterMovies.slice(0, arrayLength);
 
   const handleFilter = useCallback((searchReq, checkShort, StoredMovies) => {
-    setSearchMovies(searchReq);
+    setSearchMoviesString(searchReq);
 
     localStorage.setItem('movieSearch', JSON.stringify(searchReq));
     localStorage.setItem('shorts', JSON.stringify(checkShort));
     localStorage.setItem('allMovies', JSON.stringify(StoredMovies));
 
-    setFilterMovies(StoredMovies.filter((movie) => {
-      const searchName = movie.nameRU
-        .toLowerCase()
-        .includes(searchReq.toLowerCase());
-      return checkShort
-        ? (searchName && movie.duration <= 40)
-        : searchName;
-    }));
+    return setFilterMovies(StoredMovies.filter((movie) => movie.nameRU.toLowerCase()
+      .includes(searchReq.toLowerCase()) && (checkShort ? movie.duration <= 40 : true)));
   }, []);
 
   async function handleSearch(searchReq) {
@@ -65,20 +59,20 @@ function Movies({ handleMovieSave }) {
       const movieSearch = JSON.parse(localStorage.getItem('movieSearch'));
       const shorts = JSON.parse(localStorage.getItem('shorts'));
       const moviesArray = JSON.parse(localStorage.getItem('allMovies'));
-      setSearchMovies(movieSearch);
+      setSearchMoviesString(movieSearch);
       setIsShort(shorts);
       setAllMovies(moviesArray);
       handleFilter(movieSearch, shorts, moviesArray);
     }
-  }, [handleFilter]);
+  }, [handleFilter, setSearchMoviesString, setIsShort, setAllMovies]);
 
   function handleShort() {
     if (isShort) {
       setIsShort(false);
-      handleFilter(searchMovies, false, allMovies);
+      handleFilter(searchMovieString, false, allMovies);
     } else {
       setIsShort(true);
-      handleFilter(searchMovies, true, allMovies);
+      handleFilter(searchMovieString, true, allMovies);
     }
   }
 
@@ -120,7 +114,7 @@ function Movies({ handleMovieSave }) {
         <SearchForm
           handleSearch={handleSearch}
           handleShort={handleShort}
-          searchMovies={searchMovies}
+          searchMovieString={searchMovieString}
         />
         <div className="movies__border" />
         <MoviesCardList
