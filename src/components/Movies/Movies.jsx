@@ -113,6 +113,7 @@ function Movies() {
         <SearchForm
           handleSearch={handleSearch}
           handleShort={handleShort}
+          isShort={isShort}
           searchMovieString={searchMovieString}
         />
         <div className="movies__border" />

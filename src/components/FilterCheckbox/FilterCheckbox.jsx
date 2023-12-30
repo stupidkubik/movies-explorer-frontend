@@ -1,13 +1,13 @@
-import { React, useCallback } from 'react';
+import { React } from 'react';
 import PropTypes from 'prop-types';
 
 // Стили для свитча
 // https://www.w3schools.com/howto/howto_css_switch.asp
 
-function FilterCheckbox({ handleShort }) {
-  const onChange = useCallback(() => {
+function FilterCheckbox({ handleShort, isShort }) {
+  function onChange() {
     handleShort();
-  }, []);
+  }
 
   return (
     <div className="checkbox movies__checkbox">
@@ -17,6 +17,7 @@ function FilterCheckbox({ handleShort }) {
           type="checkbox"
           className="checkbox__input"
           onChange={onChange}
+          checked={isShort}
         />
         <span className="checkbox__custom" />
       </label>
@@ -29,4 +30,5 @@ export default FilterCheckbox;
 
 FilterCheckbox.propTypes = {
   handleShort: PropTypes.func,
+  isShort: PropTypes.bool,
 };

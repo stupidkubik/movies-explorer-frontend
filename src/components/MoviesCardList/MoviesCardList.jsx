@@ -6,7 +6,7 @@ import AppContext from '../../contexts/AppContext';
 
 function MoviesCardList({ isSavedMovies, arrayForRender }) {
   const { isLoading } = useContext(AppContext);
-
+  console.log(arrayForRender);
   return (
     <section className="movies__wrapper">
       {isLoading ? <Preloader />

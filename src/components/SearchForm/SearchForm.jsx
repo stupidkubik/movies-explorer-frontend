@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
 import useFormValidation from '../../hooks/useFormValidation';
 
-function SearchForm({ handleSearch, handleShort, searchMovieString }) {
-  // const {
-  // savedMovies,
-  // isLoading,
-  // } = useContext(AppContext);
-
+function SearchForm({
+  handleSearch,
+  isShort,
+  handleShort,
+  searchMovieString,
+}) {
   const {
     values,
     handleChange,
@@ -45,7 +45,6 @@ function SearchForm({ handleSearch, handleShort, searchMovieString }) {
             placeholder='Фильм'
             value={values.search || ''}
             onChange={handleChange}
-            // disabled={savedMovies ? (savedMovies.length === 0 && true) : false}
             required
           />
           <button
@@ -55,7 +54,7 @@ function SearchForm({ handleSearch, handleShort, searchMovieString }) {
             className="movies__button"
           />
         </div>
-        <FilterCheckbox handleShort={handleShort} />
+        <FilterCheckbox isShort={isShort} handleShort={handleShort} />
       </form>
     </section>
   );
@@ -65,6 +64,7 @@ export default SearchForm;
 
 SearchForm.propTypes = {
   handleSearch: PropTypes.func,
+  isShort: PropTypes.bool,
   handleShort: PropTypes.func,
   searchMovieString: PropTypes.string,
 };

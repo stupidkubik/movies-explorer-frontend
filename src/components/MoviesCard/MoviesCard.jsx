@@ -46,7 +46,6 @@ function MoviesCard({ MovieData, isSavedMovies }) {
   }
 
   function handleClick() {
-    console.log('isSaved', isSaved);
     if (isSaved) {
       setIsSaved(false);
       handleMovieSave(MovieData, true);
@@ -61,7 +60,7 @@ function MoviesCard({ MovieData, isSavedMovies }) {
       <Link to={trailerLink} target='_blank'>
         <img
           className="movie__image"
-          src={`https://api.nomoreparties.co${image.url}`}
+          src={isSavedMovies ? image : `https://api.nomoreparties.co${image.url}`}
           alt={`кадр из фильма “${nameRU}“`}
         />
       </Link>
@@ -75,7 +74,7 @@ function MoviesCard({ MovieData, isSavedMovies }) {
               className="movieDeleteButton"
               type="button"
               aria-label="сохранить"
-              onClick={() => handleMovieDelete(id)}
+              onClick={() => handleMovieDelete(MovieData._id)}
             />
               : <button
               className={movieSaveButtonClassName}

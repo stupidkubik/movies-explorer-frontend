@@ -107,8 +107,9 @@ export async function addMovie(movieData, token) {
   return Promise.reject(res.status);
 }
 
-export async function deleteMovie(movieId, token) {
-  const res = await fetch(`${BASE_URL}/movies${movieId}`, {
+export async function deleteMovie(_id, token) {
+  const res = await fetch(`${BASE_URL}/movies/${_id}`, {
+    method: 'DELETE',
     headers: {
       Authorization: `Bearer ${token}`,
     },

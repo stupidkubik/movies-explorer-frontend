@@ -51,9 +51,6 @@ function App() {
     setIsLoading(true);
     try {
       const userData = await getUserInfo(token);
-      sessionStorage.setItem('name', userData.name);
-      sessionStorage.setItem('email', userData.email);
-      sessionStorage.setItem('_id', userData._id);
       return userData;
     } catch (err) {
       setIsError(true);
@@ -67,19 +64,18 @@ function App() {
     const token = localStorage.getItem('token');
     if (token) {
       Promise.all([handleProfile(token), getMovies(token)])
-        .then((userData, moviesData) => {
-          setSavedMovies(moviesData.reverse());
-          setCurrentUser({ name: userData.name, email: userData.email });
+        .then(([userData, moviesData]) => {
           setIsLoggedIn(true);
+          setCurrentUser({ name: userData.name, email: userData.email });
+          setSavedMovies(moviesData.reverse());
         })
         .then(() => setIsToken(false))
         .catch(() => setIsToken(false));
     } else {
       setIsToken(false);
-      sessionStorage.clear();
       navigate(Paths.SignUp);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, setIsLoggedIn, setCurrentUser, setSavedMovies, setIsToken]);
 
   async function handleLogin(email, password) {
     setIsLoading(true);
@@ -113,12 +109,12 @@ function App() {
 
   function handleLogout() {
     localStorage.clear();
-    sessionStorage.clear();
     setIsLoggedIn(false);
     navigate(Paths.Home);
   }
 
   async function handleMovieDelete(id) {
+    console.log(id);
     setIsLoading(true);
     try {
       await deleteMovie(id, localStorage.getItem('token'));
@@ -209,12 +205,10 @@ function App() {
                 />} />
 
               <Route path={Paths.Movies} element={<ProtectedRoute
-                element={Movies}
-                 />} />
+                element={Movies} />} />
 
               <Route path={Paths.SavedMovies} element={<ProtectedRoute
-                element={SavedMovies}
-                />} />
+                element={SavedMovies} />} />
 
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -54,6 +54,7 @@ function SavedMovies() {
       <main className="movies savedMovies">
         <SearchForm
           handleSearch={handleSearch}
+          isShort={isShort}
           handleShort={handleShort}
           searchMovieString={searchMovieString}
         />
