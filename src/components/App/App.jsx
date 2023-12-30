@@ -30,6 +30,7 @@ import {
   getUserInfo,
   updateProfile,
   getMovies,
+  addMovie,
   deleteMovie,
 } from '../../utils/MainApi';
 
@@ -117,21 +118,34 @@ function App() {
     navigate(Paths.Home);
   }
 
-  function handleMovieSave(id) {
-    const findMovie = allMovies.find((item) => item.id === id);
-    setSavedMovies([...savedMovies, findMovie]);
-  }
-
   async function handleMovieDelete(id) {
     setIsLoading(true);
     try {
       await deleteMovie(id, localStorage.getItem('token'));
-      setSavedMovies(savedMovies.filter((movie) => movie.id !== id));
+      setSavedMovies(savedMovies.filter((movie) => movie._id !== id));
     } catch (err) {
       console.error(err);
     } finally {
       setIsLoading(false);
     }
+  }
+
+  async function handleMovieSave(movieData, isSaved) {
+    if (isSaved) {
+      const findMovie = savedMovies.find((item) => item.movieId === movieData.id);
+      return findMovie ? handleMovieDelete(findMovie._id) : console.error('фильм не найден');
+    }
+    setIsLoading(true);
+    try {
+      const res = await addMovie(movieData, localStorage.getItem('token'));
+      setSavedMovies([res, ...savedMovies]);
+      console.log(savedMovies);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+    return savedMovies;
   }
 
   async function handleUpdateProfile(name, email) {
@@ -150,8 +164,6 @@ function App() {
       setIsLoading(false);
     }
   }
-
-
 
   return (
     <div className="App">
@@ -173,6 +185,7 @@ function App() {
             handleLogin,
             handleUpdateProfile,
             handleLogout,
+            handleMovieSave,
             handleMovieDelete,
           }}>
             <Routes>
@@ -197,12 +210,10 @@ function App() {
 
               <Route path={Paths.Movies} element={<ProtectedRoute
                 element={Movies}
-                handleMovieSave={handleMovieSave}
-                />} />
+                 />} />
 
               <Route path={Paths.SavedMovies} element={<ProtectedRoute
                 element={SavedMovies}
-                handleMovieSave={handleMovieSave}
                 />} />
 
               <Route path="*" element={<NotFound />} />

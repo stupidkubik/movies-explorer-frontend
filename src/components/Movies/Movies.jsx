@@ -6,7 +6,6 @@ import {
   useContext,
 } from 'react';
 
-import PropTypes from 'prop-types';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 import SearchForm from '../SearchForm/SearchForm.jsx';
@@ -16,7 +15,7 @@ import LoadMore from '../LoadMore/LoadMore.jsx';
 import AppContext from '../../contexts/AppContext';
 import { getMoviesList } from '../../utils/MoviesApi';
 
-function Movies({ handleMovieSave }) {
+function Movies() {
   const { setIsLoading, allMovies, setAllMovies } = useContext(AppContext);
 
   const [filterMovies, setFilterMovies] = useState([]);
@@ -119,7 +118,6 @@ function Movies({ handleMovieSave }) {
         <div className="movies__border" />
         <MoviesCardList
           isSavedMovies={false}
-          handleMovieSave={handleMovieSave}
           arrayForRender={arrayForRender}
         />
         <LoadMore loadMore={loadMore} />
@@ -130,7 +128,3 @@ function Movies({ handleMovieSave }) {
 }
 
 export default Movies;
-
-Movies.propTypes = {
-  handleMovieSave: PropTypes.func,
-};

@@ -96,7 +96,7 @@ export async function addMovie(movieData, token) {
       image: `https://api.nomoreparties.co${movieData.image.url}`,
       trailerLink: movieData.trailerLink,
       thumbnail: `https://api.nomoreparties.co${movieData.image.formats.thumbnail.url}`,
-      movieId: movieData.movieId,
+      movieId: movieData.id,
       nameRU: movieData.nameRU,
       nameEN: movieData.nameEN,
     }),

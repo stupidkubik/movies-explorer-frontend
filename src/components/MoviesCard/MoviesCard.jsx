@@ -8,14 +8,15 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppContext from '../../contexts/AppContext';
 
-function MoviesCard({
-  MovieData,
-  isSavedMovies,
-  handleMovieSave,
-}) {
-  const { savedMovies, setSavedMovies, handleMovieDelete } = useContext(AppContext);
-  const [isSaved, setIsSaved] = useState(false);
+function MoviesCard({ MovieData, isSavedMovies }) {
+  const {
+    savedMovies,
+    setSavedMovies,
+    handleMovieSave,
+    handleMovieDelete,
+  } = useContext(AppContext);
 
+  const [isSaved, setIsSaved] = useState(false);
   const {
     image,
     nameRU,
@@ -35,15 +36,6 @@ function MoviesCard({
     setIsSaved(savedMovies.some((item) => item.id === id));
   }, [savedMovies, setSavedMovies, id, setIsSaved]);
 
-  function handleClick() {
-    if (isSaved) {
-      setIsSaved(false);
-    } else {
-      handleMovieSave(id);
-      setIsSaved(true);
-    }
-  }
-
   function convertTime(time) {
     const minutes = time % 60;
     const hours = Math.floor(time / 60);
@@ -51,6 +43,17 @@ function MoviesCard({
       return `${minutes}м`;
     }
     return `${hours}ч ${minutes}м`;
+  }
+
+  function handleClick() {
+    console.log('isSaved', isSaved);
+    if (isSaved) {
+      setIsSaved(false);
+      handleMovieSave(MovieData, true);
+    } else {
+      handleMovieSave(MovieData, false);
+      setIsSaved(true);
+    }
   }
 
   return (
@@ -72,13 +75,13 @@ function MoviesCard({
               className="movieDeleteButton"
               type="button"
               aria-label="сохранить"
-              onClick={handleClick}
+              onClick={() => handleMovieDelete(id)}
             />
               : <button
               className={movieSaveButtonClassName}
               type="button"
               aria-label="удалить"
-              onClick={handleMovieDelete(id)}
+              onClick={handleClick}
             />
             }
           </div>
@@ -94,5 +97,4 @@ export default MoviesCard;
 MoviesCard.propTypes = {
   isSavedMovies: PropTypes.bool,
   MovieData: PropTypes.object,
-  handleMovieSave: PropTypes.func,
 };

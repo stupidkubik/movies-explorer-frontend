@@ -4,7 +4,7 @@ import Preloader from '../Preloader/Preloader.jsx';
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import AppContext from '../../contexts/AppContext';
 
-function MoviesCardList({ isSavedMovies, handleMovieSave, arrayForRender }) {
+function MoviesCardList({ isSavedMovies, arrayForRender }) {
   const { isLoading } = useContext(AppContext);
 
   return (
@@ -12,23 +12,17 @@ function MoviesCardList({ isSavedMovies, handleMovieSave, arrayForRender }) {
       {isLoading ? <Preloader />
         : <ul className="movies__list">
           {isSavedMovies
-            ? (arrayForRender.filter((movie) => {
-              const { isSaved } = movie;
-              return isSaved === true;
-            })
-              .map((MovieData) => (
+            ? (arrayForRender.map((MovieData) => (
                 <MoviesCard
                 key={MovieData.id}
                 MovieData={MovieData}
                 isSavedMovies={isSavedMovies}
-                handleMovieSave={handleMovieSave}
               />)))
             : (arrayForRender.map((MovieData) => (
               <MoviesCard
               key={MovieData.id}
               MovieData={MovieData}
               isSavedMovies={isSavedMovies}
-              handleMovieSave={handleMovieSave}
             />)))}
         </ul>
       }
@@ -40,6 +34,5 @@ export default MoviesCardList;
 
 MoviesCardList.propTypes = {
   isSavedMovies: PropTypes.bool,
-  handleMovieSave: PropTypes.func,
   arrayForRender: PropTypes.array,
 };

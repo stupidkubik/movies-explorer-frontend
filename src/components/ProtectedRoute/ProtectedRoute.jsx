@@ -6,7 +6,6 @@ import { Paths } from '../../utils/constants';
 
 const ProtectedRoute = ({ element: Component, ...props }) => {
   const { isLoggedIn } = useContext(AppContext);
-  console.log(isLoggedIn);
 
   return (isLoggedIn
     ? <Component {...props} />
