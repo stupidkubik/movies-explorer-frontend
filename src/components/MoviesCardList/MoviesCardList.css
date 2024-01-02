@@ -9,6 +9,16 @@
   gap: 37px 24px;
 }
 
+.movies__noFind {
+  display: block;
+  margin: 130px auto;
+  text-align: center;
+  padding: 0;
+  color: #fff;
+  font-size: 13px;
+  line-height: 17px;
+}
+
 @media screen and (max-width: 768px) {
   .movies__list {
     grid-template-columns: repeat(auto-fit, 339px);

@@ -1,4 +1,10 @@
-import { React, useContext, useEffect } from 'react';
+import {
+  React,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -31,11 +37,14 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
     profileEmail: email,
   });
 
-  const spanClassName = `profile__save ${isError ? 'profile__save_error' : ''}
-    ${isProfileUpdated ? 'profile__save_done' : ''}`;
+  const [isMatch, setIsMatch] = useState(true);
 
-  const spanInfo = `${isError ? 'При обновлении профиля произошла ошибка' : ''}
-    ${isProfileUpdated ? 'Профиль обновлен' : ''}`;
+  useEffect(() => {
+    setIsMatch(true);
+    if (values.profileName !== name && values.profileEmail !== email) {
+      setIsMatch(false);
+    }
+  }, [isMatch, setIsMatch, handleChange]);
 
   useEffect(() => {
     setIsError(false);
@@ -51,6 +60,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
     if (isProfileEdited) {
       const newUser = handleUpdateProfile(values.profileName, values.profileEmail);
       resetForm({ profileName: newUser.name, profileEmail: newUser.email });
+      setIsMatch(true);
     }
     setIsProfileEdited(true);
   }
@@ -103,14 +113,16 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
               disabled={!isProfileEdited || isLoading}
               />
           </form>
+          <span className='profile__serverResponse' hidden={!isProfileUpdated}>
+            Данные профиля обновлены
+          </span>
 
           {isProfileEdited
             ? <>
-              <span className={spanClassName}>{spanInfo}</span>
               <button
                 className="profile__saveButton"
                 onClick={handleEdit}
-                disabled={!isValid || isLoading || isError}>
+                disabled={!isValid || isLoading || isError || isMatch}>
                 Сохранить
               </button>
             </>

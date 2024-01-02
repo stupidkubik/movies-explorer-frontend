@@ -1,20 +1,16 @@
-import { React, useContext } from 'react';
+import { React } from 'react';
 import PropTypes from 'prop-types';
-import Preloader from '../Preloader/Preloader.jsx';
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
-import AppContext from '../../contexts/AppContext';
 
 function MoviesCardList({ isSavedMovies, arrayForRender }) {
-  const { isLoading } = useContext(AppContext);
-  console.log(arrayForRender);
   return (
-    <section className="movies__wrapper">
-      {isLoading ? <Preloader />
-        : <ul className="movies__list">
+    arrayForRender[0]
+      ? <section className="movies__wrapper">
+        <ul className="movies__list">
           {isSavedMovies
             ? (arrayForRender.map((MovieData) => (
                 <MoviesCard
-                key={MovieData.id}
+                key={MovieData._id}
                 MovieData={MovieData}
                 isSavedMovies={isSavedMovies}
               />)))
@@ -25,8 +21,8 @@ function MoviesCardList({ isSavedMovies, arrayForRender }) {
               isSavedMovies={isSavedMovies}
             />)))}
         </ul>
-      }
-    </section>
+      </section>
+      : <span className='movies__noFind'>Ничего не найдено</span>
   );
 }
 

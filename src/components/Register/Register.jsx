@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AppContext from '../../contexts/AppContext';
-import Preloader from '../Preloader/Preloader.jsx';
 import useFormValidation from '../../hooks/useFormValidation';
 import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
@@ -113,7 +112,7 @@ function Register() {
           type="submit"
           disabled={!isValid || isLoading || isError}>
             {isLoading
-              ? <Preloader />
+              ? 'Загрузка'
               : 'Зарегистрироваться'}</button>
         </form>
 

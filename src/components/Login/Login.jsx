@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AppContext from '../../contexts/AppContext';
-import Preloader from '../Preloader/Preloader.jsx';
 import useFormValidation from '../../hooks/useFormValidation';
 import { Paths } from '../../utils/constants';
 import Input from '../Input/Input.jsx';
@@ -96,7 +95,7 @@ function Login() {
           type="submit"
           disabled={!isValid || isLoading || isError}>
           {isLoading
-            ? <Preloader />
+            ? 'Загрузка'
             : 'Войти'}</button>
         </form>
         <p className="register__subtitle">

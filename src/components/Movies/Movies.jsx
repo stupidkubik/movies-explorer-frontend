@@ -21,9 +21,37 @@ function Movies() {
   const [filterMovies, setFilterMovies] = useState([]);
   const [searchMovieString, setSearchMoviesString] = useState('');
   const [isShort, setIsShort] = useState(false);
-
   const [arrayLength, setArrayLength] = useState('');
+  const [isFinished, setIsFinished] = useState(false);
   const arrayForRender = filterMovies.slice(0, arrayLength);
+
+  const renderMovies = useCallback(() => {
+    const count = { cards: 12, rows: 3 };
+    if (window.innerWidth < 1140) {
+      count.cards = 8;
+      count.rows = 2;
+    }
+    if (window.innerWidth < 710) {
+      count.cards = 5;
+    }
+    return count;
+  }, []);
+
+  function renderMoviesCards() {
+    setArrayLength(renderMovies().cards);
+    if (window.innerWidth < 1140) {
+      setArrayLength(renderMovies().cards);
+    }
+    if (window.innerWidth < 710) {
+      setArrayLength(renderMovies().cards);
+    }
+  }
+
+  useEffect(() => {
+    renderMoviesCards();
+    window.addEventListener('resize', renderMoviesCards);
+    return () => window.removeEventListener('resize', renderMoviesCards);
+  }, []);
 
   const handleFilter = useCallback((searchReq, checkShort, StoredMovies) => {
     setSearchMoviesString(searchReq);
@@ -32,8 +60,11 @@ function Movies() {
     localStorage.setItem('shorts', JSON.stringify(checkShort));
     localStorage.setItem('allMovies', JSON.stringify(StoredMovies));
 
-    return setFilterMovies(StoredMovies.filter((movie) => movie.nameRU.toLowerCase()
+    setFilterMovies(StoredMovies.filter((movie) => movie.nameRU.toLowerCase()
       .includes(searchReq.toLowerCase()) && (checkShort ? movie.duration <= 40 : true)));
+
+    setIsFinished(false);
+    setArrayLength(renderMovies().cards);
   }, []);
 
   async function handleSearch(searchReq) {
@@ -50,6 +81,8 @@ function Movies() {
       }
     } else {
       handleFilter(searchReq, isShort, allMovies);
+      setIsFinished(false);
+      setArrayLength(renderMovies().cards);
     }
   }
 
@@ -75,36 +108,19 @@ function Movies() {
     }
   }
 
-  function renderMovies() {
-    const count = { cards: 12, rows: 3 };
-    if (window.innerWidth < 1140) {
-      count.cards = 8;
-      count.rows = 2;
+  function loadMore() {
+    if (arrayLength < filterMovies.length) {
+      setArrayLength(arrayLength + renderMovies().rows);
+      setIsFinished(false);
     }
-    if (window.innerWidth < 710) {
-      count.cards = 5;
-      count.rows = 2;
-    }
-    return count;
   }
 
   useEffect(() => {
-    setArrayLength(renderMovies().cards);
-    function renderMoviesCards() {
-      if (window.innerWidth < 1140) {
-        setArrayLength(renderMovies().cards);
-      }
-      if (window.innerWidth < 710) {
-        setArrayLength(renderMovies().cards);
-      }
+    if (arrayLength >= filterMovies.length) {
+      setIsFinished(true);
+      setArrayLength(renderMovies().cards);
     }
-    window.addEventListener('resize', renderMoviesCards);
-    return () => window.removeEventListener('resize', renderMoviesCards);
-  }, []);
-
-  function loadMore() {
-    setArrayLength(arrayLength + renderMovies().rows);
-  }
+  }, [handleFilter, handleSearch]);
 
   return (
     <>
@@ -121,7 +137,9 @@ function Movies() {
           isSavedMovies={false}
           arrayForRender={arrayForRender}
         />
-        <LoadMore loadMore={loadMore} />
+        {arrayForRender[0] && !isFinished
+          ? <LoadMore loadMore={loadMore} />
+          : ''}
       </main>
       <Footer />
     </>

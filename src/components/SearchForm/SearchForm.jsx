@@ -15,12 +15,12 @@ function SearchForm({
     handleChange,
     resetForm,
   } = useFormValidation({
-    search: '',
+    search: searchMovieString,
   });
 
   useEffect(() => {
     resetForm({ search: searchMovieString });
-  }, [resetForm]);
+  }, [resetForm, searchMovieString]);
 
   function onSubmit(evt) {
     evt.preventDefault();

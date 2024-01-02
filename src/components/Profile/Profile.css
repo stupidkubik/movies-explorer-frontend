@@ -82,7 +82,7 @@
 
 .profile__saveButton {
   width: 410px;
-  margin: 0 auto;
+  margin: 206px auto 0;
   padding: 13px 0 15px;
   display: block;
   text-decoration: none;
@@ -105,19 +105,11 @@
   cursor: default;
 }
 
-.profile__save {
-  display: block;
-  margin: 189px auto 20px;
+.profile__serverResponse {
+  margin: 10px auto 0;
   font-size: 11px;
   line-height: 13px;
   text-align: center;
-}
-
-.profile__save_error {
-  color: #FF004C;
-}
-
-.profile__save_done {
   color: #3DDC84;
 }
 

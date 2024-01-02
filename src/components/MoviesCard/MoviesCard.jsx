@@ -3,7 +3,9 @@ import {
   useEffect,
   useState,
   useContext,
+  useCallback,
 } from 'react';
+
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppContext from '../../contexts/AppContext';
@@ -11,7 +13,7 @@ import AppContext from '../../contexts/AppContext';
 function MoviesCard({ MovieData, isSavedMovies }) {
   const {
     savedMovies,
-    setSavedMovies,
+    // setSavedMovies,
     handleMovieSave,
     handleMovieDelete,
   } = useContext(AppContext);
@@ -33,8 +35,8 @@ function MoviesCard({ MovieData, isSavedMovies }) {
     : ''}`;
 
   useEffect(() => {
-    setIsSaved(savedMovies.some((item) => item.id === id));
-  }, [savedMovies, setSavedMovies, id, setIsSaved]);
+    setIsSaved(savedMovies.some((item) => item.movieId === id));
+  }, [id, setIsSaved]);
 
   function convertTime(time) {
     const minutes = time % 60;
@@ -45,15 +47,15 @@ function MoviesCard({ MovieData, isSavedMovies }) {
     return `${hours}ч ${minutes}м`;
   }
 
-  function handleClick() {
+  const handleClick = useCallback(() => {
     if (isSaved) {
-      setIsSaved(false);
       handleMovieSave(MovieData, true);
+      setIsSaved(false);
     } else {
       handleMovieSave(MovieData, false);
       setIsSaved(true);
     }
-  }
+  }, [isSaved, setIsSaved, handleMovieSave]);
 
   return (
     <li className={movieSaveClassName}>
@@ -73,13 +75,13 @@ function MoviesCard({ MovieData, isSavedMovies }) {
               ? <button
               className="movieDeleteButton"
               type="button"
-              aria-label="сохранить"
+              aria-label="удалить"
               onClick={() => handleMovieDelete(MovieData._id)}
             />
               : <button
               className={movieSaveButtonClassName}
               type="button"
-              aria-label="удалить"
+              aria-label="сохранить"
               onClick={handleClick}
             />
             }

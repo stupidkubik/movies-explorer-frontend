@@ -114,7 +114,6 @@ function App() {
   }
 
   async function handleMovieDelete(id) {
-    console.log(id);
     setIsLoading(true);
     try {
       await deleteMovie(id, localStorage.getItem('token'));
@@ -127,21 +126,20 @@ function App() {
   }
 
   async function handleMovieSave(movieData, isSaved) {
-    if (isSaved) {
-      const findMovie = savedMovies.find((item) => item.movieId === movieData.id);
-      return findMovie ? handleMovieDelete(findMovie._id) : console.error('фильм не найден');
+    const findMovie = savedMovies.find((item) => item.movieId === movieData.id);
+    if (isSaved && findMovie) {
+      await handleMovieDelete(findMovie._id);
+    } else if (!findMovie && !isSaved) {
+      setIsLoading(true);
+      try {
+        const res = await addMovie(movieData, localStorage.getItem('token'));
+        setSavedMovies([res, ...savedMovies]);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
     }
-    setIsLoading(true);
-    try {
-      const res = await addMovie(movieData, localStorage.getItem('token'));
-      setSavedMovies([res, ...savedMovies]);
-      console.log(savedMovies);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-    return savedMovies;
   }
 
   async function handleUpdateProfile(name, email) {
