@@ -27,3 +27,6 @@ Hovered links & inputs
 IP 62.84.125.182
 
 https://mydomain.nomoredomainsrocks.ru
+
+#### PR
+https://github.com/stupidkubik/movies-explorer-frontend/pull/2
