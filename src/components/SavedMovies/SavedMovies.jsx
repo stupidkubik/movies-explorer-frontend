@@ -18,7 +18,7 @@ function SavedMovies() {
   const [filterMovies, setFilterMovies] = useState(savedMovies);
   const [searchMovieString, setSearchMoviesString] = useState('');
   const [isShort, setIsShort] = useState(false);
-
+  // Коллбэк-функция поиска по массиву фильмов
   const handleFilter = useCallback((searchReq, checkShort, StoredMovies) => {
     setSearchMoviesString(searchReq);
     setFilterMovies(StoredMovies.filter((movie) => {
@@ -30,15 +30,15 @@ function SavedMovies() {
         : searchName;
     }));
   }, []);
-
+  // Функция сабмита формы поиска
   function handleSearch(searchReq) {
     handleFilter(searchReq, isShort, savedMovies);
   }
-
+  // Используем фильтр при изменении стейтов
   useEffect(() => {
     handleFilter(searchMovieString, isShort, savedMovies);
   }, [handleFilter, searchMovieString, isShort, savedMovies]);
-
+  // Меняем стейт выбора короткометражек
   function handleShort() {
     if (isShort) {
       setIsShort(false);
@@ -48,6 +48,7 @@ function SavedMovies() {
       handleFilter(searchMovieString, true, savedMovies);
     }
   }
+
   return (
     <>
       <Header type={'savedMovies'} />

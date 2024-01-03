@@ -16,12 +16,21 @@ function Header({ type }) {
   const { isLoggedIn } = useContext(AppContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
-
+  // Переменные с классами стилей
+  const headerClassName = `header__content ${isLoggedIn
+    ? 'header__content_loggedIn'
+    : 'header__content_notLoggedIn'}`;
+  const headerBackgroundClassName = `${type === 'main'
+    ? 'header__mainRoute'
+    : 'header__profileRoute'}`;
+  const headerShowBurgerMenuClassName = `${isMobileView ? 'burger__menu_active' : ''}`;
+  const burgerMenuClassName = `burger__menu ${isMobileView && isMenuOpen
+    ? 'burger__menu_opened'
+    : 'burger__menu_hidden'}`;
   // Функция открытия бургер-меню
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
-
   // Определяем размер экрана и меняем бругер-меню
   function changeView() {
     const screenWidth = window.innerWidth;
@@ -30,7 +39,7 @@ function Header({ type }) {
       setIsMobileView(true);
     } else setIsMobileView(false);
   }
-
+  // Вешаем слушатель изменения размера окна
   useEffect(() => {
     changeView();
     window.addEventListener('resize', changeView);
@@ -40,26 +49,13 @@ function Header({ type }) {
     };
   }, []);
 
-  const headerClassName = `header__content ${isLoggedIn
-    ? 'header__content_loggedIn'
-    : 'header__content_notLoggedIn'}`;
-
-  const headerBackgroundClassName = `${type === 'main'
-    ? 'header__mainRoute'
-    : 'header__profileRoute'}`;
-
-  const headerShowBurgerMenuClassName = `${isMobileView ? 'burger__menu_active' : ''}`;
-
-  const burgerMenuClassName = `burger__menu ${isMobileView && isMenuOpen
-    ? 'burger__menu_opened'
-    : 'burger__menu_hidden'}`;
-
   return (
     <header className="header">
       <div className={`${headerClassName} ${headerBackgroundClassName}`}>
         <Link className="header__image" to={Paths.Home}>
           <img src={logo} alt="логотип страницы в виде квадрата" />
         </Link>
+
         {isLoggedIn
           ? <nav className="burger header__container">
             <Navigation

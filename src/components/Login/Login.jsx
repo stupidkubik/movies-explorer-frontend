@@ -26,15 +26,15 @@ function Login() {
     email: '',
     password: '',
   });
-
+  // Убираем ошибку при обновлении компонента
   useEffect(() => {
     setIsError(false);
   }, [setIsError]);
-
+  // Сбрасываем форму при обновлении компонента
   useEffect(() => {
     resetForm({ email: '', password: '' });
   }, [resetForm, handleLogin]);
-
+  // Функция сабмита формы
   function onSubmit(evt) {
     evt.preventDefault();
     handleLogin(values.email, values.password)
@@ -90,6 +90,7 @@ function Login() {
               setIsError(false);
             }}
           />
+
           <button
           className="register__button register__button_login"
           type="submit"
@@ -98,6 +99,7 @@ function Login() {
             ? 'Загрузка'
             : 'Войти'}</button>
         </form>
+
         <p className="register__subtitle">
         Ещё не зарегистрированы?
         <Link className="register__link" to={Paths.SignUp}>Регистрация</Link>

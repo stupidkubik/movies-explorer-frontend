@@ -27,15 +27,15 @@ function Register() {
     email: '',
     password: '',
   });
-
+  // Убираем ошибку при обновлении компонента
   useEffect(() => {
     setIsError(false);
   }, [setIsError]);
-
+  // Сбрасываем форму при обновлении компонента
   useEffect(() => {
     resetForm({ name: '', email: '', password: '' });
   }, [resetForm, handleRegistration]);
-
+  // Функция сабмита формы
   function onSubmit(evt) {
     evt.preventDefault();
     handleRegistration(values.name, values.email, values.password);

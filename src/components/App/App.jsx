@@ -46,7 +46,7 @@ function App() {
   const [isProfileEdited, setIsProfileEdited] = useState(false);
 
   const navigate = useNavigate();
-
+  // Функция проверки токена
   async function handleProfile(token) {
     setIsLoading(true);
     try {
@@ -59,7 +59,7 @@ function App() {
       setIsLoading(false);
     }
   }
-
+  // Запрос данных с сервера после логина
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -76,7 +76,7 @@ function App() {
       navigate(Paths.SignUp);
     }
   }, [isLoggedIn, setIsLoggedIn, setCurrentUser, setSavedMovies, setIsToken]);
-
+  // Функция аунтефикации пользователя
   async function handleLogin(email, password) {
     setIsLoading(true);
     try {
@@ -92,7 +92,7 @@ function App() {
       setIsLoading(false);
     }
   }
-
+  // Функция регистрации пользователя
   async function handleRegistration(name, email, password) {
     setIsLoading(true);
     try {
@@ -106,13 +106,13 @@ function App() {
       setIsLoading(false);
     }
   }
-
+  // Функция разлогирования пользователя
   function handleLogout() {
     localStorage.clear();
     setIsLoggedIn(false);
     navigate(Paths.Home);
   }
-
+  // Функция удаления фильма из сохраненок
   async function handleMovieDelete(id) {
     setIsLoading(true);
     try {
@@ -124,7 +124,7 @@ function App() {
       setIsLoading(false);
     }
   }
-
+  // Функция сохранения фильма
   async function handleMovieSave(movieData, isSaved) {
     const findMovie = savedMovies.find((item) => item.movieId === movieData.id);
     if (isSaved && findMovie) {
@@ -141,7 +141,7 @@ function App() {
       }
     }
   }
-
+  // Функция обновления данных пользователя
   async function handleUpdateProfile(name, email) {
     setIsLoading(true);
     const token = localStorage.getItem('token');

@@ -17,11 +17,11 @@ function SearchForm({
   } = useFormValidation({
     search: searchMovieString,
   });
-
+  // Сбрасываем форму при обновлении компонента
   useEffect(() => {
     resetForm({ search: searchMovieString });
   }, [resetForm, searchMovieString]);
-
+  // Функция сабмита формы
   function onSubmit(evt) {
     evt.preventDefault();
     if (evt.target.search.value) {
@@ -47,6 +47,7 @@ function SearchForm({
             onChange={handleChange}
             required
           />
+
           <button
             id="search-submit"
             type="submit"

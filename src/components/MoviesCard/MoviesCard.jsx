@@ -13,12 +13,10 @@ import AppContext from '../../contexts/AppContext';
 function MoviesCard({ MovieData, isSavedMovies }) {
   const {
     savedMovies,
-    // setSavedMovies,
     handleMovieSave,
     handleMovieDelete,
   } = useContext(AppContext);
 
-  const [isSaved, setIsSaved] = useState(false);
   const {
     image,
     nameRU,
@@ -27,17 +25,18 @@ function MoviesCard({ MovieData, isSavedMovies }) {
     trailerLink,
   } = MovieData;
 
+  const [isSaved, setIsSaved] = useState(false);
   const movieSaveButtonClassName = `movie__save ${isSaved
     ? 'movie__save_active'
     : ''}`;
   const movieSaveClassName = `movie ${isSavedMovies
     ? 'movie_hover'
     : ''}`;
-
+  // Проверяем наличие лайка
   useEffect(() => {
     setIsSaved(savedMovies.some((item) => item.movieId === id));
   }, [id, setIsSaved]);
-
+  // Функция конвертации времени
   function convertTime(time) {
     const minutes = time % 60;
     const hours = Math.floor(time / 60);
@@ -46,7 +45,7 @@ function MoviesCard({ MovieData, isSavedMovies }) {
     }
     return `${hours}ч ${minutes}м`;
   }
-
+  // Коллбэк-функция логки сохранения фильма
   const handleClick = useCallback(() => {
     if (isSaved) {
       handleMovieSave(MovieData, true);

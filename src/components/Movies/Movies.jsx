@@ -24,7 +24,7 @@ function Movies() {
   const [arrayLength, setArrayLength] = useState('');
   const [isFinished, setIsFinished] = useState(false);
   const arrayForRender = filterMovies.slice(0, arrayLength);
-
+  // Коллбэк-функция отрисовки массива фильмов
   const renderMovies = useCallback(() => {
     const count = { cards: 12, rows: 3 };
     if (window.innerWidth < 1140) {
@@ -36,7 +36,7 @@ function Movies() {
     }
     return count;
   }, []);
-
+  // Определяем тип отрисовки массива фильмов
   function renderMoviesCards() {
     setArrayLength(renderMovies().cards);
     if (window.innerWidth < 1140) {
@@ -46,13 +46,14 @@ function Movies() {
       setArrayLength(renderMovies().cards);
     }
   }
-
+  // Вешаем слушатель изменения размера окна
   useEffect(() => {
     renderMoviesCards();
     window.addEventListener('resize', renderMoviesCards);
+
     return () => window.removeEventListener('resize', renderMoviesCards);
   }, []);
-
+  // Коллбэк-функция поиска по массиву фильмов
   const handleFilter = useCallback((searchReq, checkShort, StoredMovies) => {
     setSearchMoviesString(searchReq);
 
@@ -66,7 +67,7 @@ function Movies() {
     setIsFinished(false);
     setArrayLength(renderMovies().cards);
   }, []);
-
+  // Запрос массива фильмов с сервера
   async function handleSearch(searchReq) {
     if (allMovies.length === 0) {
       try {
@@ -85,7 +86,7 @@ function Movies() {
       setArrayLength(renderMovies().cards);
     }
   }
-
+  // Загружаем сохраненые параметры поиска из локалсторэдж
   useEffect(() => {
     if (localStorage.allMovies) {
       const movieSearch = JSON.parse(localStorage.getItem('movieSearch'));
@@ -97,7 +98,7 @@ function Movies() {
       handleFilter(movieSearch, shorts, moviesArray);
     }
   }, [handleFilter, setSearchMoviesString, setIsShort, setAllMovies]);
-
+  // Меняем стейт выбора короткометражек
   function handleShort() {
     if (isShort) {
       setIsShort(false);
@@ -107,18 +108,17 @@ function Movies() {
       handleFilter(searchMovieString, true, allMovies);
     }
   }
-
+  // Функция загрузка ряда карточек
   function loadMore() {
     if (arrayLength < filterMovies.length) {
       setArrayLength(arrayLength + renderMovies().rows);
       setIsFinished(false);
     }
   }
-
+  // Отключаем кнопку loadMore
   useEffect(() => {
     if (arrayLength >= filterMovies.length) {
       setIsFinished(true);
-      setArrayLength(renderMovies().cards);
     }
   }, [handleFilter, handleSearch]);
 
@@ -137,6 +137,7 @@ function Movies() {
           isSavedMovies={false}
           arrayForRender={arrayForRender}
         />
+
         {arrayForRender[0] && !isFinished
           ? <LoadMore loadMore={loadMore} />
           : ''}
