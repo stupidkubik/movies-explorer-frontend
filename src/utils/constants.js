@@ -8,5 +8,5 @@ export const Paths = {
   NotFound: '/404',
 };
 
-export const BASE_URL = 'http://localhost:3003';
-// export const BASE_URL = 'api.mydomain.nomoredomainsrocks.ru';
+// export const BASE_URL = 'http://localhost:3003';
+export const BASE_URL = 'api.mydomain.nomoredomainsrocks.ru';
