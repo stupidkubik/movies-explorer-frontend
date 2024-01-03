@@ -9,4 +9,4 @@ export const Paths = {
 };
 
 // export const BASE_URL = 'http://localhost:3003';
-export const BASE_URL = 'api.mydomain.nomoredomainsrocks.ru';
+export const BASE_URL = 'https://api.mydomain.nomoredomainsrocks.ru';
