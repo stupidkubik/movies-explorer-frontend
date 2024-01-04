@@ -1,13 +1,69 @@
-import { React, useState } from 'react';
-import PropTypes from 'prop-types';
+import {
+  React,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import AppContext from '../../contexts/AppContext';
+import currentUser from '../../contexts/CurrentUserContext';
+import useFormValidation from '../../hooks/useFormValidation';
 import Header from '../Header/Header.jsx';
 import Input from '../Input/Input.jsx';
 import { Paths } from '../../utils/constants';
 
-function Profile({ name, email, handleLogout }) {
-  const [isEdited, setIsEdited] = useState(false);
+function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
+  const {
+    handleUpdateProfile,
+    handleLogout,
+    isProfileEdited,
+    isProfileUpdated,
+    isLoading,
+    isError,
+    setIsError,
+  } = useContext(AppContext);
+
+  const { name, email } = useContext(currentUser);
+  const {
+    values,
+    handleChange,
+    isValid,
+    resetForm,
+  } = useFormValidation({
+    profileName: name,
+    profileEmail: email,
+  });
+
+  const [isMatch, setIsMatch] = useState(true);
+
+  useEffect(() => {
+    setIsMatch(true);
+    if (values.profileName !== name && values.profileEmail !== email) {
+      setIsMatch(false);
+    }
+  }, [isMatch, setIsMatch, handleChange]);
+
+  useEffect(() => {
+    setIsError(false);
+    setIsProfileEdited(false);
+  }, [setIsError]);
+
+  useEffect(() => {
+    resetForm({ name, email });
+    setIsProfileUpdated(false);
+  }, [resetForm, currentUser]);
+
+  function handleEdit() {
+    if (isProfileEdited) {
+      const newUser = handleUpdateProfile(values.profileName, values.profileEmail);
+      resetForm({ profileName: newUser.name, profileEmail: newUser.email });
+      setIsMatch(true);
+    }
+    setIsProfileEdited(true);
+  }
 
   return (
     <>
@@ -18,54 +74,64 @@ function Profile({ name, email, handleLogout }) {
           <form className="form profile__form">
             <label
               className="profile__type"
-              htmlFor="profile-name"
+              htmlFor="profileName"
               >Имя
             </label>
             <Input
               className="profile__data"
-              id="profile-name"
+              id="profileName"
               type={'text'}
-              value={name}
+              name={'profileName'}
               minLength={'2'}
               maxLength={'20'}
               placeholder={name || 'Имя'}
-              spanId={'error-profile-name'}
-              // onChange={'handleChange'}
-              disabled
+              spanId={'error-profileName'}
+              value={values.profileName || name}
+              onChange={(evt) => {
+                handleChange(evt);
+                setIsError(false);
+              }}
+              disabled={!isProfileEdited || isLoading}
             />
-            {/* <div className='profile__divine'></div> */}
             <label
               className="profile__type"
-              htmlFor="profile-email"
+              htmlFor="profileEmail"
               >E-mail
             </label>
             <Input
               className="profile__data"
-              id="profile-email"
+              id="profileEmail"
               type={'email'}
-              value={email}
+              name={'profileEmail'}
               placeholder={email || 'Почта'}
-              spanId={'error-profile-email'}
-              // onChange={'handleChange'}
-              disabled
+              spanId={'error-profileEmail'}
+              value={values.profileEmail || email}
+              onChange={(evt) => {
+                handleChange(evt);
+                setIsError(false);
+              }}
+              disabled={!isProfileEdited || isLoading}
               />
           </form>
+          <span className='profile__serverResponse' hidden={!isProfileUpdated}>
+            Данные профиля обновлены
+          </span>
 
-          {isEdited
+          {isProfileEdited
             ? <>
-              <span className="profile__saveError">{'При обновлении профиля произошла ошибка.'}</span>
-              <Link
+              <button
                 className="profile__saveButton"
-                onClick={() => setIsEdited(false)}
-                >Сохранить
-              </Link>
+                onClick={handleEdit}
+                disabled={!isValid || isLoading || isError || isMatch}>
+                Сохранить
+              </button>
             </>
             : <>
-              <Link
+              <button
                 className="profile__editButton"
-                onClick={() => setIsEdited(true)}
+                onClick={handleEdit}
                 >Редактировать
-              </Link>
+              </button>
               <Link
                 className="profile__logoutButton"
                 to={Paths.Login}
@@ -82,7 +148,6 @@ function Profile({ name, email, handleLogout }) {
 export default Profile;
 
 Profile.propTypes = {
-  name: PropTypes.string,
-  email: PropTypes.string,
-  handleLogout: PropTypes.func,
+  setIsProfileEdited: PropTypes.func,
+  setIsProfileUpdated: PropTypes.func,
 };

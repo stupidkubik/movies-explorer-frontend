@@ -50,9 +50,12 @@
 
 .profile__editButton {
   margin: 206px auto 0;
+  padding: 0;
+  border: none;
   display: block;
   text-decoration: none;
   color: #fff;
+  background-color: inherit;
   font-size: 13px;
   line-height: 15.7px;
   cursor: pointer;
@@ -79,10 +82,11 @@
 
 .profile__saveButton {
   width: 410px;
-  margin: 0 auto;
+  margin: 206px auto 0;
   padding: 13px 0 15px;
   display: block;
   text-decoration: none;
+  border: none;
   border-radius: 3px;
   color: #fff;
   background-color: #3456F3;
@@ -95,19 +99,18 @@
   opacity: .8;
 }
 
-.profile__saveButton_disabled {
+.profile__saveButton:disabled {
   color: #C2C2C2;
   background-color: #F8F8F8;
   cursor: default;
 }
 
-.profile__saveError {
-  display: block;
-  margin: 189px auto 20px;
-  color: #FF004C;
+.profile__serverResponse {
+  margin: 10px auto 0;
   font-size: 11px;
   line-height: 13px;
   text-align: center;
+  color: #3DDC84;
 }
 
 @media screen and (max-width: 768px) {

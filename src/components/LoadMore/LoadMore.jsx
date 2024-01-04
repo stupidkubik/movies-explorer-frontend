@@ -1,9 +1,14 @@
 import { React } from 'react';
+import PropTypes from 'prop-types';
 
-function LoadMore() {
+function LoadMore({ loadMore }) {
   return (
-    <button className="loadMore" type="button">Ещё</button>
+    <button className="loadMore" type="button" onClick={loadMore}>Ещё</button>
   );
 }
 
 export default LoadMore;
+
+LoadMore.propTypes = {
+  loadMore: PropTypes.func,
+};

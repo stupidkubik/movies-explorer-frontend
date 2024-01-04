@@ -1,36 +1,28 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
-import { MoviesList } from '../../utils/constants';
 
-function MoviesCardList({ isSavedMovies, handleMovieSave }) {
+function MoviesCardList({ isSavedMovies, arrayForRender }) {
   return (
-    <section className="movies__wrapper">
-      <ul className="movies__list">
-        {isSavedMovies
-          ? MoviesList.filter((movie) => {
-            const { isSaved } = movie;
-            return isSaved === true;
-          })
-            .map((MovieData) => (
-            <MoviesCard
-              key={MovieData._id}
+    arrayForRender[0]
+      ? <section className="movies__wrapper">
+        <ul className="movies__list">
+          {isSavedMovies
+            ? (arrayForRender.map((MovieData) => (
+                <MoviesCard
+                key={MovieData._id}
+                MovieData={MovieData}
+                isSavedMovies={isSavedMovies}
+              />)))
+            : (arrayForRender.map((MovieData) => (
+              <MoviesCard
+              key={MovieData.id}
               MovieData={MovieData}
               isSavedMovies={isSavedMovies}
-              handleMovieSave={handleMovieSave}
-            />
-            ))
-          : MoviesList.map((MovieData) => (
-            <MoviesCard
-              key={MovieData._id}
-              MovieData={MovieData}
-              isSavedMovies={isSavedMovies}
-              handleMovieSave={handleMovieSave}
-            />
-          ))
-        }
-      </ul>
-    </section>
+            />)))}
+        </ul>
+      </section>
+      : <span className='movies__noFind'>Ничего не найдено</span>
   );
 }
 
@@ -38,5 +30,5 @@ export default MoviesCardList;
 
 MoviesCardList.propTypes = {
   isSavedMovies: PropTypes.bool,
-  handleMovieSave: PropTypes.func,
+  arrayForRender: PropTypes.array,
 };

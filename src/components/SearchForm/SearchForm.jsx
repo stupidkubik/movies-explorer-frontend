@@ -1,15 +1,40 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
+import useFormValidation from '../../hooks/useFormValidation';
 
-function SearchForm({ onSubmitSearch }) {
+function SearchForm({
+  handleSearch,
+  isShort,
+  handleShort,
+  searchMovieString,
+}) {
+  const {
+    values,
+    handleChange,
+    resetForm,
+  } = useFormValidation({
+    search: searchMovieString,
+  });
+  // Сбрасываем форму при обновлении компонента
+  useEffect(() => {
+    resetForm({ search: searchMovieString });
+  }, [resetForm, searchMovieString]);
+  // Функция сабмита формы
+  function onSubmit(evt) {
+    evt.preventDefault();
+    if (evt.target.search.value) {
+      handleSearch(evt.target.search.value);
+    }
+  }
+
   return (
     <section className="movies__wrapper">
       <form
         className={'movies__form'}
         name={'search'}
-        onSubmit={''}
+        onSubmit={onSubmit}
       >
         <div className="movies__container">
           <input
@@ -18,19 +43,19 @@ function SearchForm({ onSubmitSearch }) {
             name="search"
             type="search"
             placeholder='Фильм'
-            // value={values.search}
-            // onChange={'handleChange'}
+            value={values.search || ''}
+            onChange={handleChange}
             required
           />
+
           <button
             id="search-submit"
             type="submit"
             name="search-btn"
             className="movies__button"
-            onSubmit={(evt) => onSubmitSearch(evt)}
           />
         </div>
-        <FilterCheckbox />
+        <FilterCheckbox isShort={isShort} handleShort={handleShort} />
       </form>
     </section>
   );
@@ -39,5 +64,8 @@ function SearchForm({ onSubmitSearch }) {
 export default SearchForm;
 
 SearchForm.propTypes = {
-  onSubmitSearch: PropTypes.func,
+  handleSearch: PropTypes.func,
+  isShort: PropTypes.bool,
+  handleShort: PropTypes.func,
+  searchMovieString: PropTypes.string,
 };

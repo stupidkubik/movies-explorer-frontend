@@ -19,3 +19,14 @@ CSS Flex & Grid layouts,
 PropTypes for typechecking,
 Normalize.сss,
 Hovered links & inputs
+
+---
+
+### Server route
+
+IP 62.84.125.182
+
+https://mydomain.nomoredomainsrocks.ru
+
+#### PR
+https://github.com/stupidkubik/movies-explorer-frontend/pull/2
