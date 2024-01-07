@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function LoadMore({ loadMore }) {
   return (
-    <button className="loadMore" type="button" onClick={loadMore}>Ещё</button>
+    <button className="loadMore" type="button" onClick={loadMore}>More</button>
   );
 }
 

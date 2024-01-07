@@ -5,14 +5,14 @@ function Portfolio() {
   return (
     <section className="portfolio main__portfolio">
       <div className="link portfolio__link">
-        <h3 className="link__title">Портфолио</h3>
+        <h3 className="link__title">Portfolio</h3>
         <div className="link__item">
           <Link
           className="link__button"
           target="_blank"
           to="https://stupidkubik.github.io/how-to-learn/"
           >
-            <p className="link__decs">Статичный сайт</p>
+            <p className="link__decs">Static website</p>
           </Link>
         </div>
         <div className="link__item">
@@ -21,7 +21,7 @@ function Portfolio() {
           target="_blank"
           to="https://stupidkubik.github.io/russian-travel/"
           >
-            <p className="link__decs">Адаптивный сайт</p>
+            <p className="link__decs">Adaptive website</p>
           </Link>
         </div>
         <div className="link__item">
@@ -30,7 +30,7 @@ function Portfolio() {
           target="_blank"
           to="https://stupid.kubik.nomoredomainsrocks.ru/"
           >
-            <p className="link__decs">Одностраничное приложение</p>
+            <p className="link__decs">Single page application</p>
           </Link>
         </div>
       </div>

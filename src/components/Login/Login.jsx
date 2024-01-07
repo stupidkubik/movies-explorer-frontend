@@ -48,9 +48,9 @@ function Login() {
     <main className="register">
       <div className="register__container">
         <Link className="register__image" to={Paths.Home}>
-          <img src={logo} alt="логотип страницы в виде квадрата" />
+          <img src={logo} alt="page logo" />
         </Link>
-        <h1 className="register__title">Рады видеть!</h1>
+        <h1 className="register__title">Welcome back!</h1>
         <form
           className={'form register__form'}
           name={'signin'}
@@ -63,7 +63,7 @@ function Login() {
             className={'input register__input'}
             type={'email'}
             name={'email'}
-            placeholder={'pochta@yandex.ru'}
+            placeholder={'mail@google.com'}
             span={'error-signin-email'}
             value={values.email || ''}
             error={errors.email || ''}
@@ -73,7 +73,7 @@ function Login() {
             }}
           />
 
-          <label htmlFor="signin-password" className="register__label">Пароль</label>
+          <label htmlFor="signin-password" className="register__label">Password</label>
           <Input
             id={'signin-password'}
             className={'input register__input'}
@@ -96,13 +96,13 @@ function Login() {
           type="submit"
           disabled={!isValid || isLoading || isError}>
           {isLoading
-            ? 'Загрузка'
-            : 'Войти'}</button>
+            ? 'Loading'
+            : 'Enter'}</button>
         </form>
 
         <p className="register__subtitle">
-        Ещё не зарегистрированы?
-        <Link className="register__link" to={Paths.SignUp}>Регистрация</Link>
+        Not registered yet?
+        <Link className="register__link" to={Paths.SignUp}>Registration</Link>
         </p>
       </div>
     </main>

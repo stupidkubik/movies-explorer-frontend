@@ -53,7 +53,7 @@ function Header({ type }) {
     <header className="header">
       <div className={`${headerClassName} ${headerBackgroundClassName}`}>
         <Link className="header__image" to={Paths.Home}>
-          <img src={logo} alt="логотип страницы в виде квадрата" />
+          <img src={logo} alt="page logo" />
         </Link>
 
         {isLoggedIn
@@ -71,8 +71,8 @@ function Header({ type }) {
             />
           </nav>
           : <nav className="header__notLoggedIn">
-            <Link className="header__register" to={Paths.SignUp}>Регистрация</Link>
-            <Link className="header__login" to={Paths.Login}>Войти</Link>
+            <Link className="header__register" to={Paths.SignUp}>Registration</Link>
+            <Link className="header__login" to={Paths.Login}>Enter</Link>
           </nav>
         }
       </div>

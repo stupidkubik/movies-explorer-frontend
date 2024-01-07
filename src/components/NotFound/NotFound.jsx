@@ -15,8 +15,8 @@ function NotFound() {
   return (
     <main className="notFound">
       <h1 className="notFound__title">404</h1>
-      <p className="notFound__subtitle">Страница не найдена</p>
-      <Link className="notFound__link" onClick={() => goToBack()}>Назад</Link>
+      <p className="notFound__subtitle">Sorry, page not found</p>
+      <Link className="notFound__link" onClick={() => goToBack()}>Go back</Link>
     </main>
   );
 }

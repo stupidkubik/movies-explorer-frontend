@@ -19,7 +19,8 @@ function MoviesCard({ MovieData, isSavedMovies }) {
 
   const {
     image,
-    nameRU,
+    // nameRU,
+    nameEN,
     duration,
     id,
     trailerLink,
@@ -41,9 +42,9 @@ function MoviesCard({ MovieData, isSavedMovies }) {
     const minutes = time % 60;
     const hours = Math.floor(time / 60);
     if (hours === 0) {
-      return `${minutes}м`;
+      return `${minutes}m`;
     }
-    return `${hours}ч ${minutes}м`;
+    return `${hours}h ${minutes}m`;
   }
   // Коллбэк-функция логки сохранения фильма
   const handleClick = useCallback(() => {
@@ -62,25 +63,25 @@ function MoviesCard({ MovieData, isSavedMovies }) {
         <img
           className="movie__image"
           src={isSavedMovies ? image : `https://api.nomoreparties.co${image.url}`}
-          alt={`кадр из фильма “${nameRU}“`}
+          alt={`shot from “${nameEN}“`}
         />
       </Link>
 
       <div className="movie__data">
         <div className="movie__container">
-          <h2 className="movie__title">{nameRU}</h2>
+          <h2 className="movie__title">{nameEN}</h2>
           <div className="movie__like-box">
             {isSavedMovies
               ? <button
               className="movieDeleteButton"
               type="button"
-              aria-label="удалить"
+              aria-label="delete"
               onClick={() => handleMovieDelete(MovieData._id)}
             />
               : <button
               className={movieSaveButtonClassName}
               type="button"
-              aria-label="сохранить"
+              aria-label="save"
               onClick={handleClick}
             />
             }
