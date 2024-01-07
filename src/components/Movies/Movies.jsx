@@ -61,7 +61,7 @@ function Movies() {
     localStorage.setItem('shorts', JSON.stringify(checkShort));
     localStorage.setItem('allMovies', JSON.stringify(StoredMovies));
 
-    setFilterMovies(StoredMovies.filter((movie) => movie.nameRU.toLowerCase()
+    setFilterMovies(StoredMovies.filter((movie) => movie.nameEN.toLowerCase()
       .includes(searchReq.toLowerCase()) && (checkShort ? movie.duration <= 40 : true)));
 
     setIsFinished(false);
