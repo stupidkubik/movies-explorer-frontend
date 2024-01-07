@@ -3,7 +3,7 @@ import { React } from 'react';
 function Promo() {
   return (
     <section className="promo main__promo">
-      <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
+      <h1 className="promo__title">{"Student's study project of the Faculty of Web Development."}</h1>
     </section>
   );
 }

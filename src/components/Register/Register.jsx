@@ -45,9 +45,9 @@ function Register() {
     <main className="register">
       <div className="register__container">
         <Link className="register__image" to={Paths.Home}>
-          <img src={logo} alt="логотип страницы в виде квадрата" />
+          <img src={logo} alt="page logo" />
         </Link>
-        <h1 className="register__title">Добро пожаловать!</h1>
+        <h1 className="register__title">Welcome!</h1>
 
         <form
           className={'form register__form'}
@@ -55,7 +55,7 @@ function Register() {
           onSubmit={onSubmit}
           noValidate
         >
-          <label htmlFor="signup-name" className="register__label">Имя</label>
+          <label htmlFor="signup-name" className="register__label">Name</label>
           <Input
             id={'signup-name'}
             className={'input register__input'}
@@ -63,7 +63,7 @@ function Register() {
             name={'name'}
             minLength={'2'}
             maxLength={'20'}
-            placeholder={'Виталий'}
+            placeholder={'Evgenii'}
             span={'error-signup-name'}
             value={values.name || ''}
             error={errors.name || ''}
@@ -79,7 +79,7 @@ function Register() {
             className={'input register__input'}
             type={'email'}
             name={'email'}
-            placeholder={'pochta@yandex.ru'}
+            placeholder={'mail@google.com'}
             span={'error-signup-email'}
             value={values.email || ''}
             error={errors.email || ''}
@@ -89,7 +89,7 @@ function Register() {
             }}
           />
 
-          <label htmlFor="signup-password" className="register__label">Пароль</label>
+          <label htmlFor="signup-password" className="register__label">Password</label>
           <Input
             id={'signup-password'}
             className={'input register__input'}
@@ -112,13 +112,13 @@ function Register() {
           type="submit"
           disabled={!isValid || isLoading || isError}>
             {isLoading
-              ? 'Загрузка'
-              : 'Зарегистрироваться'}</button>
+              ? 'Loading'
+              : 'Register'}</button>
         </form>
 
         <p className="register__subtitle">
-          Уже зарегистрированы?
-          <Link className="register__link" to={Paths.Login}>Войти</Link>
+          Already registered?
+          <Link className="register__link" to={Paths.Login}>Enter</Link>
         </p>
       </div>
     </main>

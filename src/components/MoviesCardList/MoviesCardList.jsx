@@ -22,7 +22,7 @@ function MoviesCardList({ isSavedMovies, arrayForRender }) {
             />)))}
         </ul>
       </section>
-      : <span className='movies__noFind'>Ничего не найдено</span>
+      : <span className='movies__noFind'>Nothing found</span>
   );
 }
 

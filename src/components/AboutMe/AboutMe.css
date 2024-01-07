@@ -28,6 +28,7 @@
 }
 
 .aboutme__image {
+  width: 270px;
   flex-grow: 1;
   border-radius: 10px;
 }

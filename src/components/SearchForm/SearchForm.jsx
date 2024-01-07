@@ -42,7 +42,7 @@ function SearchForm({
             className="movies__input"
             name="search"
             type="search"
-            placeholder='Фильм'
+            placeholder='Movie'
             value={values.search || ''}
             onChange={handleChange}
             required

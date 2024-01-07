@@ -70,12 +70,12 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
       <Header type={'profile'} />
       <main className="profile">
         <section className="profile__wrapper">
-          <h1 className="profile__title">Привет, {name}!</h1>
+          <h1 className="profile__title">Hi, {name}!</h1>
           <form className="form profile__form">
             <label
               className="profile__type"
               htmlFor="profileName"
-              >Имя
+              >Name
             </label>
             <Input
               className="profile__data"
@@ -84,7 +84,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
               name={'profileName'}
               minLength={'2'}
               maxLength={'20'}
-              placeholder={name || 'Имя'}
+              placeholder={name || 'Name'}
               spanId={'error-profileName'}
               value={values.profileName || name}
               onChange={(evt) => {
@@ -103,7 +103,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
               id="profileEmail"
               type={'email'}
               name={'profileEmail'}
-              placeholder={email || 'Почта'}
+              placeholder={email || 'E-mail'}
               spanId={'error-profileEmail'}
               value={values.profileEmail || email}
               onChange={(evt) => {
@@ -114,7 +114,7 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
               />
           </form>
           <span className='profile__serverResponse' hidden={!isProfileUpdated}>
-            Данные профиля обновлены
+            Update successfully
           </span>
 
           {isProfileEdited
@@ -123,20 +123,20 @@ function Profile({ setIsProfileEdited, setIsProfileUpdated }) {
                 className="profile__saveButton"
                 onClick={handleEdit}
                 disabled={!isValid || isLoading || isError || isMatch}>
-                Сохранить
+                Save
               </button>
             </>
             : <>
               <button
                 className="profile__editButton"
                 onClick={handleEdit}
-                >Редактировать
+                >Edit
               </button>
               <Link
                 className="profile__logoutButton"
                 to={Paths.Login}
                 onClick={() => handleLogout()}
-                >Выйти из аккаунта
+                >Logout
               </Link>
             </>}
           </section>

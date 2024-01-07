@@ -21,7 +21,7 @@ function FilterCheckbox({ handleShort, isShort }) {
         />
         <span className="checkbox__custom" />
       </label>
-      <h2 className="checkbox__text">Короткометражки</h2>
+      <h2 className="checkbox__text">Short movies</h2>
     </div>
   );
 }

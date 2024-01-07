@@ -8,21 +8,21 @@ function NavTab() {
           <a
           className="navtab__button"
           href="#about"
-          >О проекте</a>
+          >About project</a>
         </li>
 
         <li className="navtab__item">
           <a
           className="navtab__button"
           href="#techs"
-          >Технологии</a>
+          >Tech stack</a>
         </li>
 
         <li className="navtab__item">
           <a
           className="navtab__button"
           href="#student"
-          >Студент</a>
+          >Student</a>
         </li>
       </ul>
     </nav>

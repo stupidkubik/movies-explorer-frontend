@@ -53,32 +53,32 @@ function Navigation({ type, isMenuOpen, isMobileView }) {
           <div className={openBurgerMenuClassName}>
             <ul className="burger__navigation">
               <li className="burger__navigation-item">
-                <Link className="burger__link" to={Paths.Home}>Главная</Link>
+                <Link className="burger__link" to={Paths.Home}>Main</Link>
               </li>
               <li className="burger__navigation-item">
-                <Link className={activeMoviesRouteBurgerClassName} to={Paths.Movies}>Фильмы</Link>
+                <Link className={activeMoviesRouteBurgerClassName} to={Paths.Movies}>Movies</Link>
               </li>
               <li className="burger__navigation-item">
                 <Link className={activeSavedMoviesRouteBurgerClassName} to={Paths.SavedMovies}>
-                  Сохранённые фильмы
+                  Saved movies
                 </Link>
               </li>
             </ul>
               <Link className="burger__profile" to={Paths.Profile}>
-                <p className="header__profileText">Аккаунт</p>
+                <p className="header__profileText">Profile</p>
                 <div className={logoBackgroundClassName} />
               </Link>
             </div>
           </>
         : <>
           <div className="header__contentBox">
-            <Link className={activeMoviesRouteClassName} to={Paths.Movies}>Фильмы</Link>
+            <Link className={activeMoviesRouteClassName} to={Paths.Movies}>Movies</Link>
             <Link className={activeSavedMoviesRouteClassName} to={Paths.SavedMovies}>
-              Сохранённые фильмы
+              Saved movies
             </Link>
           </div>
           <Link className="header__profile" to={Paths.Profile}>
-            <p className="header__profileText">Аккаунт</p>
+            <p className="header__profileText">Profile</p>
             <div className={logoBackgroundClassName} />
           </Link>
         </>
